@@ -1,0 +1,837 @@
+<!doctype html>
+<title>Nordenhusker</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFC531;
+    --surface:#FFFFFF;
+    --surface-2:#F8E2A6;
+    --ink:#12182A;
+    --ink-soft:#55492F;
+    --border:rgba(18,24,42,0.16);
+    --gold:#E3A73E;
+    --gold-deep:#B9832A;
+    --gold-soft:rgba(227,167,62,0.14);
+    --accent-da:#B8352B;
+    --accent-da-soft:rgba(184,53,43,0.10);
+    --accent-no:#1F5C82;
+    --accent-no-soft:rgba(31,92,130,0.10);
+    --good:#3F7A5C;
+    --good-soft:rgba(63,122,92,0.12);
+    --warn:#96691E;
+    --warn-soft:rgba(176,138,46,0.14);
+    --shadow: 0 1px 2px rgba(18,24,42,0.12), 0 6px 16px rgba(18,24,42,0.10);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#F0B420;
+      --surface:#FFFFFF;
+      --surface-2:#F8E2A6;
+      --ink:#12182A;
+      --ink-soft:#55492F;
+      --border:rgba(18,24,42,0.18);
+      --gold:#E3A73E;
+      --gold-deep:#B9832A;
+      --gold-soft:rgba(227,167,62,0.14);
+      --accent-da:#B8352B;
+      --accent-da-soft:rgba(184,53,43,0.10);
+      --accent-no:#1F5C82;
+      --accent-no-soft:rgba(31,92,130,0.10);
+      --good:#3F7A5C;
+      --good-soft:rgba(63,122,92,0.12);
+      --warn:#96691E;
+      --warn-soft:rgba(176,138,46,0.14);
+      --shadow: 0 1px 2px rgba(18,24,42,0.14), 0 6px 16px rgba(18,24,42,0.12);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#F0B420;
+    --surface:#FFFFFF;
+    --surface-2:#F8E2A6;
+    --ink:#12182A;
+    --ink-soft:#55492F;
+    --border:rgba(18,24,42,0.18);
+    --gold:#E3A73E;
+    --gold-deep:#B9832A;
+    --gold-soft:rgba(227,167,62,0.14);
+    --accent-da:#B8352B;
+    --accent-da-soft:rgba(184,53,43,0.10);
+    --accent-no:#1F5C82;
+    --accent-no-soft:rgba(31,92,130,0.10);
+    --good:#3F7A5C;
+    --good-soft:rgba(63,122,92,0.12);
+    --warn:#96691E;
+    --warn-soft:rgba(176,138,46,0.14);
+    --shadow: 0 1px 2px rgba(18,24,42,0.14), 0 6px 16px rgba(18,24,42,0.12);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:28px 20px 80px;}
+  h1,h2,h3{font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-weight:600; text-wrap:balance; margin:0;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  .mono{font-family:"IBM Plex Mono", ui-monospace, monospace;}
+
+  /* ---------- header / "boarding pass" ---------- */
+  header.pass{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-top:3px solid var(--accent-da);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    padding:22px 24px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+  }
+  header.pass::before{
+    content:"";
+    position:absolute;
+    top:0; bottom:0; left:132px;
+    width:0;
+    border-left:2px dashed var(--border);
+  }
+  @media (max-width:640px){ header.pass::before{ display:none; } }
+  .brandmark{
+    display:flex; flex-direction:column; gap:8px; min-width:150px;
+  }
+  .directionSwitch{
+    display:inline-flex; gap:3px; background:var(--surface-2); border:1px solid var(--border);
+    border-radius:10px; padding:3px;
+  }
+  .dirBtn{
+    border:none; background:none; color:var(--ink-soft);
+    font-size:12.5px; font-weight:600; padding:7px 10px; border-radius:7px; cursor:pointer;
+    white-space:nowrap;
+  }
+  .dirBtn[aria-pressed="true"]{ background:var(--surface); color:var(--ink); box-shadow:var(--shadow); }
+  .chip{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:2px 7px; border-radius:5px; font-size:11px; font-weight:600;
+    letter-spacing:.05em;
+  }
+  .chip.da{ background:var(--accent-da-soft); color:var(--accent-da); }
+  .chip.no{ background:var(--accent-no-soft); color:var(--accent-no); }
+
+  .titleblock{flex:1; min-width:240px;}
+  .titleblock h1{
+    font-family:"UnifrakturCook", Cardo, Georgia, serif; font-weight:700;
+    font-size:clamp(28px,4vw,40px); letter-spacing:0; line-height:1;
+  }
+  .titleblock h1 .norden{color:var(--accent-da);}
+  .titleblock .goldbar{height:2px; width:38px; background:var(--accent-da); margin:8px 0 0; border:none;}
+  .titleblock .since{margin:6px 0 0; font-size:11.5px; font-style:italic; color:var(--ink-soft); letter-spacing:.02em;}
+  .titleblock p{margin:6px 0 0; color:var(--ink-soft); font-size:14.5px; max-width:52ch;}
+
+  .voicebox{
+    display:flex; flex-direction:column; gap:8px; min-width:220px;
+    background:var(--surface-2); border:1px solid var(--border); border-radius:12px;
+    padding:12px 14px;
+  }
+  .voicebox .row{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-soft);}
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--good); flex:none;}
+  .dot.bad{background:var(--warn);}
+  .voicebox .controls{display:flex; align-items:center; gap:10px;}
+  .voicebox input[type=range]{flex:1; accent-color:var(--accent-da);}
+  .voicebox select{
+    flex:1; appearance:none; -webkit-appearance:none;
+    border:1px solid var(--border); background:var(--surface); color:var(--ink);
+    border-radius:8px; padding:6px 26px 6px 10px; font-size:12.5px; font-weight:500;
+    cursor:pointer; font-family:inherit;
+    background-image:linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%), linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
+    background-position:calc(100% - 14px) center, calc(100% - 9px) center;
+    background-size:5px 5px, 5px 5px;
+    background-repeat:no-repeat;
+  }
+  .voicebox select:disabled{opacity:.5; cursor:default;}
+  .btn{
+    border:1px solid var(--border); background:var(--surface); color:var(--ink);
+    border-radius:8px; padding:6px 11px; font-size:12.5px; font-weight:500;
+    cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+    transition:background .12s ease, border-color .12s ease;
+  }
+  .btn:hover{border-color:var(--accent-da);}
+  .btn:focus-visible, [tabindex]:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent-da); outline-offset:2px;
+  }
+  .banner{
+    margin-top:14px; padding:10px 14px; border-radius:10px;
+    background:var(--warn-soft); color:var(--warn); font-size:13px;
+    display:none; align-items:center; gap:8px;
+  }
+  .banner.show{display:flex;}
+
+  /* ---------- progress ---------- */
+  .progress-row{
+    display:flex; align-items:center; gap:12px; margin:20px 2px 6px;
+    font-size:13px; color:var(--ink-soft);
+  }
+  .progress-track{
+    flex:1; height:6px; border-radius:99px; background:var(--surface-2);
+    border:1px solid var(--border); overflow:hidden;
+  }
+  .progress-fill{
+    height:100%; background:var(--good); width:0%;
+    transition:width .25s ease;
+  }
+  .progress-count{font-family:"IBM Plex Mono"; font-variant-numeric:tabular-nums; color:var(--ink);}
+
+  /* ---------- tabs ---------- */
+  .tablist{
+    display:flex; gap:6px; margin:18px 0 18px; border-bottom:1px solid var(--border);
+    flex-wrap:wrap;
+  }
+  .tab{
+    background:none; border:none; padding:10px 4px; margin-right:18px;
+    font-size:12.5px; font-weight:500; color:var(--ink-soft); cursor:pointer;
+    border-bottom:2px solid transparent; margin-bottom:-1px;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    text-transform:uppercase; letter-spacing:.06em;
+  }
+  .tab[aria-selected="true"]{ color:var(--ink); border-bottom-color:var(--accent-da); }
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .subpanel{display:none;}
+  .subpanel.active{display:block;}
+
+  /* ---------- word cards ---------- */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(272px,1fr)); gap:14px;
+  }
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    box-shadow:var(--shadow); padding:16px 16px 14px; display:flex; flex-direction:column; gap:10px;
+    transition:opacity .15s ease;
+  }
+  .card.known{ opacity:.55; }
+  .card-top{display:flex; align-items:baseline; justify-content:space-between; gap:8px;}
+  .word{font-family:"UnifrakturCook", Cardo, Georgia, serif; font-size:26px; font-weight:700;}
+  .split{
+    display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:start;
+    padding:10px 0; border-top:1px dashed var(--border); border-bottom:1px dashed var(--border);
+  }
+  .split .divider{width:0; border-left:1px dashed var(--border);}
+  .meaning-label{font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:3px;}
+  .meaning-label.da{color:var(--accent-da);}
+  .meaning-label.no{color:var(--accent-no);}
+  .meaning-text{font-size:13.5px; color:var(--ink);}
+  .split > div.target .meaning-text{font-weight:600;}
+  .example{font-size:13.5px; font-style:italic; color:var(--ink-soft); display:flex; align-items:flex-start; gap:8px;}
+  .example .en{font-style:normal; font-size:12px; color:var(--ink-soft); display:block; margin-top:2px;}
+  .example-sentence .kw{border-radius:3px; padding:0 2px; margin:0 -2px; transition:background-color .12s ease, color .12s ease;}
+  .example-sentence .kw.active{background:var(--accent-da); color:var(--surface); font-style:normal;}
+  .tip{font-size:12px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:8px 10px;}
+  .card-actions{display:flex; align-items:center; justify-content:space-between; gap:8px;}
+  .speak-btn{
+    border:1px solid var(--accent-no); background:var(--accent-no-soft); color:var(--accent-no);
+    border-radius:8px; padding:6px 10px; font-size:12.5px; font-weight:600; cursor:pointer;
+    display:inline-flex; align-items:center; gap:6px; flex:none;
+  }
+  .speak-btn.target-da{ border-color:var(--accent-da); background:var(--accent-da-soft); color:var(--accent-da); }
+  .speak-btn:hover{ background:var(--accent-no); color:var(--surface); }
+  .speak-btn.target-da:hover{ background:var(--accent-da); color:var(--surface); }
+  .know-toggle{
+    border:1px solid var(--border); background:none; color:var(--ink-soft);
+    border-radius:8px; padding:6px 10px; font-size:12px; cursor:pointer;
+  }
+  .know-toggle[aria-pressed="true"]{
+    border-color:var(--good); color:var(--good); background:var(--good-soft); font-weight:600;
+  }
+
+  /* ---------- pronunciation section ---------- */
+  .sound-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    box-shadow:var(--shadow); padding:18px 20px; margin-bottom:14px;
+  }
+  .sound-card h3{font-size:18px; margin-bottom:6px;}
+  .sound-card p{font-size:13.5px; color:var(--ink-soft); margin:0 0 12px; max-width:64ch;}
+  .chipword-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chipword{
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid var(--accent-no); background:var(--accent-no-soft);
+    border-radius:99px; padding:6px 8px 6px 14px; cursor:pointer; font-size:14px;
+    color:var(--ink);
+  }
+  .chipword:hover{background:var(--accent-no); color:var(--surface);}
+  .chipword.lang-da{border-color:var(--accent-da); background:var(--accent-da-soft);}
+  .chipword.lang-da:hover{background:var(--accent-da); color:var(--surface);}
+  .chipword .ph{font-family:"IBM Plex Mono"; font-size:11px; color:var(--ink-soft); margin-left:2px;}
+  .chipword:hover .ph{color:inherit; opacity:.85;}
+  .speaker-ico{
+    width:20px; height:20px; border-radius:50%; background:var(--accent-no); color:var(--surface);
+    display:inline-flex; align-items:center; justify-content:center; font-size:10px; flex:none;
+  }
+  .chipword.lang-da .speaker-ico{background:var(--accent-da);}
+  .chipword:hover .speaker-ico{background:var(--surface); color:var(--accent-no);}
+  .chipword.lang-da:hover .speaker-ico{color:var(--accent-da);}
+
+  /* ---------- sentence patterns ---------- */
+  table.contrast{width:100%; border-collapse:collapse; font-size:13.5px; margin-top:6px;}
+  table.contrast th{
+    text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:600; padding:6px 10px; border-bottom:1px solid var(--border);
+  }
+  table.contrast td{padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:middle;}
+  table.contrast tr:last-child td{border-bottom:none;}
+  table.contrast td.num{font-family:"IBM Plex Mono"; font-variant-numeric:tabular-nums; color:var(--ink-soft); width:40px;}
+  .lang-word{display:inline-flex; align-items:center; gap:7px; cursor:pointer;}
+  .lang-word .speaker-ico{width:18px; height:18px; font-size:9px;}
+  .lang-word.lang-da .speaker-ico{background:var(--accent-da);}
+
+  footer{margin-top:44px; font-size:12px; color:var(--ink-soft); border-top:1px solid var(--border); padding-top:16px;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="pass">
+    <div class="brandmark">
+      <div class="directionSwitch" role="group" aria-label="Retning">
+        <button class="dirBtn" type="button" data-dir="da-no" aria-pressed="true">🇩🇰→🇳🇴 Norsk</button>
+        <button class="dirBtn" type="button" data-dir="no-da" aria-pressed="false">🇳🇴→🇩🇰 Dansk</button>
+      </div>
+    </div>
+    <div class="titleblock">
+      <h1><span class="norden">Norden</span>husker</h1>
+      <hr class="goldbar">
+      <p class="since">Norden husker mere end du tror.</p>
+      <p id="heroText">Du kan allerede 90 % af norsk. Denne side øver kun differencen: de ord der lyder ens men betyder noget andet, hvordan sætninger vrides om, og hvordan det rent faktisk skal lyde — sagt højt af browseren, ikke af dig med dansk udtale.</p>
+    </div>
+    <div class="voicebox">
+      <div class="row" id="voiceStatus"><span class="dot" id="voiceDot"></span><span id="voiceLabel">Finder stemme…</span></div>
+      <div class="controls">
+        <select id="voiceSelect" disabled><option>Finder stemmer…</option></select>
+      </div>
+      <div class="controls">
+        <span class="mono" style="font-size:11px; color:var(--ink-soft);">Fart</span>
+        <input type="range" id="rateSlider" min="0.6" max="1.1" step="0.05" value="0.85">
+        <button class="btn" id="testVoiceBtn" type="button">▶ Test</button>
+      </div>
+    </div>
+    <div class="banner" id="voiceBanner">⚠ Ingen stemme fundet. Prøv Chrome eller Edge — de har normalt indbyggede skandinaviske stemmer.</div>
+  </header>
+
+  <div class="progress-row">
+    <span>Ord du kan</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-count"><span id="progressCount">0</span>/<span id="progressTotal">30</span></span>
+  </div>
+
+  <div class="tablist" role="tablist" aria-label="Sektioner">
+    <button class="tab" role="tab" aria-selected="true" id="tab-ord" aria-controls="panel-ord">Ord der lurer</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-udtale" aria-controls="panel-udtale">Udtale</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-mønstre" aria-controls="panel-mønstre">Tal &amp; tid</button>
+  </div>
+
+  <section class="panel active" id="panel-ord" role="tabpanel" aria-labelledby="tab-ord">
+    <div class="grid" id="wordGrid"></div>
+  </section>
+
+  <section class="panel" id="panel-udtale" role="tabpanel" aria-labelledby="tab-udtale">
+
+    <div class="subpanel active" id="udtale-da-no">
+
+      <div class="sound-card">
+        <h3>Norsk dropper ikke bogstaverne</h3>
+        <p>Dansk gør b, d og g mellem vokaler til noget der næsten forsvinder ("dag" bliver til noget i retning af "dæj"). Norsk udtaler dem som rigtige lyde. Samme stavning, tydeligt anderledes lyd — klik og sammenlign med dit eget danske "dag".</p>
+        <div class="chipword-row" data-lang="no" data-words="dag,god,ung,regn,hus,by"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>R'et flyttes forrest i munden</h3>
+        <p>Dansk r er en blød, bagtungelyd (som i fransk/tysk). Østnorsk r (Oslo-udtalen, den du vil møde mest) rulles eller "flappes" forrest med tungespidsen — mærkbart skarpere.</p>
+        <div class="chipword-row" data-lang="no" data-words="rar,regn,her,øre"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>Stød findes ikke i norsk</h3>
+        <p>Der hvor dansk bruger stød (det lille "knæk" i stemmen, fx i "løber"), bruger norsk i stedet tonefald — ordet får en synkende eller stigende melodi. Nogle ordpar findes kun adskilt af denne melodi: <span class="mono">"løper"</span> kan enten betyde en person der løber, eller at nogen løber, alt efter tonefaldet. Browserens stemme rammer det ikke altid perfekt — men det er det, en nordmand lytter efter.</p>
+        <div class="chipword-row" data-lang="no" data-words="løper,bønner,tanken"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>U-lyden flytter sig frem i munden</h3>
+        <p>Dansk "u" ligger bagerst i munden. Norsk "u" udtales længere fremme og mere spidst — næsten som en blanding af dansk u og y. Samme stavning, men lyt efter hvor lyden sidder.</p>
+        <div class="chipword-row" data-lang="no" data-words="du,sur,mus,tur"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>SKJ og KJ lyder skarpere end du forventer</h3>
+        <p>Disse bogstavkombinationer findes knap nok i dansk, men er allestedsnærværende på norsk: "skj"/"sj" bliver til en tydelig "sh"-lyd, og "kj"/"tj" bliver til en blød "kj"-lyd forrest i munden (lidt som starten af engelsk "huge"). Tren dit øre på dem — de dukker op i almindelige ord som køkken og skje.</p>
+        <div class="chipword-row" data-lang="no" data-words="kjøkken,skje,kjenne,sjef,kjole"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>Norsk sluger ikke sine stavelser</h3>
+        <p>Dansk er kendt for at reducere ord i almindelig tale — ugedage er det klassiske eksempel, hvor "tirsdag" og "torsdag" bliver til noget der knap ligner deres stavning. Norsk udtaler typisk hver stavelse tydeligere. Samme ord, samme stavning — men hør forskellen på hvor meget der bliver "sagt".</p>
+        <div class="chipword-row" data-lang="no" data-words="hvordan,tirsdag,torsdag"></div>
+      </div>
+
+    </div>
+
+    <div class="subpanel" id="udtale-no-da">
+
+      <div class="sound-card">
+        <h3>Dansk blødgør bogstaverne</h3>
+        <p>Nå snur vi det om: norsk uttaler b, d og g mellom vokaler som tydelige lyder. Dansk gjør dem bløte, nesten glidende — "dag" blir til noe i retning av "dæj". Samme staving, men lytt etter hvor mye av lyden som forsvinner.</p>
+        <div class="chipword-row" data-lang="da" data-words="dag,god,ung,regn,hus,by"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>R'et flytter seg bakover i munnen</h3>
+        <p>Østnorsk r rulles forrest med tungespissen. Dansk r er en bløt lyd bakerst i halsen (nesten som fransk/tysk r). Det er ofte det som avslører en nordmann som snakker dansk raskest.</p>
+        <div class="chipword-row" data-lang="da" data-words="rar,regn,her,øre"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>Stødet — lyden du faktisk må lære</h3>
+        <p>Norsk har tonefall der ord skifter melodi. Dansk har i stedet stød: et lite "knekk" i stemmen midt i ordet. Det finnes ikke i norsk, så det må øves inn spesifikt — det er den delen av dansk uttale nordmenn oftest sliter mest med.</p>
+        <div class="chipword-row" data-lang="da" data-words="løber,bønner,tanken"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>U-lyden flytter seg bakover</h3>
+        <p>Norsk "u" ligger langt fremme og spisst i munnen. Dansk "u" trekker seg bakover, mer likt en vanlig u-lyd. Samme staving, men lytt etter hvor lyden sitter.</p>
+        <div class="chipword-row" data-lang="da" data-words="du,sur,mus,tur"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>Det bløte d — dansks mest berømte lyd</h3>
+        <p>Denne finnes ikke i norsk i det hele tatt: en bløt, glidende d-lyd (litt som engelsk "th" i "this") som dukker opp overalt i dansk — etter vokaler, på slutten av ord. Det er den lyden utlendinger (og nordmenn) sliter aller mest med å få til.</p>
+        <div class="chipword-row" data-lang="da" data-words="mad,gade,hvad,glad"></div>
+      </div>
+
+      <div class="sound-card">
+        <h3>Dansk sluker sine stavelser</h3>
+        <p>Norsk uttaler som regel hver stavelse tydelig. Dansk reduserer ord kraftig i vanlig tale — ukedagene er det klassiske eksempelet: "tirsdag" og "torsdag" blir til noe som knapt ligner stavingen. Ikke bli overrasket om dansker rundt deg høres ut som de "mumler" — det er ikke deg det er noe galt med.</p>
+        <div class="chipword-row" data-lang="da" data-words="hvordan,tirsdag,torsdag"></div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="panel" id="panel-mønstre" role="tabpanel" aria-labelledby="tab-mønstre">
+
+    <div class="sound-card">
+      <h3>Tal: norsk er faktisk nemmere</h3>
+      <p>Dansk tæller i tyvertal og vender rækkefølgen om ("et-og-tyve" = 21, "halvtreds" = 50, egentlig "halvtredsindstyve", 2½×20). Norsk går almindeligt decimalt, tier først: <span class="mono">tjueen</span>, <span class="mono">tretti</span>. Klik på begge kolonner og hør forskellen.</p>
+      <table class="contrast">
+        <tr><th></th><th>Dansk</th><th>Norsk</th></tr>
+        <tr><td class="num">21</td><td><span class="lang-word lang-da" data-say="enogtyve" data-lang="da"><span class="speaker-ico">▶</span>enogtyve</span></td><td><span class="lang-word" data-say="tjueen" data-lang="no"><span class="speaker-ico">▶</span>tjueen</span></td></tr>
+        <tr><td class="num">30</td><td><span class="lang-word lang-da" data-say="tredive" data-lang="da"><span class="speaker-ico">▶</span>tredive</span></td><td><span class="lang-word" data-say="tretti" data-lang="no"><span class="speaker-ico">▶</span>tretti</span></td></tr>
+        <tr><td class="num">50</td><td><span class="lang-word lang-da" data-say="halvtreds" data-lang="da"><span class="speaker-ico">▶</span>halvtreds</span></td><td><span class="lang-word" data-say="femti" data-lang="no"><span class="speaker-ico">▶</span>femti</span></td></tr>
+        <tr><td class="num">70</td><td><span class="lang-word lang-da" data-say="halvfjerds" data-lang="da"><span class="speaker-ico">▶</span>halvfjerds</span></td><td><span class="lang-word" data-say="sytti" data-lang="no"><span class="speaker-ico">▶</span>sytti</span></td></tr>
+        <tr><td class="num">90</td><td><span class="lang-word lang-da" data-say="halvfems" data-lang="da"><span class="speaker-ico">▶</span>halvfems</span></td><td><span class="lang-word" data-say="nitti" data-lang="no"><span class="speaker-ico">▶</span>nitti</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sound-card">
+      <h3>Klokken: "i" bliver til "på"</h3>
+      <p>Når du siger klokkeslæt før det hele, skifter forholdsordet.</p>
+      <table class="contrast">
+        <tr><th></th><th>Dansk</th><th>Norsk</th></tr>
+        <tr><td class="num">4:45</td><td><span class="lang-word lang-da" data-say="kvart i fem" data-lang="da"><span class="speaker-ico">▶</span>kvart i fem</span></td><td><span class="lang-word" data-say="kvart på fem" data-lang="no"><span class="speaker-ico">▶</span>kvart på fem</span></td></tr>
+        <tr><td class="num">4:15</td><td><span class="lang-word lang-da" data-say="kvart over fire" data-lang="da"><span class="speaker-ico">▶</span>kvart over fire</span></td><td><span class="lang-word" data-say="kvart over fire" data-lang="no"><span class="speaker-ico">▶</span>kvart over fire</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sound-card">
+      <h3>Resten af sætningen? Rolig.</h3>
+      <p>Bortset fra tal og klokkeslæt er sætningsbygningen praktisk talt identisk mellem dansk og norsk — samme ordstilling (verbet på andenpladsen), samme endelser for bestemt form ("bilen" er "bilen" i begge sprog), samme bøjning af udsagnsord. Det er ikke grammatikken der forråder dig, det er ordene i første fane.</p>
+    </div>
+
+  </section>
+
+  <footer>
+    Ordliste bygget på dokumenterede danske/norske "falske venner" — brug siden til at øve, ikke som ordbog for tvivlstilfælde. Fremskridt gemmes kun i denne browser.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var WORDS = [
+    {id:"rar", word:"rar", da:"sød, venlig", no:"sær, mystisk", ex:"Han er egentlig ganske rar.", exen:"He's actually quite strange.", tip:"I Danmark er \"rar\" en kompliment. I Norge er det stik modsat — kald ikke din nye norske chef rar.", exda:"Hun er så rar, hun hjælper altid.", exdaen:"She's so nice, she always helps.", tipno:"På dansk betyr \"rar\" faktisk snill/hyggelig — ikke sær som hjemme. Ikke bli fornærmet om noen kaller deg rar."},
+    {id:"grine", word:"grine", da:"at le", no:"at græde", ex:"Babyen begynte å grine med en gang.", exen:"The baby started crying right away.", tip:"Griner en nordmand over mødet, er det ikke af grin.", exda:"Hele salen grinede af vittigheden.", exdaen:"The whole room laughed at the joke.", tipno:"På dansk betyr \"grine\" å le, ikke å gråte — ikke bli overrasket om noen ler høyt av en vits."},
+    {id:"frokost", word:"frokost", da:"frokost (middagsmåltid)", no:"morgenmad", ex:"Vi spiser frokost klokka åtte.", exen:"We eat breakfast at eight.", tip:"Bliver du inviteret til frokost i Norge, kom om morgenen — ikke kl. 12.", exda:"Vi spiser frokost klokken tolv på kontoret.", exdaen:"We eat lunch at twelve at the office.", tipno:"På dansk er \"frokost\" lunsj, ikke morgenmat — spis frokost hjemme før du møter opp til dansk \"frokost\"."},
+    {id:"flink", word:"flink", da:"sød, hjælpsom", no:"dygtig, talentfuld", ex:"Hun er veldig flink til å synge.", exen:"She's very good at singing.", tip:"Ros en nordmands evner med \"flink\" — ikke deres opførsel.", exda:"Han er en flink kollega, altid klar til at hjælpe.", exdaen:"He's a nice colleague, always ready to help.", tipno:"På dansk roser \"flink\" noens vesen, ikke ferdigheter — det handler ikke om dyktighet."},
+    {id:"rask", word:"rask", da:"rask (sund, rask efter sygdom)", no:"hurtig", ex:"Han løp veldig raskt.", exen:"He ran very fast.", tip:"\"Du ser rask ud\" roser i Norge din fart, ikke dit helbred.", exda:"Godt at høre du er rask igen efter influenzaen.", exdaen:"Good to hear you're well again after the flu.", tipno:"På dansk handler \"rask\" om helse, ikke fart — det er en kommentar til at du er frisk igjen."},
+    {id:"svær", word:"svær", da:"svær (vanskelig)", no:"stor, kraftig", ex:"Det var en svær koffert å bære.", exen:"It was a big, heavy suitcase to carry.", tip:"Norsk \"svær\" handler om størrelse, ikke sværhedsgrad.", exda:"Den opgave var virkelig svær at løse.", exdaen:"That task was really difficult to solve.", tipno:"På dansk betyr \"svær\" vanskelig, ikke stor — det er ikke en kommentar til noens størrelse."},
+    {id:"artig", word:"artig", da:"artig (velopdragen)", no:"sjov, morsom", ex:"Det var en artig historie!", exen:"That was a funny story!", tip:"Kald en historie \"artig\" i Norge, og du roser vittigheden — ikke opførslen.", exda:"Børnene var meget artige hele middagen.", exdaen:"The children were very well-behaved throughout dinner.", tipno:"På dansk handler \"artig\" om god oppførsel, ikke humor — ingen sier at det var en morsom historie."},
+    {id:"killing", word:"killing", da:"kattekilling", no:"kid (gedekilling)", ex:"Killingen hoppet rundt på jordet.", exen:"The baby goat hopped around the field.", tip:"På en norsk gård er en \"killing\" ikke en kat.", exda:"Vi har fået en lille killing derhjemme.", exdaen:"We've gotten a little kitten at home.", tipno:"På dansk er en \"killing\" en kattunge, ikke et kje."},
+    {id:"bolle", word:"bolle", da:"(slang) at have sex", no:"bolle (bagværk, en bolle)", ex:"Jeg kjøpte en bolle med kanel til frokost.", exen:"I bought a cinnamon bun for breakfast.", tip:"At bestille \"en bolle\" i et norsk bageri er helt almindeligt — lad ikke dit danske øre stoppe dig.", exda:"Undgå at bruge ordet \"bolle\" i en formel sammenhæng.", exdaen:"Avoid using the word \"bolle\" in a formal setting.", tipno:"Pass deg — \"bolle\" er slang for noe seksuelt på dansk, ikke en bakst. Be heller om en \"snegl\" eller \"wienerbrød\" i Danmark."},
+    {id:"drille", word:"drille", da:"at drille (drilleri)", no:"at bore", ex:"Kan du drille et hull her?", exen:"Can you drill a hole here?", tip:"Bed en nordmand \"drille\" noget, og de henter en boremaskine.", exda:"Han drillede sin lillesøster for sjov.", exdaen:"He teased his little sister for fun.", tipno:"På dansk betyr \"drille\" å erte, ikke å bore."},
+    {id:"tænde", word:"tænde / tenne", da:"tænde (fx for vandhanen)", no:"tenne (tænde ild, lys)", ex:"Kan du tenne lyset?", exen:"Can you turn on the light?", tip:"Bemærk også stavemåden: dansk \"tænde\" → norsk \"tenne\".", exda:"Kan du tænde lyset, det er mørkt herinde.", exdaen:"Can you turn on the light, it's dark in here.", tipno:"Stavemåten endrer seg fra \"tenne\" til \"tænde\", men betydningen er stort sett den samme — bare venn deg til stavingen."},
+    {id:"vifte", word:"vifte", da:"håndvifte (den du vifter med)", no:"(el-)ventilator", ex:"Kan du slå på viften? Det er varmt her.", exen:"Can you turn on the fan? It's hot in here.", tip:"En norsk \"vifte\" har en ledning, ikke en håndtag.", exda:"Hun sad og viftede sig med en håndvifte i varmen.", exdaen:"She sat fanning herself with a hand fan in the heat.", tipno:"På dansk er en \"vifte\" ofte noe man vifter med i hånden — ikke nødvendigvis en elektrisk ventilator."},
+    {id:"hold", word:"hold", da:"hold (fx fodboldhold)", no:"hold! (grib fat, som udråb)", ex:"Hold godt fast i rekkverket.", exen:"Hold on tight to the railing.", tip:"Som udråb betyder \"hold!\" på norsk simpelthen \"grib fat!\".", exda:"Vores hold vandt kampen i går.", exdaen:"Our team won the match yesterday.", tipno:"På dansk er \"hold\" et lag (som i fotballag), ikke et utrop om å holde fast."},
+    {id:"purk", word:"purk", da:"en lille purk (dreng)", no:"purken (slang for politiet)", ex:"Purken stoppet bilen for fartskontroll.", exen:"The police stopped the car for a speed check.", tip:"En norsk \"purk\" har uniform, ikke bleer.", exda:"Sikke en sød lille purk, han ligner sin far.", exdaen:"What a sweet little boy, he looks like his dad.", tipno:"På dansk er en \"purk\" en liten gutt — ikke politiet, som i norsk slang."},
+    {id:"slik", word:"slik", da:"slik (slik og sodavand)", no:"sådan, på den måde", ex:"Jeg har aldri sett noe slikt før.", exen:"I've never seen anything like that before.", tip:"Ingen kalorier i norsk \"slik\" — det er et biord, ikke en indkøbspose.", exda:"Børnene fik slik efter middagen.", exdaen:"The kids got candy after dinner.", tipno:"På dansk er \"slik\" godteri — ikke et adverb som betyr \"sånn\"."},
+    {id:"enda", word:"endda / enda", da:"endda (overraskende nok)", no:"stadig, endnu", ex:"Er du ikke ferdig enda?", exen:"Aren't you done yet?", tip:"Bemærk stavemåden: dansk to d'er, norsk ét — \"enda\".", exda:"Han var endda glad for at hjælpe, selvom han havde travlt.", exdaen:"He was even happy to help, even though he was busy.", tipno:"På dansk (med to d'er: \"endda\") betyr det \"til og med\", ikke \"fortsatt\"."},
+    {id:"juks", word:"juks", da:"juks (noget værdiløst, ragelse)", no:"snyd, fusk", ex:"Det er juks å se svarene på forhånd.", exen:"It's cheating to see the answers beforehand.", tip:"Norsk \"juks\" handler om at snyde — ikke om dårlig kvalitet.", exda:"Det der ur er noget juks, det holder ikke en uge.", exdaen:"That watch is junk, it won't last a week.", tipno:"På dansk betyr \"juks\" noe verdiløst eller falskt — ikke juksing/snyting som på norsk."},
+    {id:"kran", word:"kran", da:"(bygge-)kran", no:"vandhane", ex:"Vannet kommer rett fra krana.", exen:"The water comes straight from the tap.", tip:"Beder en nordmand dig lukke for \"krana\", er der ingen tårnkran involveret.", exda:"De har rejst en kæmpe kran på byggepladsen.", exdaen:"They've put up a huge crane at the construction site.", tipno:"På dansk er en \"kran\" en byggekran — ikke vannkranen på kjøkkenet."},
+    {id:"sportsvogn", word:"sportsvogn", da:"sportsvogn (bil)", no:"barnevogn/klapvogn", ex:"Vi kjøpte en ny sportsvogn til barnet.", exen:"We bought a new stroller for the baby.", tip:"Klager en kollega over at \"sportsvognen\" ikke kan foldes ned i bagagerummet, mener de klapvognen.", exda:"Han drømmer om at eje en rød sportsvogn.", exdaen:"He dreams of owning a red sports car.", tipno:"På dansk er en \"sportsvogn\" en sportsbil — ikke en barnevogn."},
+    {id:"brus", word:"brus", da:"brus (kulsyren, boblerne)", no:"sodavand (selve drikken)", ex:"Vil du ha en brus til maten?", exen:"Would you like a soda with the meal?", tip:"Bestil \"en brus\" i Norge, og du får en hel sodavand — ikke bare boblerne.", exda:"Champagnen havde en dejlig brus af bobler.", exdaen:"The champagne had a lovely fizz of bubbles.", tipno:"På dansk beskriver \"brus\" boblene/kulsyren i en drikk — det er ikke selve sodavannet, som på norsk."},
+    {id:"bedrift", word:"bedrift", da:"bedrift (heltedåd, stor præstation)", no:"bedrift (virksomhed, firma)", ex:"Han jobber i en stor bedrift i Oslo.", exen:"He works at a big company in Oslo.", tip:"Snakker en nordmand om sin \"bedrift\", er det arbejdspladsen — ikke en heltedåd.", exda:"At bestige bjerget var en imponerende bedrift.", exdaen:"Climbing the mountain was an impressive feat.", tipno:"På dansk er en \"bedrift\" en bragd — ikke en virksomhet."},
+    {id:"svært", word:"svært", da:"svært (med besvær, vanskeligt)", no:"svært (meget, i høj grad)", ex:"Det er svært viktig å komme presis.", exen:"It's very important to be on time.", tip:"Norsk \"svært\" er et forstærkerord ligesom \"meget\" — det er det mest almindelige ord du vil overhøre og mistolke.", exda:"Det var svært at nå toget i tide.", exdaen:"It was difficult to catch the train in time.", tipno:"På dansk betyr \"svært\" vanskelig, ikke \"veldig\" — det er ikke en forsterker slik som på norsk."},
+    {id:"dytte", word:"dytte", da:"dytte (dytte i hornet, tude)", no:"dytte (skubbe, puffe)", ex:"Ikke dytt i køen, vent på tur.", exen:"Don't push in line, wait your turn.", tip:"Beder en nordmand dig lade være med at \"dytte\", handler det om albuer — ikke bilhornet.", exda:"Bilisten dyttede utålmodigt i hornet.", exdaen:"The driver impatiently honked the horn.", tipno:"På dansk betyr \"dytte\" å tute i hornet — ikke å skubbe/dytte som på norsk."},
+    {id:"jule", word:"jule (som udsagnsord)", da:"jul (substantiv — sjældent udsagnsord)", no:"å jule (nogen) opp — at tæske nogen", ex:"Pass deg, ellers blir du jult opp.", exen:"Watch out, or you'll get beaten up.", tip:"Som udsagnsord har \"jule\" intet med december at gøre på norsk.", exda:"Vi skal til at gøre klar til at holde jul.", exdaen:"We're about to get ready to celebrate Christmas.", tipno:"På dansk handler \"jule\" om julehøytiden — det er ikke et uttrykk for juling."},
+    {id:"nævenyttig", word:"nævenyttig / nevenyttig", da:"nævenyttig (blander sig i alting)", no:"nevenyttig (god med hænderne, praktisk)", ex:"Faren min er veldig nevenyttig, han fikser alt selv.", exen:"My dad is very handy, he fixes everything himself.", tip:"På norsk er det en kompliment — det betyder \"handy\", ikke \"pågående\".", exda:"Naboen er lidt nævenyttig og blander sig i alt.", exdaen:"The neighbor is a bit of a busybody and meddles in everything.", tipno:"På dansk er \"nævenyttig\" negativt — det betyr pågående, ikke \"flink med hendene\"."},
+    {id:"stel", word:"stel / stell", da:"stel (fx cykelstel, en ramme)", no:"stell (pleje, det at passe på nogen)", ex:"Hun steller barnet hver morgen.", exen:"She tends to the baby every morning.", tip:"Norsk \"stell\" handler om omsorg — ikke et stykke metal.", exda:"Cyklens stel var bøjet efter styrtet.", exdaen:"The bike's frame was bent after the crash.", tipno:"På dansk er et \"stel\" en ramme eller et stativ — ikke omsorg for noen."},
+    {id:"trivelig", word:"trivelig", da:"trivelig (buttet, godt i kødet)", no:"trivelig (hyggelig, rar at være i)", ex:"Det var en trivelig kveld sammen med kollegene.", exen:"It was a cozy evening with the colleagues.", tip:"Kald en aften \"trivelig\" i Norge, og du roser stemningen — ikke nogens vægt.", exda:"Han er blevet lidt trivelig med årene.", exdaen:"He's gotten a bit plump over the years.", tipno:"På dansk beskriver \"trivelig\" en person som lubben — ikke en hyggelig stemning."},
+    {id:"ulige", word:"ulige / ulik", da:"ulige (ulige tal, uens)", no:"ulik / ulike (forskellig)", ex:"Vi har veldig ulike meninger om dette.", exen:"We have very different opinions about this.", tip:"Bemærk stavemåden: dansk \"ulige\" → norsk \"ulik/ulike\", og betydningen glider fra \"ulige tal\" til bare \"forskellig\".", exda:"Tallene tre og fem er ulige tal.", exdaen:"The numbers three and five are odd numbers.", tipno:"På dansk handler \"ulige\" om ulike tall (oddetall) — ikke bare \"forskjellig\" generelt."},
+    {id:"solbrent", word:"solbrændt / solbrent", da:"solbrændt (flot brun af solen)", no:"solbrent (forbrændt af solen, gør ondt)", ex:"Jeg ble skikkelig solbrent i går.", exen:"I got properly sunburned yesterday.", tip:"Sig ikke \"du ser solbrændt ud\" som kompliment — på norsk lyder det som forbrændinger, ikke en flot kulør.", exda:"Du er blevet flot solbrændt i sommerferien.", exdaen:"You've gotten a nice tan over the summer holiday.", tipno:"På dansk er \"solbrændt\" en kompliment om en fin brun farge — ikke solforbrenning som gjør vondt."},
+    {id:"middag", word:"middag", da:"middag (aftensmåltid, sent — kl. 18-20)", no:"middag (aftensmåltid, tidligt — ofte kl. 16-17)", ex:"Vi spiser middag klokka fem her.", exen:"We eat dinner at five o'clock here.", tip:"Bliver du inviteret til middag i Norge, så mød op tidligere end du er vant til hjemmefra.", exda:"Vi spiser middag klokken syv i aften.", exdaen:"We're eating dinner at seven tonight.", tipno:"På dansk spiser man middag sent, ofte klokken 18-20 — møt ikke opp klokken fem som hjemme."}
+  ];
+
+  var UDTALE_WORDS = {
+    no: {
+      "dag":"[dɑːɡ]", "god":"[ɡuː]", "ung":"[ʉŋ]", "regn":"[rɛɪn]",
+      "hus":"[hʉːs]", "by":"[byː]", "rar":"[rɑːr]", "her":"[hæːr]",
+      "øre":"[øːrə]", "løper":"[løːpər]", "bønner":"[bœnːər]", "tanken":"[taŋkən]",
+      "du":"[dʉː]", "sur":"[sʉːr]", "mus":"[mʉːs]", "tur":"[tʉːr]",
+      "kjøkken":"[çøkːən]", "skje":"[ʃeː]", "kjenne":"[çɛnːə]", "sjef":"[ʃeːf]", "kjole":"[çuːlə]",
+      "hvordan":"[vurˈdɑn]", "tirsdag":"[tirsˈdɑːɡ]", "torsdag":"[tɔrsˈdɑːɡ]"
+    },
+    da: {
+      "dag":"[tɛːˀ]", "god":"[ɡoːˀ]", "ung":"[ɔŋˀ]", "regn":"[ʁɑjn]",
+      "hus":"[huːˀs]", "by":"[byːˀ]", "rar":"[ʁɑːˀ]", "her":"[hɛɐ̯]",
+      "øre":"[øːɐ]", "løber":"[løːˀbɐ]", "bønner":"[bœnɐ]", "tanken":"[taŋˀn̩]",
+      "du":"[du]", "sur":"[suːˀɐ]", "mus":"[muːˀs]", "tur":"[tuːˀɐ]",
+      "mad":"[mæð]", "gade":"[ɡæːðə]", "hvad":"[va]", "glad":"[ɡlæð]",
+      "hvordan":"[vɔɐ̯ˈdan]", "tirsdag":"[ˈtiɐ̯sda]", "torsdag":"[ˈtɒsda]"
+    }
+  };
+
+  var UI = {
+    "da-no": {
+      hero: "Du kan allerede 90 % af norsk. Denne side øver kun differencen: de ord der lyder ens men betyder noget andet, hvordan sætninger vrides om, og hvordan det rent faktisk skal lyde — sagt højt af browseren, ikke af dig med dansk udtale.",
+      knowLabel: "Kan den", knownLabel: "✓ Kan den",
+      speakAria: "Hør sætningen på norsk", testPhrase: "Hei, dette er Nordenhusker. La oss øve litt norsk sammen.",
+      voicesFoundOne: " norsk stemme fundet", voicesFoundMany: " norske stemmer fundet", voicesNone: "Ingen norsk stemme fundet",
+      voicesFinding: "Finder norsk stemme…", bannerNone: "⚠ Ingen norsk stemme fundet. Prøv Chrome eller Edge — de har normalt \"Norsk bokmål\" indbygget.",
+      flag: "🇳🇴"
+    },
+    "no-da": {
+      hero: "Du kan allerede 90 % av dansk. Denne siden øver bare forskjellen: ordene som lyder like men betyr noe annet, hvordan setninger skiller seg litt, og hvordan det faktisk skal høres ut — sagt høyt av nettleseren, ikke av deg med norsk uttale.",
+      knowLabel: "Kan det", knownLabel: "✓ Kan det",
+      speakAria: "Hør sætningen på dansk", testPhrase: "Hej, det er Nordenhusker. Lad os øve lidt dansk sammen.",
+      voicesFoundOne: " dansk stemme funnet", voicesFoundMany: " danske stemmer funnet", voicesNone: "Ingen dansk stemme funnet",
+      voicesFinding: "Finner dansk stemme…", bannerNone: "⚠ Ingen dansk stemme funnet. Prøv Chrome eller Edge — de har normalt danske stemmer innebygget.",
+      flag: "🇩🇰"
+    }
+  };
+
+  var direction = "da-no";
+  try{
+    var savedDir = localStorage.getItem("norsk-snarvei:direction");
+    if(savedDir === "no-da" || savedDir === "da-no") direction = savedDir;
+  }catch(e){}
+
+  // ---------- progress (shared across both directions) ----------
+  var known = {};
+  try{
+    known = JSON.parse(localStorage.getItem("norsk-snarvei:known") || "{}");
+  }catch(e){ known = {}; }
+
+  function saveKnown(){
+    try{ localStorage.setItem("norsk-snarvei:known", JSON.stringify(known)); }catch(e){}
+  }
+
+  function updateProgress(){
+    var count = 0;
+    WORDS.forEach(function(w){ if(known[w.id]) count++; });
+    document.getElementById("progressCount").textContent = count;
+    document.getElementById("progressTotal").textContent = WORDS.length;
+    document.getElementById("progressFill").style.width = (count / WORDS.length * 100) + "%";
+  }
+
+  // ---------- word cards ----------
+  var grid = document.getElementById("wordGrid");
+
+  function renderWords(){
+    grid.innerHTML = "";
+    var targetLang = direction === "da-no" ? "no" : "da";
+    var flag = UI[direction].flag;
+
+    WORDS.forEach(function(w){
+      var card = document.createElement("article");
+      card.className = "card" + (known[w.id] ? " known" : "");
+      card.dataset.id = w.id;
+
+      var exampleText = direction === "da-no" ? w.ex : w.exda;
+      var exampleEn = direction === "da-no" ? w.exen : w.exdaen;
+      var tipText = direction === "da-no" ? w.tip : w.tipno;
+      var daTarget = targetLang === "da";
+      var noTarget = targetLang === "no";
+
+      card.innerHTML =
+        '<div class="card-top"><span class="word">' + w.word + '</span></div>' +
+        '<div class="split">' +
+          '<div class="' + (daTarget ? "target" : "") + '"><div class="meaning-label da">' + (daTarget ? "🎯 " : "") + 'DA betyder</div><div class="meaning-text">' + w.da + '</div></div>' +
+          '<div class="divider"></div>' +
+          '<div class="' + (noTarget ? "target" : "") + '"><div class="meaning-label no">' + (noTarget ? "🎯 " : "") + 'NO betyder</div><div class="meaning-text">' + w.no + '</div></div>' +
+        '</div>' +
+        '<div class="example">' + flag + ' <span><span class="example-sentence">' + karaokeMarkup(exampleText) + '</span><span class="en">' + exampleEn + '</span></span></div>' +
+        '<div class="tip">' + tipText + '</div>' +
+        '<div class="card-actions">' +
+          '<button class="speak-btn' + (targetLang === "da" ? " target-da" : "") + '" type="button" aria-label="' + UI[direction].speakAria + '">▶ Hør</button>' +
+          '<button class="know-toggle" type="button" aria-pressed="' + (known[w.id]?"true":"false") + '">' + (known[w.id] ? UI[direction].knownLabel : UI[direction].knowLabel) + '</button>' +
+        '</div>';
+
+      var sentenceEl = card.querySelector(".example-sentence");
+      card.querySelector(".speak-btn").addEventListener("click", function(){
+        speak(exampleText, targetLang, sentenceEl);
+      });
+      var knowBtn = card.querySelector(".know-toggle");
+      knowBtn.addEventListener("click", function(){
+        known[w.id] = !known[w.id];
+        saveKnown();
+        card.classList.toggle("known", !!known[w.id]);
+        knowBtn.setAttribute("aria-pressed", known[w.id] ? "true" : "false");
+        knowBtn.textContent = known[w.id] ? UI[direction].knownLabel : UI[direction].knowLabel;
+        updateProgress();
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
+  // ---------- pronunciation chip rows (rendered once, both langs, toggled by subpanel) ----------
+  document.querySelectorAll(".chipword-row").forEach(function(row){
+    var lang = row.dataset.lang;
+    var words = row.dataset.words.split(",");
+    words.forEach(function(word){
+      var chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "chipword" + (lang === "da" ? " lang-da" : "");
+      var ph = (UDTALE_WORDS[lang] && UDTALE_WORDS[lang][word]) || "";
+      chip.innerHTML = '<span class="speaker-ico">▶</span>' + word + (ph ? '<span class="ph">' + ph + '</span>' : '');
+      chip.addEventListener("click", function(){ speak(word, lang); });
+      row.appendChild(chip);
+    });
+  });
+
+  // ---------- number/time rows (both languages always speakable) ----------
+  document.querySelectorAll(".lang-word[data-say]").forEach(function(el){
+    el.addEventListener("click", function(){ speak(el.dataset.say, el.dataset.lang); });
+  });
+
+  // ---------- tabs ----------
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function(tab){
+    tab.addEventListener("click", function(){
+      tabs.forEach(function(t){ t.setAttribute("aria-selected","false"); });
+      document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("active"); });
+      tab.setAttribute("aria-selected","true");
+      document.getElementById(tab.getAttribute("aria-controls")).classList.add("active");
+    });
+  });
+
+  // ---------- direction switch ----------
+  var dirBtns = document.querySelectorAll(".dirBtn");
+  function applyDirection(){
+    dirBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.dir === direction ? "true" : "false"); });
+    document.getElementById("heroText").textContent = UI[direction].hero;
+    document.getElementById("udtale-da-no").classList.toggle("active", direction === "da-no");
+    document.getElementById("udtale-no-da").classList.toggle("active", direction === "no-da");
+    renderWords();
+    updateProgress();
+    refreshVoiceUI();
+  }
+  dirBtns.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      if(direction === btn.dataset.dir) return;
+      direction = btn.dataset.dir;
+      try{ localStorage.setItem("norsk-snarvei:direction", direction); }catch(e){}
+      applyDirection();
+    });
+  });
+
+  // ---------- speech ----------
+  var noVoicePool = [];
+  var daVoicePool = [];
+  var activeVoice = null;
+  var voiceSelect = document.getElementById("voiceSelect");
+
+  // Common Norwegian/Danish/Scandinavian TTS voice names, tagged by gender,
+  // purely as a helpful hint in the dropdown label — not something the Web
+  // Speech API reports, so unknown names are just shown as-is.
+  var GENDER_HINTS = {
+    "finn":"mand", "henrik":"mand", "jon":"mand", "olav":"mand", "magnus":"mand", "mads":"mand", "frederik":"mand",
+    "pernille":"kvinde", "nora":"kvinde", "hulda":"kvinde", "kari":"kvinde", "christel":"kvinde",
+    "iselin":"kvinde", "signe":"kvinde", "ida":"kvinde", "sofie":"kvinde", "helle":"kvinde"
+  };
+  function genderHint(name){
+    var lower = name.toLowerCase();
+    for(var key in GENDER_HINTS){
+      if(lower.indexOf(key) !== -1) return GENDER_HINTS[key];
+    }
+    return null;
+  }
+
+  function scanVoices(){
+    if(!("speechSynthesis" in window)) return;
+    var voices = speechSynthesis.getVoices() || [];
+    if(!voices.length) return;
+    noVoicePool = voices.filter(function(v){ return /^nb|^no/i.test(v.lang) || /norw|norsk|bokm/i.test(v.name); });
+    daVoicePool = voices.filter(function(v){ return /^da/i.test(v.lang) || /danish|dansk/i.test(v.name); });
+    refreshVoiceUI();
+  }
+
+  function refreshVoiceUI(){
+    var lang = direction === "da-no" ? "no" : "da";
+    var pool = lang === "no" ? noVoicePool : daVoicePool;
+    var dot = document.getElementById("voiceDot");
+    var label = document.getElementById("voiceLabel");
+    var banner = document.getElementById("voiceBanner");
+    var storageKey = "norsk-snarvei:voice-" + lang;
+
+    voiceSelect.innerHTML = "";
+
+    if(pool.length){
+      dot.classList.remove("bad");
+      label.textContent = pool.length + (pool.length === 1 ? UI[direction].voicesFoundOne : UI[direction].voicesFoundMany);
+      banner.classList.remove("show");
+
+      var savedName = null;
+      try{ savedName = localStorage.getItem(storageKey); }catch(e){}
+
+      pool.forEach(function(v){
+        var opt = document.createElement("option");
+        opt.value = v.name;
+        var hint = genderHint(v.name);
+        opt.textContent = v.name + (hint ? " (" + hint + ")" : "");
+        voiceSelect.appendChild(opt);
+      });
+      voiceSelect.disabled = pool.length < 2;
+
+      var chosen = (savedName && pool.find(function(v){ return v.name === savedName; })) || pool[0];
+      voiceSelect.value = chosen.name;
+      activeVoice = chosen;
+    } else {
+      dot.classList.add("bad");
+      label.textContent = UI[direction].voicesNone;
+      banner.textContent = UI[direction].bannerNone;
+      banner.classList.add("show");
+      var noneOpt = document.createElement("option");
+      noneOpt.textContent = "—";
+      voiceSelect.appendChild(noneOpt);
+      voiceSelect.disabled = true;
+      activeVoice = null;
+    }
+  }
+
+  voiceSelect.addEventListener("change", function(){
+    var lang = direction === "da-no" ? "no" : "da";
+    var pool = lang === "no" ? noVoicePool : daVoicePool;
+    var chosen = pool.find(function(v){ return v.name === voiceSelect.value; });
+    if(chosen){
+      activeVoice = chosen;
+      try{ localStorage.setItem("norsk-snarvei:voice-" + lang, chosen.name); }catch(e){}
+      speak(lang === "no" ? "Hei, dette er meg." : "Hej, det er mig.", lang);
+    }
+  });
+
+  if("speechSynthesis" in window){
+    scanVoices();
+    speechSynthesis.onvoiceschanged = scanVoices;
+  } else {
+    document.getElementById("voiceLabel").textContent = "Talesyntese ikke understøttet i denne browser";
+    document.getElementById("voiceDot").classList.add("bad");
+    voiceSelect.innerHTML = "<option>Ikke understøttet</option>";
+  }
+
+  // ---------- karaoke word-highlight helpers ----------
+  function escapeHtml(s){
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function karaokeMarkup(text){
+    var html = "", re = /\S+/g, m, lastIndex = 0;
+    while((m = re.exec(text))){
+      if(m.index > lastIndex) html += escapeHtml(text.slice(lastIndex, m.index));
+      var word = m[0];
+      html += '<span class="kw" data-start="' + m.index + '" data-end="' + (m.index + word.length) + '">' + escapeHtml(word) + '</span>';
+      lastIndex = m.index + word.length;
+    }
+    if(lastIndex < text.length) html += escapeHtml(text.slice(lastIndex));
+    return html;
+  }
+  var activeKaraokeEl = null;
+  function clearKaraoke(){
+    if(!activeKaraokeEl) return;
+    var active = activeKaraokeEl.querySelectorAll(".kw.active");
+    for(var i = 0; i < active.length; i++) active[i].classList.remove("active");
+    activeKaraokeEl = null;
+  }
+
+  function speak(text, lang, highlightEl){
+    if(!("speechSynthesis" in window)) return;
+    lang = lang || (direction === "da-no" ? "no" : "da");
+    speechSynthesis.cancel();
+    clearKaraoke();
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = lang === "no" ? "nb-NO" : "da-DK";
+    var pool = lang === "no" ? noVoicePool : daVoicePool;
+    var voice = (lang === (direction === "da-no" ? "no" : "da")) ? activeVoice : (pool[0] || null);
+    if(voice) utter.voice = voice;
+    var rate = parseFloat(document.getElementById("rateSlider").value) || 0.85;
+    utter.rate = rate;
+
+    if(highlightEl){
+      activeKaraokeEl = highlightEl;
+      var spans = highlightEl.querySelectorAll(".kw");
+      utter.onboundary = function(e){
+        if(e.name && e.name !== "word") return;
+        var idx = e.charIndex;
+        for(var i = 0; i < spans.length; i++){
+          var start = parseInt(spans[i].dataset.start, 10);
+          var end = parseInt(spans[i].dataset.end, 10);
+          spans[i].classList.toggle("active", idx >= start && idx < end);
+        }
+      };
+      utter.onend = clearKaraoke;
+      utter.onerror = clearKaraoke;
+    }
+
+    speechSynthesis.speak(utter);
+  }
+
+  document.getElementById("testVoiceBtn").addEventListener("click", function(){
+    speak(UI[direction].testPhrase, direction === "da-no" ? "no" : "da");
+  });
+
+  document.getElementById("rateSlider").addEventListener("change", function(){
+    try{ localStorage.setItem("norsk-snarvei:rate", this.value); }catch(e){}
+  });
+  try{
+    var savedRate = localStorage.getItem("norsk-snarvei:rate");
+    if(savedRate) document.getElementById("rateSlider").value = savedRate;
+  }catch(e){}
+
+  // ---------- initial render ----------
+  applyDirection();
+
+})();
+</script>
