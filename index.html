@@ -602,7 +602,7 @@
 
       var sentenceEl = card.querySelector(".example-sentence");
       card.querySelector(".speak-btn").addEventListener("click", function(){
-        speak(exampleText, targetLang, sentenceEl);
+        speak(exampleText, targetLang, sentenceEl, w.id + "-" + targetLang);
       });
       var knowBtn = card.querySelector(".know-toggle");
       knowBtn.addEventListener("click", function(){
@@ -628,14 +628,17 @@
       chip.className = "chipword" + (lang === "da" ? " lang-da" : "");
       var ph = (UDTALE_WORDS[lang] && UDTALE_WORDS[lang][word]) || "";
       chip.innerHTML = '<span class="speaker-ico">▶</span>' + word + (ph ? '<span class="ph">' + ph + '</span>' : '');
-      chip.addEventListener("click", function(){ speak(word, lang); });
+      chip.addEventListener("click", function(){ speak(word, lang, null, "udtale-" + lang + "-" + slugify(word)); });
       row.appendChild(chip);
     });
   });
 
   // ---------- number/time rows (both languages always speakable) ----------
   document.querySelectorAll(".lang-word[data-say]").forEach(function(el){
-    el.addEventListener("click", function(){ speak(el.dataset.say, el.dataset.lang); });
+    el.addEventListener("click", function(){
+      speak(el.dataset.say, el.dataset.lang, null,
+        "say-" + el.dataset.lang + "-" + slugify(el.dataset.say).replace(/\s+/g, "-"));
+    });
   });
 
   // ---------- tabs ----------
@@ -786,11 +789,78 @@
     activeKaraokeEl = null;
   }
 
-  function speak(text, lang, highlightEl){
-    if(!("speechSynthesis" in window)) return;
+  // ---------- pre-generated audio (Google WaveNet, see tools/generate-audio.mjs) ----------
+  // Falls back to the Web Speech API whenever a clip is missing or won't play,
+  // so the app still works opened straight from disk with no audio/ directory.
+  var CLIPS = null;
+  var GENERATED_RATE = 0.92;   // speakingRate the mp3s were rendered at
+  fetch("audio/manifest.json")
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(list){
+      if(!list) return;
+      CLIPS = {};
+      for(var i = 0; i < list.length; i++) CLIPS[list[i].id] = list[i];
+    })
+    .catch(function(){ /* CLIPS stays null — Web Speech handles everything */ });
+
+  function slugify(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/ø/g, "o").replace(/æ/g, "ae").replace(/å/g, "aa").toLowerCase();
+  }
+
+  var currentAudio = null, karaokeTimers = [];
+  function stopAudio(){
+    if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+    for(var i = 0; i < karaokeTimers.length; i++) clearTimeout(karaokeTimers[i]);
+    karaokeTimers = [];
+  }
+
+  function playClip(clip, highlightEl, rate){
+    var audio = new Audio(clip.file);
+    // Clips are baked at GENERATED_RATE, so divide it out and the slider keeps
+    // the same meaning it has for Web Speech.
+    var speed = rate / GENERATED_RATE;
+    audio.playbackRate = speed;
+    currentAudio = audio;
+
+    if(highlightEl && clip.timings && clip.timings.length){
+      activeKaraokeEl = highlightEl;
+      var spans = highlightEl.querySelectorAll(".kw");
+      var n = Math.min(clip.timings.length, spans.length);
+      for(var i = 0; i < n; i++){
+        (function(idx){
+          karaokeTimers.push(setTimeout(function(){
+            for(var j = 0; j < spans.length; j++) spans[j].classList.toggle("active", j === idx);
+          }, clip.timings[idx] * 1000 / speed));
+        })(i);
+      }
+    }
+    var done = function(){ stopAudio(); clearKaraoke(); };
+    audio.addEventListener("ended", done);
+    audio.addEventListener("error", done);
+    return audio.play();
+  }
+
+  function speak(text, lang, highlightEl, clipId){
     lang = lang || (direction === "da-no" ? "no" : "da");
-    speechSynthesis.cancel();
+    if("speechSynthesis" in window) speechSynthesis.cancel();
+    stopAudio();
     clearKaraoke();
+
+    var rateNow = parseFloat(document.getElementById("rateSlider").value) || 0.85;
+    var clip = (clipId && CLIPS) ? CLIPS[clipId] : null;
+    if(clip){
+      var playing = playClip(clip, highlightEl, rateNow);
+      if(playing && playing.catch){
+        playing.catch(function(){ stopAudio(); clearKaraoke(); webSpeak(text, lang, highlightEl); });
+      }
+      return;
+    }
+    webSpeak(text, lang, highlightEl);
+  }
+
+  function webSpeak(text, lang, highlightEl){
+    if(!("speechSynthesis" in window)) return;
     var utter = new SpeechSynthesisUtterance(text);
     utter.lang = lang === "no" ? "nb-NO" : "da-DK";
     var pool = lang === "no" ? noVoicePool : daVoicePool;
@@ -819,7 +889,8 @@
   }
 
   document.getElementById("testVoiceBtn").addEventListener("click", function(){
-    speak(UI[direction].testPhrase, direction === "da-no" ? "no" : "da");
+    speak(UI[direction].testPhrase, direction === "da-no" ? "no" : "da", null,
+      direction === "da-no" ? "test-no" : "test-da");
   });
 
   document.getElementById("rateSlider").addEventListener("change", function(){
