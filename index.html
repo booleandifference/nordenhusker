@@ -100,16 +100,16 @@
     position:relative;
     overflow:hidden;
   }
-  header.pass::before{
-    content:"";
-    position:absolute;
-    top:0; bottom:0; left:132px;
-    width:0;
-    border-left:2px dashed var(--border);
-  }
-  @media (max-width:640px){ header.pass::before{ display:none; } }
+  /* Ticket-stub perforation. Anchored to the stub's own edge rather than a fixed
+     offset, so it can't drift when the brandmark's contents change width. */
   .brandmark{
     display:flex; flex-direction:column; gap:8px; min-width:150px;
+    align-self:stretch; justify-content:center;
+    margin:-22px 0; padding:22px 18px 22px 0;
+    border-right:2px dashed var(--border);
+  }
+  @media (max-width:640px){
+    .brandmark{ align-self:auto; margin:0; padding:0; border-right:none; }
   }
   .directionSwitch{
     display:inline-flex; gap:3px; background:var(--surface-2); border:1px solid var(--border);
