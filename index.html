@@ -144,6 +144,8 @@
     background:var(--surface-2); border:1px solid var(--border); border-radius:12px;
     padding:12px 14px;
   }
+  /* class selectors below set display:flex, which outranks the UA [hidden] rule */
+  [hidden]{display:none !important;}
   .voicebox .row{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-soft);}
   .dot{width:7px; height:7px; border-radius:50%; background:var(--good); flex:none;}
   .dot.bad{background:var(--warn);}
@@ -219,6 +221,14 @@
     box-shadow:var(--shadow); padding:16px 16px 14px; display:flex; flex-direction:column; gap:10px;
     transition:opacity .15s ease;
   }
+  .genderSwitch{display:inline-flex; border:1px solid var(--border); border-radius:8px; overflow:hidden;}
+  .genderBtn{
+    font:inherit; font-size:12px; padding:5px 12px; border:0; cursor:pointer;
+    background:var(--surface); color:var(--ink-soft); font-family:"IBM Plex Mono", monospace;
+  }
+  .genderBtn + .genderBtn{border-left:1px solid var(--border);}
+  .genderBtn[aria-pressed="true"]{background:var(--ink); color:var(--surface);}
+  .genderBtn:focus-visible{outline:2px solid var(--gold-deep); outline-offset:-2px;}
   .card.known{ opacity:.55; }
   .card-top{display:flex; align-items:baseline; justify-content:space-between; gap:8px;}
   .word{font-family:"Pirata One", Cardo, Georgia, serif; font-size:26px; font-weight:700;}
@@ -318,7 +328,14 @@
     </div>
     <div class="voicebox">
       <div class="row" id="voiceStatus"><span class="dot" id="voiceDot"></span><span id="voiceLabel">Finder stemme…</span></div>
-      <div class="controls">
+      <div class="controls" id="genderBox" hidden>
+        <span class="mono" style="font-size:11px; color:var(--ink-soft);">Stemme</span>
+        <div class="genderSwitch" role="group" aria-label="Stemme">
+          <button class="genderBtn" type="button" data-gender="female" aria-pressed="true">Kvinde</button>
+          <button class="genderBtn" type="button" data-gender="male" aria-pressed="false">Mand</button>
+        </div>
+      </div>
+      <div class="controls" id="voiceSelectBox" hidden>
         <select id="voiceSelect" disabled><option>Finder stemmer…</option></select>
       </div>
       <div class="controls">
@@ -794,14 +811,31 @@
   // so the app still works opened straight from disk with no audio/ directory.
   var CLIPS = null;
   var GENERATED_RATE = 0.92;   // speakingRate the mp3s were rendered at
+  var gender = "female";
+  try{
+    var savedG = localStorage.getItem("norsk-snarvei:gender");
+    if(savedG === "male" || savedG === "female") gender = savedG;
+  }catch(e){}
+
   fetch("audio/manifest.json")
     .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(list){
-      if(!list) return;
+    .then(function(m){
+      if(!m || !m.clips) return;
       CLIPS = {};
-      for(var i = 0; i < list.length; i++) CLIPS[list[i].id] = list[i];
+      for(var i = 0; i < m.clips.length; i++) CLIPS[m.clips[i].id] = m.clips[i];
+      // Pre-generated audio is live: the Web Speech picker no longer drives
+      // playback, so show the gender switch instead.
+      document.getElementById("genderBox").hidden = false;
+      document.getElementById("voiceSelectBox").hidden = true;
+      var st = document.getElementById("voiceStatus");
+      if(st) st.hidden = true;
+      document.getElementById("voiceBanner").classList.remove("show");
     })
-    .catch(function(){ /* CLIPS stays null — Web Speech handles everything */ });
+    .catch(function(){
+      // No clips — fall back to Web Speech and its voice picker.
+      document.getElementById("genderBox").hidden = true;
+      document.getElementById("voiceSelectBox").hidden = false;
+    });
 
   function slugify(s){
     return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -816,22 +850,24 @@
   }
 
   function playClip(clip, highlightEl, rate){
-    var audio = new Audio(clip.file);
+    var take = clip.takes[gender] || clip.takes.female || clip.takes.male;
+    if(!take) return null;
+    var audio = new Audio(take.file);
     // Clips are baked at GENERATED_RATE, so divide it out and the slider keeps
     // the same meaning it has for Web Speech.
     var speed = rate / GENERATED_RATE;
     audio.playbackRate = speed;
     currentAudio = audio;
 
-    if(highlightEl && clip.timings && clip.timings.length){
+    if(highlightEl && take.timings && take.timings.length){
       activeKaraokeEl = highlightEl;
       var spans = highlightEl.querySelectorAll(".kw");
-      var n = Math.min(clip.timings.length, spans.length);
+      var n = Math.min(take.timings.length, spans.length);
       for(var i = 0; i < n; i++){
         (function(idx){
           karaokeTimers.push(setTimeout(function(){
             for(var j = 0; j < spans.length; j++) spans[j].classList.toggle("active", j === idx);
-          }, clip.timings[idx] * 1000 / speed));
+          }, take.timings[idx] * 1000 / speed));
         })(i);
       }
     }
@@ -851,10 +887,12 @@
     var clip = (clipId && CLIPS) ? CLIPS[clipId] : null;
     if(clip){
       var playing = playClip(clip, highlightEl, rateNow);
-      if(playing && playing.catch){
-        playing.catch(function(){ stopAudio(); clearKaraoke(); webSpeak(text, lang, highlightEl); });
+      if(playing){
+        if(playing.catch){
+          playing.catch(function(){ stopAudio(); clearKaraoke(); webSpeak(text, lang, highlightEl); });
+        }
+        return;
       }
-      return;
     }
     webSpeak(text, lang, highlightEl);
   }
@@ -891,6 +929,21 @@
   document.getElementById("testVoiceBtn").addEventListener("click", function(){
     speak(UI[direction].testPhrase, direction === "da-no" ? "no" : "da", null,
       direction === "da-no" ? "test-no" : "test-da");
+  });
+
+  document.querySelectorAll(".genderBtn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      gender = btn.dataset.gender;
+      document.querySelectorAll(".genderBtn").forEach(function(b){
+        b.setAttribute("aria-pressed", String(b.dataset.gender === gender));
+      });
+      try{ localStorage.setItem("norsk-snarvei:gender", gender); }catch(e){}
+      var l = direction === "da-no" ? "no" : "da";
+      speak(UI[direction].testPhrase, l, null, l === "no" ? "test-no" : "test-da");
+    });
+  });
+  document.querySelectorAll(".genderBtn").forEach(function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.gender === gender));
   });
 
   document.getElementById("rateSlider").addEventListener("change", function(){

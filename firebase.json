@@ -12,7 +12,9 @@
       "audio/chirp3/**",
       "audio/grok/**",
       "audio/ssml/**",
-      "tools/**"
+      "tools/**",
+      "audio/ssml2/**",
+      "audio/ssml3/**"
     ],
     "headers": [
       {

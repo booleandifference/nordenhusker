@@ -10,7 +10,8 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
 
 - 30 curated DA/NO false-friend words, each with meanings, an example sentence, and a tip in both directions
 - Bidirectional 🇩🇰→🇳🇴 / 🇳🇴→🇩🇰 switch
-- 123 pre-generated Google WaveNet clips (`da-DK-Wavenet-A` / `nb-NO-Wavenet-A`), chosen over Chirp3-HD and Grok in a blind listening test
+- 246 pre-generated Google WaveNet clips — 123 strings x a female and a male voice per language, chosen over Chirp3-HD and Grok in a blind listening test
+- Kvinde / Mand voice switch, remembered in `localStorage`
 - Karaoke word highlighting driven by real word onsets from the TTS API, not estimates
 - Web Speech API retained as a fallback whenever a clip is missing or won't play
 - Pronunciation cards (6 per direction) and a numbers/time section
@@ -31,8 +32,9 @@ See the project notes (kept outside this repo, in the Claude project) for full d
 
 ```
 index.html          the whole app — markup, styles, and logic in one file
-audio/wavenet/      123 pre-generated mp3s, one per spoken string
-audio/manifest.json clip id -> file + per-word timings, fetched at startup
+audio/female/       123 mp3s, da-DK-Wavenet-F / nb-NO-Wavenet-F
+audio/male/         123 mp3s, da-DK-Wavenet-G / nb-NO-Wavenet-G
+audio/manifest.json clip id -> per-voice file + word timings, fetched at startup
 tools/              audio generator (not deployed)
 brand guide/        reference brand deck (PDF, not deployed)
 firebase.json       Firebase Hosting config
@@ -48,7 +50,9 @@ app whose whole subject is pronunciation.
 
 `tools/generate-audio.mjs` extracts the strings straight from `index.html` (example
 sentences, pronunciation headwords, the numbers/time `data-say` values, test
-phrases) so the clip list cannot drift from the app. It requests SSML `<mark>`
+phrases) so the clip list cannot drift from the app. It discovers the voice pair
+from the API by `ssmlGender` rather than hardcoding names, and stores timings per
+voice, since word onsets differ between them. It requests SSML `<mark>`
 timepoints, which give exact word onsets for the karaoke highlight; marks are
 zero-width, so the audio is identical to a plain-text request.
 
@@ -59,9 +63,6 @@ clips cost anything:
 gcloud auth application-default login
 node tools/generate-audio.mjs
 ```
-
-Add `--engine=chirp3` or `--engine=grok` to render with a different engine for
-comparison; those output folders are gitignored and excluded from deploys.
 
 Note: `audio/manifest.json` is loaded with `fetch`, which browsers block over
 `file://`. Opening `index.html` straight from disk still works — it just falls back

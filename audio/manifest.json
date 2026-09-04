@@ -1,1495 +1,3123 @@
-[
-  {
-    "id": "rar-no",
-    "lang": "nb-NO",
-    "text": "Han er egentlig ganske rar.",
-    "file": "audio/wavenet/rar-no.mp3",
-    "timings": [
-      0.015,
-      0.235,
-      0.345,
-      0.725,
-      1.085
-    ]
-  },
-  {
-    "id": "rar-da",
-    "lang": "da-DK",
-    "text": "Hun er så rar, hun hjælper altid.",
-    "file": "audio/wavenet/rar-da.mp3",
-    "timings": [
-      0.015,
-      0.185,
-      0.27,
-      0.416,
-      0.756,
-      0.897,
-      1.197
-    ]
-  },
-  {
-    "id": "grine-no",
-    "lang": "nb-NO",
-    "text": "Babyen begynte å grine med en gang.",
-    "file": "audio/wavenet/grine-no.mp3",
-    "timings": [
-      0.015,
-      0.481,
-      0.797,
-      0.852,
-      1.197,
-      1.322,
-      1.507
-    ]
-  },
-  {
-    "id": "grine-da",
-    "lang": "da-DK",
-    "text": "Hele salen grinede af vittigheden.",
-    "file": "audio/wavenet/grine-da.mp3",
-    "timings": [
-      0.015,
-      0.335,
-      0.708,
-      1.119,
-      1.169
-    ]
-  },
-  {
-    "id": "frokost-no",
-    "lang": "nb-NO",
-    "text": "Vi spiser frokost klokka åtte.",
-    "file": "audio/wavenet/frokost-no.mp3",
-    "timings": [
-      0.015,
-      0.165,
-      0.581,
-      1.071,
-      1.346
-    ]
-  },
-  {
-    "id": "frokost-da",
-    "lang": "da-DK",
-    "text": "Vi spiser frokost klokken tolv på kontoret.",
-    "file": "audio/wavenet/frokost-da.mp3",
-    "timings": [
-      0.015,
-      0.155,
-      0.551,
-      1.017,
-      1.322,
-      1.577,
-      1.712
-    ]
-  },
-  {
-    "id": "flink-no",
-    "lang": "nb-NO",
-    "text": "Hun er veldig flink til å synge.",
-    "file": "audio/wavenet/flink-no.mp3",
-    "timings": [
-      0.015,
-      0.2,
-      0.3,
-      0.586,
-      0.921,
-      1.096,
-      1.161
-    ]
-  },
-  {
-    "id": "flink-da",
-    "lang": "da-DK",
-    "text": "Han er en flink kollega, altid klar til at hjælpe.",
-    "file": "audio/wavenet/flink-da.mp3",
-    "timings": [
-      0.015,
-      0.205,
-      0.28,
-      0.385,
-      0.7,
-      1.261,
-      1.647,
-      1.932,
-      2.052,
-      2.112
-    ]
-  },
-  {
-    "id": "rask-no",
-    "lang": "nb-NO",
-    "text": "Han løp veldig raskt.",
-    "file": "audio/wavenet/rask-no.mp3",
-    "timings": [
-      0.015,
-      0.215,
-      0.467,
-      0.772
-    ]
-  },
-  {
-    "id": "rask-da",
-    "lang": "da-DK",
-    "text": "Godt at høre du er rask igen efter influenzaen.",
-    "file": "audio/wavenet/rask-da.mp3",
-    "timings": [
-      0.015,
-      0.25,
-      0.31,
-      0.554,
-      0.694,
-      0.759,
-      1.035,
-      1.32,
-      1.55
-    ]
-  },
-  {
-    "id": "svær-no",
-    "lang": "nb-NO",
-    "text": "Det var en svær koffert å bære.",
-    "file": "audio/wavenet/svær-no.mp3",
-    "timings": [
-      0.015,
-      0.175,
-      0.335,
-      0.455,
-      0.76,
-      1.198,
-      1.248
-    ]
-  },
-  {
-    "id": "svær-da",
-    "lang": "da-DK",
-    "text": "Den opgave var virkelig svær at løse.",
-    "file": "audio/wavenet/svær-da.mp3",
-    "timings": [
-      0.015,
-      0.21,
-      0.7,
-      0.805,
-      1.191,
-      1.486,
-      1.526
-    ]
-  },
-  {
-    "id": "artig-no",
-    "lang": "nb-NO",
-    "text": "Det var en artig historie!",
-    "file": "audio/wavenet/artig-no.mp3",
-    "timings": [
-      0.015,
-      0.175,
-      0.34,
-      0.471,
-      0.706
-    ]
-  },
-  {
-    "id": "artig-da",
-    "lang": "da-DK",
-    "text": "Børnene var meget artige hele middagen.",
-    "file": "audio/wavenet/artig-da.mp3",
-    "timings": [
-      0.015,
-      0.451,
-      0.572,
-      0.892,
-      1.282,
-      1.558
-    ]
-  },
-  {
-    "id": "killing-no",
-    "lang": "nb-NO",
-    "text": "Killingen hoppet rundt på jordet.",
-    "file": "audio/wavenet/killing-no.mp3",
-    "timings": [
-      0.015,
-      0.491,
-      0.796,
-      1.046,
-      1.177
-    ]
-  },
-  {
-    "id": "killing-da",
-    "lang": "da-DK",
-    "text": "Vi har fået en lille killing derhjemme.",
-    "file": "audio/wavenet/killing-da.mp3",
-    "timings": [
-      0.015,
-      0.17,
-      0.25,
-      0.516,
-      0.616,
-      0.832,
-      1.247
-    ]
-  },
-  {
-    "id": "bolle-no",
-    "lang": "nb-NO",
-    "text": "Jeg kjøpte en bolle med kanel til frokost.",
-    "file": "audio/wavenet/bolle-no.mp3",
-    "timings": [
-      0.015,
-      0.165,
-      0.488,
-      0.608,
-      0.913,
-      1.033,
-      1.429,
-      1.584
-    ]
-  },
-  {
-    "id": "bolle-da",
-    "lang": "da-DK",
-    "text": "Undgå at bruge ordet \"bolle\" i en formel sammenhæng.",
-    "file": "audio/wavenet/bolle-da.mp3",
-    "timings": [
-      0.015,
-      0.44,
-      0.495,
-      0.836,
-      1.141,
-      1.698,
-      1.768,
-      1.878,
-      2.239
-    ]
-  },
-  {
-    "id": "drille-no",
-    "lang": "nb-NO",
-    "text": "Kan du drille et hull her?",
-    "file": "audio/wavenet/drille-no.mp3",
-    "timings": [
-      0.015,
-      0.215,
-      0.32,
-      0.609,
-      0.734,
-      0.929
-    ]
-  },
-  {
-    "id": "drille-da",
-    "lang": "da-DK",
-    "text": "Han drillede sin lillesøster for sjov.",
-    "file": "audio/wavenet/drille-da.mp3",
-    "timings": [
-      0.015,
-      0.195,
-      0.56,
-      0.75,
-      1.341,
-      1.476
-    ]
-  },
-  {
-    "id": "tænde-no",
-    "lang": "nb-NO",
-    "text": "Kan du tenne lyset?",
-    "file": "audio/wavenet/tænde-no.mp3",
-    "timings": [
-      0.015,
-      0.225,
-      0.33,
-      0.637
-    ]
-  },
-  {
-    "id": "tænde-da",
-    "lang": "da-DK",
-    "text": "Kan du tænde lyset, det er mørkt herinde.",
-    "file": "audio/wavenet/tænde-da.mp3",
-    "timings": [
-      0.015,
-      0.16,
-      0.26,
-      0.561,
-      1.066,
-      1.166,
-      1.235,
-      1.54
-    ]
-  },
-  {
-    "id": "vifte-no",
-    "lang": "nb-NO",
-    "text": "Kan du slå på viften? Det er varmt her.",
-    "file": "audio/wavenet/vifte-no.mp3",
-    "timings": [
-      0.015,
-      0.22,
-      0.335,
-      0.581,
-      0.731,
-      1.577,
-      1.722,
-      1.827,
-      2.177
-    ]
-  },
-  {
-    "id": "vifte-da",
-    "lang": "da-DK",
-    "text": "Hun sad og viftede sig med en håndvifte i varmen.",
-    "file": "audio/wavenet/vifte-da.mp3",
-    "timings": [
-      0.015,
-      0.18,
-      0.441,
-      0.501,
-      0.872,
-      0.987,
-      1.127,
-      1.212,
-      1.743,
-      1.828
-    ]
-  },
-  {
-    "id": "hold-no",
-    "lang": "nb-NO",
-    "text": "Hold godt fast i rekkverket.",
-    "file": "audio/wavenet/hold-no.mp3",
-    "timings": [
-      0.015,
-      0.22,
-      0.475,
-      0.801,
-      0.856
-    ]
-  },
-  {
-    "id": "hold-da",
-    "lang": "da-DK",
-    "text": "Vores hold vandt kampen i går.",
-    "file": "audio/wavenet/hold-da.mp3",
-    "timings": [
-      0.015,
-      0.315,
-      0.471,
-      0.721,
-      1.143,
-      1.193
-    ]
-  },
-  {
-    "id": "purk-no",
-    "lang": "nb-NO",
-    "text": "Purken stoppet bilen for fartskontroll.",
-    "file": "audio/wavenet/purk-no.mp3",
-    "timings": [
-      0.015,
-      0.507,
-      0.883,
-      1.213,
-      1.368
-    ]
-  },
-  {
-    "id": "purk-da",
-    "lang": "da-DK",
-    "text": "Sikke en sød lille purk, han ligner sin far.",
-    "file": "audio/wavenet/purk-da.mp3",
-    "timings": [
-      0.015,
-      0.392,
-      0.527,
-      0.767,
-      1.017,
-      1.502,
-      1.666,
-      1.956,
-      2.161
-    ]
-  },
-  {
-    "id": "slik-no",
-    "lang": "nb-NO",
-    "text": "Jeg har aldri sett noe slikt før.",
-    "file": "audio/wavenet/slik-no.mp3",
-    "timings": [
-      0.015,
-      0.15,
-      0.285,
-      0.581,
-      0.821,
-      1.036,
-      1.366
-    ]
-  },
-  {
-    "id": "slik-da",
-    "lang": "da-DK",
-    "text": "Børnene fik slik efter middagen.",
-    "file": "audio/wavenet/slik-da.mp3",
-    "timings": [
-      0.015,
-      0.454,
-      0.659,
-      0.944,
-      1.179
-    ]
-  },
-  {
-    "id": "enda-no",
-    "lang": "nb-NO",
-    "text": "Er du ikke ferdig enda?",
-    "file": "audio/wavenet/enda-no.mp3",
-    "timings": [
-      0.015,
-      0.15,
-      0.235,
-      0.406,
-      0.751
-    ]
-  },
-  {
-    "id": "enda-da",
-    "lang": "da-DK",
-    "text": "Han var endda glad for at hjælpe, selvom han havde travlt.",
-    "file": "audio/wavenet/enda-da.mp3",
-    "timings": [
-      0.015,
-      0.205,
-      0.335,
-      0.555,
-      0.816,
-      0.991,
-      1.021,
-      1.471,
-      1.813,
-      1.958,
-      2.133
-    ]
-  },
-  {
-    "id": "juks-no",
-    "lang": "nb-NO",
-    "text": "Det er juks å se svarene på forhånd.",
-    "file": "audio/wavenet/juks-no.mp3",
-    "timings": [
-      0.015,
-      0.15,
-      0.25,
-      0.55,
-      0.61,
-      0.801,
-      1.236,
-      1.371
-    ]
-  },
-  {
-    "id": "juks-da",
-    "lang": "da-DK",
-    "text": "Det der ur er noget juks, det holder ikke en uge.",
-    "file": "audio/wavenet/juks-da.mp3",
-    "timings": [
-      0.015,
-      0.15,
-      0.28,
-      0.491,
-      0.591,
-      0.777,
-      1.211,
-      1.325,
-      1.596,
-      1.741,
-      1.871
-    ]
-  },
-  {
-    "id": "kran-no",
-    "lang": "nb-NO",
-    "text": "Vannet kommer rett fra krana.",
-    "file": "audio/wavenet/kran-no.mp3",
-    "timings": [
-      0.015,
-      0.395,
-      0.68,
-      0.87,
-      1.04
-    ]
-  },
-  {
-    "id": "kran-da",
-    "lang": "da-DK",
-    "text": "De har rejst en kæmpe kran på byggepladsen.",
-    "file": "audio/wavenet/kran-da.mp3",
-    "timings": [
-      0.015,
-      0.18,
-      0.265,
-      0.614,
-      0.719,
-      1.047,
-      1.357,
-      1.467
-    ]
-  },
-  {
-    "id": "sportsvogn-no",
-    "lang": "nb-NO",
-    "text": "Vi kjøpte en ny sportsvogn til barnet.",
-    "file": "audio/wavenet/sportsvogn-no.mp3",
-    "timings": [
-      0.015,
-      0.15,
-      0.471,
-      0.591,
-      0.796,
-      1.436,
-      1.576
-    ]
-  },
-  {
-    "id": "sportsvogn-da",
-    "lang": "da-DK",
-    "text": "Han drømmer om at eje en rød sportsvogn.",
-    "file": "audio/wavenet/sportsvogn-da.mp3",
-    "timings": [
-      0.015,
-      0.19,
-      0.531,
-      0.691,
-      0.736,
-      0.966,
-      1.051,
-      1.261
-    ]
-  },
-  {
-    "id": "brus-no",
-    "lang": "nb-NO",
-    "text": "Vil du ha en brus til maten?",
-    "file": "audio/wavenet/brus-no.mp3",
-    "timings": [
-      0.015,
-      0.185,
-      0.295,
-      0.47,
-      0.58,
-      0.851,
-      0.991
-    ]
-  },
-  {
-    "id": "brus-da",
-    "lang": "da-DK",
-    "text": "Champagnen havde en dejlig brus af bobler.",
-    "file": "audio/wavenet/brus-da.mp3",
-    "timings": [
-      0.015,
-      0.67,
-      0.881,
-      0.976,
-      1.316,
-      1.691,
-      1.731
-    ]
-  },
-  {
-    "id": "bedrift-no",
-    "lang": "nb-NO",
-    "text": "Han jobber i en stor bedrift i Oslo.",
-    "file": "audio/wavenet/bedrift-no.mp3",
-    "timings": [
-      0.015,
-      0.205,
-      0.486,
-      0.536,
-      0.656,
-      0.955,
-      1.42,
-      1.49
-    ]
-  },
-  {
-    "id": "bedrift-da",
-    "lang": "da-DK",
-    "text": "At bestige bjerget var en imponerende bedrift.",
-    "file": "audio/wavenet/bedrift-da.mp3",
-    "timings": [
-      0.015,
-      0.125,
-      0.556,
-      0.971,
-      1.116,
-      1.202,
-      1.807
-    ]
-  },
-  {
-    "id": "svært-no",
-    "lang": "nb-NO",
-    "text": "Det er svært viktig å komme presis.",
-    "file": "audio/wavenet/svært-no.mp3",
-    "timings": [
-      0.015,
-      0.155,
-      0.255,
-      0.605,
-      0.929,
-      0.979,
-      1.224
-    ]
-  },
-  {
-    "id": "svært-da",
-    "lang": "da-DK",
-    "text": "Det var svært at nå toget i tide.",
-    "file": "audio/wavenet/svært-da.mp3",
-    "timings": [
-      0.015,
-      0.16,
-      0.265,
-      0.62,
-      0.66,
-      0.849,
-      1.214,
-      1.284
-    ]
-  },
-  {
-    "id": "dytte-no",
-    "lang": "nb-NO",
-    "text": "Ikke dytt i køen, vent på tur.",
-    "file": "audio/wavenet/dytte-no.mp3",
-    "timings": [
-      0.015,
-      0.235,
-      0.485,
-      0.55,
-      1.061,
-      1.346,
-      1.486
-    ]
-  },
-  {
-    "id": "dytte-da",
-    "lang": "da-DK",
-    "text": "Bilisten dyttede utålmodigt i hornet.",
-    "file": "audio/wavenet/dytte-da.mp3",
-    "timings": [
-      0.015,
-      0.55,
-      0.916,
-      1.506,
-      1.581
-    ]
-  },
-  {
-    "id": "jule-no",
-    "lang": "nb-NO",
-    "text": "Pass deg, ellers blir du jult opp.",
-    "file": "audio/wavenet/jule-no.mp3",
-    "timings": [
-      0.015,
-      0.305,
-      0.606,
-      0.926,
-      1.121,
-      1.222,
-      1.547
-    ]
-  },
-  {
-    "id": "jule-da",
-    "lang": "da-DK",
-    "text": "Vi skal til at gøre klar til at holde jul.",
-    "file": "audio/wavenet/jule-da.mp3",
-    "timings": [
-      0.015,
-      0.165,
-      0.325,
-      0.45,
-      0.52,
-      0.685,
-      0.975,
-      1.105,
-      1.18,
-      1.42
-    ]
-  },
-  {
-    "id": "nævenyttig-no",
-    "lang": "nb-NO",
-    "text": "Faren min er veldig nevenyttig, han fikser alt selv.",
-    "file": "audio/wavenet/nævenyttig-no.mp3",
-    "timings": [
-      0.015,
-      0.445,
-      0.63,
-      0.73,
-      1.001,
-      1.712,
-      1.892,
-      2.275,
-      2.48
-    ]
-  },
-  {
-    "id": "nævenyttig-da",
-    "lang": "da-DK",
-    "text": "Naboen er lidt nævenyttig og blander sig i alt.",
-    "file": "audio/wavenet/nævenyttig-da.mp3",
-    "timings": [
-      0.015,
-      0.546,
-      0.621,
-      0.793,
-      1.372,
-      1.427,
-      1.707,
-      1.912,
-      2.062
-    ]
-  },
-  {
-    "id": "stel-no",
-    "lang": "nb-NO",
-    "text": "Hun steller barnet hver morgen.",
-    "file": "audio/wavenet/stel-no.mp3",
-    "timings": [
-      0.015,
-      0.19,
-      0.549,
-      0.885,
-      1.13
-    ]
-  },
-  {
-    "id": "stel-da",
-    "lang": "da-DK",
-    "text": "Cyklens stel var bøjet efter styrtet.",
-    "file": "audio/wavenet/stel-da.mp3",
-    "timings": [
-      0.015,
-      0.517,
-      0.801,
-      0.921,
-      1.271,
-      1.511
-    ]
-  },
-  {
-    "id": "trivelig-no",
-    "lang": "nb-NO",
-    "text": "Det var en trivelig kveld sammen med kollegene.",
-    "file": "audio/wavenet/trivelig-no.mp3",
-    "timings": [
-      0.015,
-      0.17,
-      0.325,
-      0.436,
-      0.886,
-      1.141,
-      1.503,
-      1.598
-    ]
-  },
-  {
-    "id": "trivelig-da",
-    "lang": "da-DK",
-    "text": "Han er blevet lidt trivelig med årene.",
-    "file": "audio/wavenet/trivelig-da.mp3",
-    "timings": [
-      0.015,
-      0.19,
-      0.26,
-      0.435,
-      0.6,
-      1.005,
-      1.15
-    ]
-  },
-  {
-    "id": "ulige-no",
-    "lang": "nb-NO",
-    "text": "Vi har veldig ulike meninger om dette.",
-    "file": "audio/wavenet/ulige-no.mp3",
-    "timings": [
-      0.015,
-      0.145,
-      0.265,
-      0.565,
-      0.96,
-      1.441,
-      1.551
-    ]
-  },
-  {
-    "id": "ulige-da",
-    "lang": "da-DK",
-    "text": "Tallene tre og fem er ulige tal.",
-    "file": "audio/wavenet/ulige-da.mp3",
-    "timings": [
-      0.015,
-      0.465,
-      0.755,
-      0.825,
-      1.11,
-      1.201,
-      1.531
-    ]
-  },
-  {
-    "id": "solbrent-no",
-    "lang": "nb-NO",
-    "text": "Jeg ble skikkelig solbrent i går.",
-    "file": "audio/wavenet/solbrent-no.mp3",
-    "timings": [
-      0.015,
-      0.17,
-      0.325,
-      0.728,
-      1.277,
-      1.327
-    ]
-  },
-  {
-    "id": "solbrent-da",
-    "lang": "da-DK",
-    "text": "Du er blevet flot solbrændt i sommerferien.",
-    "file": "audio/wavenet/solbrent-da.mp3",
-    "timings": [
-      0.015,
-      0.135,
-      0.2,
-      0.36,
-      0.659,
-      1.22,
-      1.305
-    ]
-  },
-  {
-    "id": "middag-no",
-    "lang": "nb-NO",
-    "text": "Vi spiser middag klokka fem her.",
-    "file": "audio/wavenet/middag-no.mp3",
-    "timings": [
-      0.015,
-      0.165,
-      0.565,
-      0.876,
-      1.161,
-      1.44
-    ]
-  },
-  {
-    "id": "middag-da",
-    "lang": "da-DK",
-    "text": "Vi spiser middag klokken syv i aften.",
-    "file": "audio/wavenet/middag-da.mp3",
-    "timings": [
-      0.015,
-      0.155,
-      0.559,
-      0.845,
-      1.165,
-      1.462,
-      1.592
-    ]
-  },
-  {
-    "id": "udtale-no-dag",
-    "lang": "nb-NO",
-    "text": "dag",
-    "file": "audio/wavenet/udtale-no-dag.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-god",
-    "lang": "nb-NO",
-    "text": "god",
-    "file": "audio/wavenet/udtale-no-god.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-ung",
-    "lang": "nb-NO",
-    "text": "ung",
-    "file": "audio/wavenet/udtale-no-ung.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-regn",
-    "lang": "nb-NO",
-    "text": "regn",
-    "file": "audio/wavenet/udtale-no-regn.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-hus",
-    "lang": "nb-NO",
-    "text": "hus",
-    "file": "audio/wavenet/udtale-no-hus.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-by",
-    "lang": "nb-NO",
-    "text": "by",
-    "file": "audio/wavenet/udtale-no-by.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-rar",
-    "lang": "nb-NO",
-    "text": "rar",
-    "file": "audio/wavenet/udtale-no-rar.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-her",
-    "lang": "nb-NO",
-    "text": "her",
-    "file": "audio/wavenet/udtale-no-her.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-ore",
-    "lang": "nb-NO",
-    "text": "øre",
-    "file": "audio/wavenet/udtale-no-ore.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-loper",
-    "lang": "nb-NO",
-    "text": "løper",
-    "file": "audio/wavenet/udtale-no-loper.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-bonner",
-    "lang": "nb-NO",
-    "text": "bønner",
-    "file": "audio/wavenet/udtale-no-bonner.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-tanken",
-    "lang": "nb-NO",
-    "text": "tanken",
-    "file": "audio/wavenet/udtale-no-tanken.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-du",
-    "lang": "nb-NO",
-    "text": "du",
-    "file": "audio/wavenet/udtale-no-du.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-sur",
-    "lang": "nb-NO",
-    "text": "sur",
-    "file": "audio/wavenet/udtale-no-sur.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-mus",
-    "lang": "nb-NO",
-    "text": "mus",
-    "file": "audio/wavenet/udtale-no-mus.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-tur",
-    "lang": "nb-NO",
-    "text": "tur",
-    "file": "audio/wavenet/udtale-no-tur.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-kjokken",
-    "lang": "nb-NO",
-    "text": "kjøkken",
-    "file": "audio/wavenet/udtale-no-kjokken.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-skje",
-    "lang": "nb-NO",
-    "text": "skje",
-    "file": "audio/wavenet/udtale-no-skje.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-kjenne",
-    "lang": "nb-NO",
-    "text": "kjenne",
-    "file": "audio/wavenet/udtale-no-kjenne.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-sjef",
-    "lang": "nb-NO",
-    "text": "sjef",
-    "file": "audio/wavenet/udtale-no-sjef.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-kjole",
-    "lang": "nb-NO",
-    "text": "kjole",
-    "file": "audio/wavenet/udtale-no-kjole.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-hvordan",
-    "lang": "nb-NO",
-    "text": "hvordan",
-    "file": "audio/wavenet/udtale-no-hvordan.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-tirsdag",
-    "lang": "nb-NO",
-    "text": "tirsdag",
-    "file": "audio/wavenet/udtale-no-tirsdag.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-no-torsdag",
-    "lang": "nb-NO",
-    "text": "torsdag",
-    "file": "audio/wavenet/udtale-no-torsdag.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-dag",
-    "lang": "da-DK",
-    "text": "dag",
-    "file": "audio/wavenet/udtale-da-dag.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-god",
-    "lang": "da-DK",
-    "text": "god",
-    "file": "audio/wavenet/udtale-da-god.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-ung",
-    "lang": "da-DK",
-    "text": "ung",
-    "file": "audio/wavenet/udtale-da-ung.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-regn",
-    "lang": "da-DK",
-    "text": "regn",
-    "file": "audio/wavenet/udtale-da-regn.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-hus",
-    "lang": "da-DK",
-    "text": "hus",
-    "file": "audio/wavenet/udtale-da-hus.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-by",
-    "lang": "da-DK",
-    "text": "by",
-    "file": "audio/wavenet/udtale-da-by.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-rar",
-    "lang": "da-DK",
-    "text": "rar",
-    "file": "audio/wavenet/udtale-da-rar.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-her",
-    "lang": "da-DK",
-    "text": "her",
-    "file": "audio/wavenet/udtale-da-her.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-ore",
-    "lang": "da-DK",
-    "text": "øre",
-    "file": "audio/wavenet/udtale-da-ore.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-lober",
-    "lang": "da-DK",
-    "text": "løber",
-    "file": "audio/wavenet/udtale-da-lober.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-bonner",
-    "lang": "da-DK",
-    "text": "bønner",
-    "file": "audio/wavenet/udtale-da-bonner.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-tanken",
-    "lang": "da-DK",
-    "text": "tanken",
-    "file": "audio/wavenet/udtale-da-tanken.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-du",
-    "lang": "da-DK",
-    "text": "du",
-    "file": "audio/wavenet/udtale-da-du.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-sur",
-    "lang": "da-DK",
-    "text": "sur",
-    "file": "audio/wavenet/udtale-da-sur.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-mus",
-    "lang": "da-DK",
-    "text": "mus",
-    "file": "audio/wavenet/udtale-da-mus.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-tur",
-    "lang": "da-DK",
-    "text": "tur",
-    "file": "audio/wavenet/udtale-da-tur.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-mad",
-    "lang": "da-DK",
-    "text": "mad",
-    "file": "audio/wavenet/udtale-da-mad.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-gade",
-    "lang": "da-DK",
-    "text": "gade",
-    "file": "audio/wavenet/udtale-da-gade.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-hvad",
-    "lang": "da-DK",
-    "text": "hvad",
-    "file": "audio/wavenet/udtale-da-hvad.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-glad",
-    "lang": "da-DK",
-    "text": "glad",
-    "file": "audio/wavenet/udtale-da-glad.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-hvordan",
-    "lang": "da-DK",
-    "text": "hvordan",
-    "file": "audio/wavenet/udtale-da-hvordan.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-tirsdag",
-    "lang": "da-DK",
-    "text": "tirsdag",
-    "file": "audio/wavenet/udtale-da-tirsdag.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "udtale-da-torsdag",
-    "lang": "da-DK",
-    "text": "torsdag",
-    "file": "audio/wavenet/udtale-da-torsdag.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "test-no",
-    "lang": "nb-NO",
-    "text": "Hei, dette er Nordenhusker. La oss øve litt norsk sammen.",
-    "file": "audio/wavenet/test-no.mp3",
-    "timings": [
-      0.015,
-      0.41,
-      0.68,
-      0.77,
-      1.928,
-      2.118,
-      2.309,
-      2.534,
-      2.72,
-      3.025
-    ]
-  },
-  {
-    "id": "test-da",
-    "lang": "da-DK",
-    "text": "Hej, det er Nordenhusker. Lad os øve lidt dansk sammen.",
-    "file": "audio/wavenet/test-da.mp3",
-    "timings": [
-      0.015,
-      0.418,
-      0.523,
-      0.588,
-      1.691,
-      1.841,
-      1.981,
-      2.191,
-      2.346,
-      2.716
-    ]
-  },
-  {
-    "id": "say-da-enogtyve",
-    "lang": "da-DK",
-    "text": "enogtyve",
-    "file": "audio/wavenet/say-da-enogtyve.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-no-tjueen",
-    "lang": "nb-NO",
-    "text": "tjueen",
-    "file": "audio/wavenet/say-no-tjueen.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-da-tredive",
-    "lang": "da-DK",
-    "text": "tredive",
-    "file": "audio/wavenet/say-da-tredive.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-no-tretti",
-    "lang": "nb-NO",
-    "text": "tretti",
-    "file": "audio/wavenet/say-no-tretti.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-da-halvtreds",
-    "lang": "da-DK",
-    "text": "halvtreds",
-    "file": "audio/wavenet/say-da-halvtreds.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-no-femti",
-    "lang": "nb-NO",
-    "text": "femti",
-    "file": "audio/wavenet/say-no-femti.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-da-halvfjerds",
-    "lang": "da-DK",
-    "text": "halvfjerds",
-    "file": "audio/wavenet/say-da-halvfjerds.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-no-sytti",
-    "lang": "nb-NO",
-    "text": "sytti",
-    "file": "audio/wavenet/say-no-sytti.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-da-halvfems",
-    "lang": "da-DK",
-    "text": "halvfems",
-    "file": "audio/wavenet/say-da-halvfems.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-no-nitti",
-    "lang": "nb-NO",
-    "text": "nitti",
-    "file": "audio/wavenet/say-no-nitti.mp3",
-    "timings": [
-      0.015
-    ]
-  },
-  {
-    "id": "say-da-kvart-i-fem",
-    "lang": "da-DK",
-    "text": "kvart i fem",
-    "file": "audio/wavenet/say-da-kvart-i-fem.mp3",
-    "timings": [
-      0.015,
-      0.375,
-      0.457
-    ]
-  },
-  {
-    "id": "say-no-kvart-pa-fem",
-    "lang": "nb-NO",
-    "text": "kvart på fem",
-    "file": "audio/wavenet/say-no-kvart-pa-fem.mp3",
-    "timings": [
-      0.015,
-      0.355,
-      0.503
-    ]
-  },
-  {
-    "id": "say-da-kvart-over-fire",
-    "lang": "da-DK",
-    "text": "kvart over fire",
-    "file": "audio/wavenet/say-da-kvart-over-fire.mp3",
-    "timings": [
-      0.015,
-      0.385,
-      0.566
-    ]
-  },
-  {
-    "id": "say-no-kvart-over-fire",
-    "lang": "nb-NO",
-    "text": "kvart over fire",
-    "file": "audio/wavenet/say-no-kvart-over-fire.mp3",
-    "timings": [
-      0.015,
-      0.375,
-      0.551
-    ]
-  }
-]
+{
+  "voices": {
+    "female": {
+      "da-DK": "da-DK-Wavenet-F",
+      "nb-NO": "nb-NO-Wavenet-F"
+    },
+    "male": {
+      "da-DK": "da-DK-Wavenet-G",
+      "nb-NO": "nb-NO-Wavenet-G"
+    }
+  },
+  "clips": [
+    {
+      "id": "rar-no",
+      "lang": "nb-NO",
+      "text": "Han er egentlig ganske rar.",
+      "takes": {
+        "female": {
+          "file": "audio/female/rar-no.mp3",
+          "timings": [
+            0.015,
+            0.235,
+            0.345,
+            0.725,
+            1.085
+          ]
+        },
+        "male": {
+          "file": "audio/male/rar-no.mp3",
+          "timings": [
+            0.015,
+            0.215,
+            0.33,
+            0.7,
+            1.041
+          ]
+        }
+      }
+    },
+    {
+      "id": "rar-da",
+      "lang": "da-DK",
+      "text": "Hun er så rar, hun hjælper altid.",
+      "takes": {
+        "female": {
+          "file": "audio/female/rar-da.mp3",
+          "timings": [
+            0.015,
+            0.185,
+            0.27,
+            0.416,
+            0.756,
+            0.897,
+            1.197
+          ]
+        },
+        "male": {
+          "file": "audio/male/rar-da.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.255,
+            0.385,
+            0.736,
+            0.895,
+            1.2
+          ]
+        }
+      }
+    },
+    {
+      "id": "grine-no",
+      "lang": "nb-NO",
+      "text": "Babyen begynte å grine med en gang.",
+      "takes": {
+        "female": {
+          "file": "audio/female/grine-no.mp3",
+          "timings": [
+            0.015,
+            0.481,
+            0.797,
+            0.852,
+            1.197,
+            1.322,
+            1.507
+          ]
+        },
+        "male": {
+          "file": "audio/male/grine-no.mp3",
+          "timings": [
+            0.015,
+            0.465,
+            0.775,
+            0.835,
+            1.17,
+            1.296,
+            1.461
+          ]
+        }
+      }
+    },
+    {
+      "id": "grine-da",
+      "lang": "da-DK",
+      "text": "Hele salen grinede af vittigheden.",
+      "takes": {
+        "female": {
+          "file": "audio/female/grine-da.mp3",
+          "timings": [
+            0.015,
+            0.335,
+            0.708,
+            1.119,
+            1.169
+          ]
+        },
+        "male": {
+          "file": "audio/male/grine-da.mp3",
+          "timings": [
+            0.015,
+            0.325,
+            0.689,
+            1.078,
+            1.118
+          ]
+        }
+      }
+    },
+    {
+      "id": "frokost-no",
+      "lang": "nb-NO",
+      "text": "Vi spiser frokost klokka åtte.",
+      "takes": {
+        "female": {
+          "file": "audio/female/frokost-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.581,
+            1.071,
+            1.346
+          ]
+        },
+        "male": {
+          "file": "audio/male/frokost-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.571,
+            1.042,
+            1.293
+          ]
+        }
+      }
+    },
+    {
+      "id": "frokost-da",
+      "lang": "da-DK",
+      "text": "Vi spiser frokost klokken tolv på kontoret.",
+      "takes": {
+        "female": {
+          "file": "audio/female/frokost-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.551,
+            1.017,
+            1.322,
+            1.577,
+            1.712
+          ]
+        },
+        "male": {
+          "file": "audio/male/frokost-da.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.531,
+            0.977,
+            1.259,
+            1.509,
+            1.648
+          ]
+        }
+      }
+    },
+    {
+      "id": "flink-no",
+      "lang": "nb-NO",
+      "text": "Hun er veldig flink til å synge.",
+      "takes": {
+        "female": {
+          "file": "audio/female/flink-no.mp3",
+          "timings": [
+            0.015,
+            0.2,
+            0.3,
+            0.586,
+            0.921,
+            1.096,
+            1.161
+          ]
+        },
+        "male": {
+          "file": "audio/male/flink-no.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.29,
+            0.575,
+            0.899,
+            1.074,
+            1.129
+          ]
+        }
+      }
+    },
+    {
+      "id": "flink-da",
+      "lang": "da-DK",
+      "text": "Han er en flink kollega, altid klar til at hjælpe.",
+      "takes": {
+        "female": {
+          "file": "audio/female/flink-da.mp3",
+          "timings": [
+            0.015,
+            0.205,
+            0.28,
+            0.385,
+            0.7,
+            1.261,
+            1.647,
+            1.932,
+            2.052,
+            2.112
+          ]
+        },
+        "male": {
+          "file": "audio/male/flink-da.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.275,
+            0.37,
+            0.665,
+            1.237,
+            1.627,
+            1.897,
+            2.022,
+            2.072
+          ]
+        }
+      }
+    },
+    {
+      "id": "rask-no",
+      "lang": "nb-NO",
+      "text": "Han løp veldig raskt.",
+      "takes": {
+        "female": {
+          "file": "audio/female/rask-no.mp3",
+          "timings": [
+            0.015,
+            0.215,
+            0.467,
+            0.772
+          ]
+        },
+        "male": {
+          "file": "audio/male/rask-no.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.461,
+            0.751
+          ]
+        }
+      }
+    },
+    {
+      "id": "rask-da",
+      "lang": "da-DK",
+      "text": "Godt at høre du er rask igen efter influenzaen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/rask-da.mp3",
+          "timings": [
+            0.015,
+            0.25,
+            0.31,
+            0.554,
+            0.694,
+            0.759,
+            1.035,
+            1.32,
+            1.55
+          ]
+        },
+        "male": {
+          "file": "audio/male/rask-da.mp3",
+          "timings": [
+            0.015,
+            0.23,
+            0.29,
+            0.525,
+            0.655,
+            0.72,
+            1.001,
+            1.287,
+            1.502
+          ]
+        }
+      }
+    },
+    {
+      "id": "svær-no",
+      "lang": "nb-NO",
+      "text": "Det var en svær koffert å bære.",
+      "takes": {
+        "female": {
+          "file": "audio/female/svær-no.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.335,
+            0.455,
+            0.76,
+            1.198,
+            1.248
+          ]
+        },
+        "male": {
+          "file": "audio/male/svær-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.325,
+            0.43,
+            0.75,
+            1.172,
+            1.227
+          ]
+        }
+      }
+    },
+    {
+      "id": "svær-da",
+      "lang": "da-DK",
+      "text": "Den opgave var virkelig svær at løse.",
+      "takes": {
+        "female": {
+          "file": "audio/female/svær-da.mp3",
+          "timings": [
+            0.015,
+            0.21,
+            0.7,
+            0.805,
+            1.191,
+            1.486,
+            1.526
+          ]
+        },
+        "male": {
+          "file": "audio/male/svær-da.mp3",
+          "timings": [
+            0.015,
+            0.2,
+            0.68,
+            0.791,
+            1.156,
+            1.433,
+            1.473
+          ]
+        }
+      }
+    },
+    {
+      "id": "artig-no",
+      "lang": "nb-NO",
+      "text": "Det var en artig historie!",
+      "takes": {
+        "female": {
+          "file": "audio/female/artig-no.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.34,
+            0.471,
+            0.706
+          ]
+        },
+        "male": {
+          "file": "audio/male/artig-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.33,
+            0.455,
+            0.7
+          ]
+        }
+      }
+    },
+    {
+      "id": "artig-da",
+      "lang": "da-DK",
+      "text": "Børnene var meget artige hele middagen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/artig-da.mp3",
+          "timings": [
+            0.015,
+            0.451,
+            0.572,
+            0.892,
+            1.282,
+            1.558
+          ]
+        },
+        "male": {
+          "file": "audio/male/artig-da.mp3",
+          "timings": [
+            0.015,
+            0.44,
+            0.555,
+            0.88,
+            1.27,
+            1.53
+          ]
+        }
+      }
+    },
+    {
+      "id": "killing-no",
+      "lang": "nb-NO",
+      "text": "Killingen hoppet rundt på jordet.",
+      "takes": {
+        "female": {
+          "file": "audio/female/killing-no.mp3",
+          "timings": [
+            0.015,
+            0.491,
+            0.796,
+            1.046,
+            1.177
+          ]
+        },
+        "male": {
+          "file": "audio/male/killing-no.mp3",
+          "timings": [
+            0.015,
+            0.455,
+            0.75,
+            0.986,
+            1.126
+          ]
+        }
+      }
+    },
+    {
+      "id": "killing-da",
+      "lang": "da-DK",
+      "text": "Vi har fået en lille killing derhjemme.",
+      "takes": {
+        "female": {
+          "file": "audio/female/killing-da.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.25,
+            0.516,
+            0.616,
+            0.832,
+            1.247
+          ]
+        },
+        "male": {
+          "file": "audio/male/killing-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.24,
+            0.505,
+            0.595,
+            0.805,
+            1.2
+          ]
+        }
+      }
+    },
+    {
+      "id": "bolle-no",
+      "lang": "nb-NO",
+      "text": "Jeg kjøpte en bolle med kanel til frokost.",
+      "takes": {
+        "female": {
+          "file": "audio/female/bolle-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.488,
+            0.608,
+            0.913,
+            1.033,
+            1.429,
+            1.584
+          ]
+        },
+        "male": {
+          "file": "audio/male/bolle-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.469,
+            0.574,
+            0.884,
+            1.004,
+            1.394,
+            1.554
+          ]
+        }
+      }
+    },
+    {
+      "id": "bolle-da",
+      "lang": "da-DK",
+      "text": "Undgå at bruge ordet \"bolle\" i en formel sammenhæng.",
+      "takes": {
+        "female": {
+          "file": "audio/female/bolle-da.mp3",
+          "timings": [
+            0.015,
+            0.44,
+            0.495,
+            0.836,
+            1.141,
+            1.698,
+            1.768,
+            1.878,
+            2.239
+          ]
+        },
+        "male": {
+          "file": "audio/male/bolle-da.mp3",
+          "timings": [
+            0.015,
+            0.43,
+            0.475,
+            0.805,
+            1.1,
+            1.706,
+            1.761,
+            1.851,
+            2.205
+          ]
+        }
+      }
+    },
+    {
+      "id": "drille-no",
+      "lang": "nb-NO",
+      "text": "Kan du drille et hull her?",
+      "takes": {
+        "female": {
+          "file": "audio/female/drille-no.mp3",
+          "timings": [
+            0.015,
+            0.215,
+            0.32,
+            0.609,
+            0.734,
+            0.929
+          ]
+        },
+        "male": {
+          "file": "audio/male/drille-no.mp3",
+          "timings": [
+            0.015,
+            0.21,
+            0.31,
+            0.58,
+            0.69,
+            0.885
+          ]
+        }
+      }
+    },
+    {
+      "id": "drille-da",
+      "lang": "da-DK",
+      "text": "Han drillede sin lillesøster for sjov.",
+      "takes": {
+        "female": {
+          "file": "audio/female/drille-da.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.56,
+            0.75,
+            1.341,
+            1.476
+          ]
+        },
+        "male": {
+          "file": "audio/male/drille-da.mp3",
+          "timings": [
+            0.015,
+            0.185,
+            0.555,
+            0.735,
+            1.33,
+            1.465
+          ]
+        }
+      }
+    },
+    {
+      "id": "tænde-no",
+      "lang": "nb-NO",
+      "text": "Kan du tenne lyset?",
+      "takes": {
+        "female": {
+          "file": "audio/female/tænde-no.mp3",
+          "timings": [
+            0.015,
+            0.225,
+            0.33,
+            0.637
+          ]
+        },
+        "male": {
+          "file": "audio/male/tænde-no.mp3",
+          "timings": [
+            0.015,
+            0.215,
+            0.315,
+            0.61
+          ]
+        }
+      }
+    },
+    {
+      "id": "tænde-da",
+      "lang": "da-DK",
+      "text": "Kan du tænde lyset, det er mørkt herinde.",
+      "takes": {
+        "female": {
+          "file": "audio/female/tænde-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.26,
+            0.561,
+            1.066,
+            1.166,
+            1.235,
+            1.54
+          ]
+        },
+        "male": {
+          "file": "audio/male/tænde-da.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.245,
+            0.54,
+            1.048,
+            1.158,
+            1.223,
+            1.518
+          ]
+        }
+      }
+    },
+    {
+      "id": "vifte-no",
+      "lang": "nb-NO",
+      "text": "Kan du slå på viften? Det er varmt her.",
+      "takes": {
+        "female": {
+          "file": "audio/female/vifte-no.mp3",
+          "timings": [
+            0.015,
+            0.22,
+            0.335,
+            0.581,
+            0.731,
+            1.577,
+            1.722,
+            1.827,
+            2.177
+          ]
+        },
+        "male": {
+          "file": "audio/male/vifte-no.mp3",
+          "timings": [
+            0.015,
+            0.21,
+            0.32,
+            0.555,
+            0.695,
+            1.574,
+            1.709,
+            1.819,
+            2.166
+          ]
+        }
+      }
+    },
+    {
+      "id": "vifte-da",
+      "lang": "da-DK",
+      "text": "Hun sad og viftede sig med en håndvifte i varmen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/vifte-da.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.441,
+            0.501,
+            0.872,
+            0.987,
+            1.127,
+            1.212,
+            1.743,
+            1.828
+          ]
+        },
+        "male": {
+          "file": "audio/male/vifte-da.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.43,
+            0.485,
+            0.845,
+            0.96,
+            1.1,
+            1.19,
+            1.705,
+            1.77
+          ]
+        }
+      }
+    },
+    {
+      "id": "hold-no",
+      "lang": "nb-NO",
+      "text": "Hold godt fast i rekkverket.",
+      "takes": {
+        "female": {
+          "file": "audio/female/hold-no.mp3",
+          "timings": [
+            0.015,
+            0.22,
+            0.475,
+            0.801,
+            0.856
+          ]
+        },
+        "male": {
+          "file": "audio/male/hold-no.mp3",
+          "timings": [
+            0.015,
+            0.21,
+            0.452,
+            0.782,
+            0.832
+          ]
+        }
+      }
+    },
+    {
+      "id": "hold-da",
+      "lang": "da-DK",
+      "text": "Vores hold vandt kampen i går.",
+      "takes": {
+        "female": {
+          "file": "audio/female/hold-da.mp3",
+          "timings": [
+            0.015,
+            0.315,
+            0.471,
+            0.721,
+            1.143,
+            1.193
+          ]
+        },
+        "male": {
+          "file": "audio/male/hold-da.mp3",
+          "timings": [
+            0.015,
+            0.305,
+            0.455,
+            0.69,
+            1.113,
+            1.158
+          ]
+        }
+      }
+    },
+    {
+      "id": "purk-no",
+      "lang": "nb-NO",
+      "text": "Purken stoppet bilen for fartskontroll.",
+      "takes": {
+        "female": {
+          "file": "audio/female/purk-no.mp3",
+          "timings": [
+            0.015,
+            0.507,
+            0.883,
+            1.213,
+            1.368
+          ]
+        },
+        "male": {
+          "file": "audio/male/purk-no.mp3",
+          "timings": [
+            0.015,
+            0.495,
+            0.865,
+            1.185,
+            1.34
+          ]
+        }
+      }
+    },
+    {
+      "id": "purk-da",
+      "lang": "da-DK",
+      "text": "Sikke en sød lille purk, han ligner sin far.",
+      "takes": {
+        "female": {
+          "file": "audio/female/purk-da.mp3",
+          "timings": [
+            0.015,
+            0.392,
+            0.527,
+            0.767,
+            1.017,
+            1.502,
+            1.666,
+            1.956,
+            2.161
+          ]
+        },
+        "male": {
+          "file": "audio/male/purk-da.mp3",
+          "timings": [
+            0.015,
+            0.39,
+            0.505,
+            0.765,
+            0.986,
+            1.471,
+            1.62,
+            1.9,
+            2.095
+          ]
+        }
+      }
+    },
+    {
+      "id": "slik-no",
+      "lang": "nb-NO",
+      "text": "Jeg har aldri sett noe slikt før.",
+      "takes": {
+        "female": {
+          "file": "audio/female/slik-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.285,
+            0.581,
+            0.821,
+            1.036,
+            1.366
+          ]
+        },
+        "male": {
+          "file": "audio/male/slik-no.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.265,
+            0.565,
+            0.79,
+            0.995,
+            1.296
+          ]
+        }
+      }
+    },
+    {
+      "id": "slik-da",
+      "lang": "da-DK",
+      "text": "Børnene fik slik efter middagen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/slik-da.mp3",
+          "timings": [
+            0.015,
+            0.454,
+            0.659,
+            0.944,
+            1.179
+          ]
+        },
+        "male": {
+          "file": "audio/male/slik-da.mp3",
+          "timings": [
+            0.015,
+            0.435,
+            0.64,
+            0.93,
+            1.15
+          ]
+        }
+      }
+    },
+    {
+      "id": "enda-no",
+      "lang": "nb-NO",
+      "text": "Er du ikke ferdig enda?",
+      "takes": {
+        "female": {
+          "file": "audio/female/enda-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.235,
+            0.406,
+            0.751
+          ]
+        },
+        "male": {
+          "file": "audio/male/enda-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.245,
+            0.401,
+            0.721
+          ]
+        }
+      }
+    },
+    {
+      "id": "enda-da",
+      "lang": "da-DK",
+      "text": "Han var endda glad for at hjælpe, selvom han havde travlt.",
+      "takes": {
+        "female": {
+          "file": "audio/female/enda-da.mp3",
+          "timings": [
+            0.015,
+            0.205,
+            0.335,
+            0.555,
+            0.816,
+            0.991,
+            1.021,
+            1.471,
+            1.813,
+            1.958,
+            2.133
+          ]
+        },
+        "male": {
+          "file": "audio/male/enda-da.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.325,
+            0.55,
+            0.81,
+            0.975,
+            1.01,
+            1.455,
+            1.776,
+            1.911,
+            2.072
+          ]
+        }
+      }
+    },
+    {
+      "id": "juks-no",
+      "lang": "nb-NO",
+      "text": "Det er juks å se svarene på forhånd.",
+      "takes": {
+        "female": {
+          "file": "audio/female/juks-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.25,
+            0.55,
+            0.61,
+            0.801,
+            1.236,
+            1.371
+          ]
+        },
+        "male": {
+          "file": "audio/male/juks-no.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.24,
+            0.53,
+            0.595,
+            0.78,
+            1.218,
+            1.353
+          ]
+        }
+      }
+    },
+    {
+      "id": "juks-da",
+      "lang": "da-DK",
+      "text": "Det der ur er noget juks, det holder ikke en uge.",
+      "takes": {
+        "female": {
+          "file": "audio/female/juks-da.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.28,
+            0.491,
+            0.591,
+            0.777,
+            1.211,
+            1.325,
+            1.596,
+            1.741,
+            1.871
+          ]
+        },
+        "male": {
+          "file": "audio/male/juks-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.28,
+            0.53,
+            0.6,
+            0.79,
+            1.21,
+            1.335,
+            1.61,
+            1.725,
+            1.84
+          ]
+        }
+      }
+    },
+    {
+      "id": "kran-no",
+      "lang": "nb-NO",
+      "text": "Vannet kommer rett fra krana.",
+      "takes": {
+        "female": {
+          "file": "audio/female/kran-no.mp3",
+          "timings": [
+            0.015,
+            0.395,
+            0.68,
+            0.87,
+            1.04
+          ]
+        },
+        "male": {
+          "file": "audio/male/kran-no.mp3",
+          "timings": [
+            0.015,
+            0.385,
+            0.646,
+            0.831,
+            1.006
+          ]
+        }
+      }
+    },
+    {
+      "id": "kran-da",
+      "lang": "da-DK",
+      "text": "De har rejst en kæmpe kran på byggepladsen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/kran-da.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.265,
+            0.614,
+            0.719,
+            1.047,
+            1.357,
+            1.467
+          ]
+        },
+        "male": {
+          "file": "audio/male/kran-da.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.255,
+            0.585,
+            0.685,
+            1.01,
+            1.31,
+            1.43
+          ]
+        }
+      }
+    },
+    {
+      "id": "sportsvogn-no",
+      "lang": "nb-NO",
+      "text": "Vi kjøpte en ny sportsvogn til barnet.",
+      "takes": {
+        "female": {
+          "file": "audio/female/sportsvogn-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.471,
+            0.591,
+            0.796,
+            1.436,
+            1.576
+          ]
+        },
+        "male": {
+          "file": "audio/male/sportsvogn-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.471,
+            0.586,
+            0.791,
+            1.371,
+            1.521
+          ]
+        }
+      }
+    },
+    {
+      "id": "sportsvogn-da",
+      "lang": "da-DK",
+      "text": "Han drømmer om at eje en rød sportsvogn.",
+      "takes": {
+        "female": {
+          "file": "audio/female/sportsvogn-da.mp3",
+          "timings": [
+            0.015,
+            0.19,
+            0.531,
+            0.691,
+            0.736,
+            0.966,
+            1.051,
+            1.261
+          ]
+        },
+        "male": {
+          "file": "audio/male/sportsvogn-da.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.495,
+            0.66,
+            0.7,
+            0.939,
+            1.029,
+            1.23
+          ]
+        }
+      }
+    },
+    {
+      "id": "brus-no",
+      "lang": "nb-NO",
+      "text": "Vil du ha en brus til maten?",
+      "takes": {
+        "female": {
+          "file": "audio/female/brus-no.mp3",
+          "timings": [
+            0.015,
+            0.185,
+            0.295,
+            0.47,
+            0.58,
+            0.851,
+            0.991
+          ]
+        },
+        "male": {
+          "file": "audio/male/brus-no.mp3",
+          "timings": [
+            0.015,
+            0.19,
+            0.295,
+            0.475,
+            0.57,
+            0.842,
+            0.972
+          ]
+        }
+      }
+    },
+    {
+      "id": "brus-da",
+      "lang": "da-DK",
+      "text": "Champagnen havde en dejlig brus af bobler.",
+      "takes": {
+        "female": {
+          "file": "audio/female/brus-da.mp3",
+          "timings": [
+            0.015,
+            0.67,
+            0.881,
+            0.976,
+            1.316,
+            1.691,
+            1.731
+          ]
+        },
+        "male": {
+          "file": "audio/male/brus-da.mp3",
+          "timings": [
+            0.015,
+            0.655,
+            0.86,
+            0.945,
+            1.27,
+            1.643,
+            1.683
+          ]
+        }
+      }
+    },
+    {
+      "id": "bedrift-no",
+      "lang": "nb-NO",
+      "text": "Han jobber i en stor bedrift i Oslo.",
+      "takes": {
+        "female": {
+          "file": "audio/female/bedrift-no.mp3",
+          "timings": [
+            0.015,
+            0.205,
+            0.486,
+            0.536,
+            0.656,
+            0.955,
+            1.42,
+            1.49
+          ]
+        },
+        "male": {
+          "file": "audio/male/bedrift-no.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.48,
+            0.53,
+            0.64,
+            0.95,
+            1.4,
+            1.46
+          ]
+        }
+      }
+    },
+    {
+      "id": "bedrift-da",
+      "lang": "da-DK",
+      "text": "At bestige bjerget var en imponerende bedrift.",
+      "takes": {
+        "female": {
+          "file": "audio/female/bedrift-da.mp3",
+          "timings": [
+            0.015,
+            0.125,
+            0.556,
+            0.971,
+            1.116,
+            1.202,
+            1.807
+          ]
+        },
+        "male": {
+          "file": "audio/male/bedrift-da.mp3",
+          "timings": [
+            0.015,
+            0.11,
+            0.535,
+            0.951,
+            1.091,
+            1.181,
+            1.748
+          ]
+        }
+      }
+    },
+    {
+      "id": "svært-no",
+      "lang": "nb-NO",
+      "text": "Det er svært viktig å komme presis.",
+      "takes": {
+        "female": {
+          "file": "audio/female/svært-no.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.255,
+            0.605,
+            0.929,
+            0.979,
+            1.224
+          ]
+        },
+        "male": {
+          "file": "audio/male/svært-no.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.24,
+            0.61,
+            0.911,
+            0.961,
+            1.203
+          ]
+        }
+      }
+    },
+    {
+      "id": "svært-da",
+      "lang": "da-DK",
+      "text": "Det var svært at nå toget i tide.",
+      "takes": {
+        "female": {
+          "file": "audio/female/svært-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.265,
+            0.62,
+            0.66,
+            0.849,
+            1.214,
+            1.284
+          ]
+        },
+        "male": {
+          "file": "audio/male/svært-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.26,
+            0.594,
+            0.634,
+            0.835,
+            1.195,
+            1.25
+          ]
+        }
+      }
+    },
+    {
+      "id": "dytte-no",
+      "lang": "nb-NO",
+      "text": "Ikke dytt i køen, vent på tur.",
+      "takes": {
+        "female": {
+          "file": "audio/female/dytte-no.mp3",
+          "timings": [
+            0.015,
+            0.235,
+            0.485,
+            0.55,
+            1.061,
+            1.346,
+            1.486
+          ]
+        },
+        "male": {
+          "file": "audio/male/dytte-no.mp3",
+          "timings": [
+            0.015,
+            0.235,
+            0.476,
+            0.536,
+            1.056,
+            1.332,
+            1.472
+          ]
+        }
+      }
+    },
+    {
+      "id": "dytte-da",
+      "lang": "da-DK",
+      "text": "Bilisten dyttede utålmodigt i hornet.",
+      "takes": {
+        "female": {
+          "file": "audio/female/dytte-da.mp3",
+          "timings": [
+            0.015,
+            0.55,
+            0.916,
+            1.506,
+            1.581
+          ]
+        },
+        "male": {
+          "file": "audio/male/dytte-da.mp3",
+          "timings": [
+            0.015,
+            0.522,
+            0.882,
+            1.443,
+            1.528
+          ]
+        }
+      }
+    },
+    {
+      "id": "jule-no",
+      "lang": "nb-NO",
+      "text": "Pass deg, ellers blir du jult opp.",
+      "takes": {
+        "female": {
+          "file": "audio/female/jule-no.mp3",
+          "timings": [
+            0.015,
+            0.305,
+            0.606,
+            0.926,
+            1.121,
+            1.222,
+            1.547
+          ]
+        },
+        "male": {
+          "file": "audio/male/jule-no.mp3",
+          "timings": [
+            0.015,
+            0.32,
+            0.635,
+            0.95,
+            1.125,
+            1.226,
+            1.531
+          ]
+        }
+      }
+    },
+    {
+      "id": "jule-da",
+      "lang": "da-DK",
+      "text": "Vi skal til at gøre klar til at holde jul.",
+      "takes": {
+        "female": {
+          "file": "audio/female/jule-da.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.325,
+            0.45,
+            0.52,
+            0.685,
+            0.975,
+            1.105,
+            1.18,
+            1.42
+          ]
+        },
+        "male": {
+          "file": "audio/male/jule-da.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.315,
+            0.445,
+            0.505,
+            0.68,
+            0.954,
+            1.084,
+            1.144,
+            1.369
+          ]
+        }
+      }
+    },
+    {
+      "id": "nævenyttig-no",
+      "lang": "nb-NO",
+      "text": "Faren min er veldig nevenyttig, han fikser alt selv.",
+      "takes": {
+        "female": {
+          "file": "audio/female/nævenyttig-no.mp3",
+          "timings": [
+            0.015,
+            0.445,
+            0.63,
+            0.73,
+            1.001,
+            1.712,
+            1.892,
+            2.275,
+            2.48
+          ]
+        },
+        "male": {
+          "file": "audio/male/nævenyttig-no.mp3",
+          "timings": [
+            0.015,
+            0.435,
+            0.6,
+            0.69,
+            0.96,
+            1.679,
+            1.849,
+            2.229,
+            2.424
+          ]
+        }
+      }
+    },
+    {
+      "id": "nævenyttig-da",
+      "lang": "da-DK",
+      "text": "Naboen er lidt nævenyttig og blander sig i alt.",
+      "takes": {
+        "female": {
+          "file": "audio/female/nævenyttig-da.mp3",
+          "timings": [
+            0.015,
+            0.546,
+            0.621,
+            0.793,
+            1.372,
+            1.427,
+            1.707,
+            1.912,
+            2.062
+          ]
+        },
+        "male": {
+          "file": "audio/male/nævenyttig-da.mp3",
+          "timings": [
+            0.015,
+            0.535,
+            0.605,
+            0.77,
+            1.309,
+            1.38,
+            1.663,
+            1.863,
+            1.994
+          ]
+        }
+      }
+    },
+    {
+      "id": "stel-no",
+      "lang": "nb-NO",
+      "text": "Hun steller barnet hver morgen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/stel-no.mp3",
+          "timings": [
+            0.015,
+            0.19,
+            0.549,
+            0.885,
+            1.13
+          ]
+        },
+        "male": {
+          "file": "audio/male/stel-no.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.515,
+            0.856,
+            1.096
+          ]
+        }
+      }
+    },
+    {
+      "id": "stel-da",
+      "lang": "da-DK",
+      "text": "Cyklens stel var bøjet efter styrtet.",
+      "takes": {
+        "female": {
+          "file": "audio/female/stel-da.mp3",
+          "timings": [
+            0.015,
+            0.517,
+            0.801,
+            0.921,
+            1.271,
+            1.511
+          ]
+        },
+        "male": {
+          "file": "audio/male/stel-da.mp3",
+          "timings": [
+            0.015,
+            0.495,
+            0.765,
+            0.871,
+            1.231,
+            1.446
+          ]
+        }
+      }
+    },
+    {
+      "id": "trivelig-no",
+      "lang": "nb-NO",
+      "text": "Det var en trivelig kveld sammen med kollegene.",
+      "takes": {
+        "female": {
+          "file": "audio/female/trivelig-no.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.325,
+            0.436,
+            0.886,
+            1.141,
+            1.503,
+            1.598
+          ]
+        },
+        "male": {
+          "file": "audio/male/trivelig-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.32,
+            0.425,
+            0.867,
+            1.127,
+            1.474,
+            1.569
+          ]
+        }
+      }
+    },
+    {
+      "id": "trivelig-da",
+      "lang": "da-DK",
+      "text": "Han er blevet lidt trivelig med årene.",
+      "takes": {
+        "female": {
+          "file": "audio/female/trivelig-da.mp3",
+          "timings": [
+            0.015,
+            0.19,
+            0.26,
+            0.435,
+            0.6,
+            1.005,
+            1.15
+          ]
+        },
+        "male": {
+          "file": "audio/male/trivelig-da.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.25,
+            0.42,
+            0.58,
+            0.99,
+            1.13
+          ]
+        }
+      }
+    },
+    {
+      "id": "ulige-no",
+      "lang": "nb-NO",
+      "text": "Vi har veldig ulike meninger om dette.",
+      "takes": {
+        "female": {
+          "file": "audio/female/ulige-no.mp3",
+          "timings": [
+            0.015,
+            0.145,
+            0.265,
+            0.565,
+            0.96,
+            1.441,
+            1.551
+          ]
+        },
+        "male": {
+          "file": "audio/male/ulige-no.mp3",
+          "timings": [
+            0.015,
+            0.145,
+            0.25,
+            0.54,
+            0.931,
+            1.393,
+            1.493
+          ]
+        }
+      }
+    },
+    {
+      "id": "ulige-da",
+      "lang": "da-DK",
+      "text": "Tallene tre og fem er ulige tal.",
+      "takes": {
+        "female": {
+          "file": "audio/female/ulige-da.mp3",
+          "timings": [
+            0.015,
+            0.465,
+            0.755,
+            0.825,
+            1.11,
+            1.201,
+            1.531
+          ]
+        },
+        "male": {
+          "file": "audio/male/ulige-da.mp3",
+          "timings": [
+            0.015,
+            0.435,
+            0.72,
+            0.791,
+            1.086,
+            1.176,
+            1.491
+          ]
+        }
+      }
+    },
+    {
+      "id": "solbrent-no",
+      "lang": "nb-NO",
+      "text": "Jeg ble skikkelig solbrent i går.",
+      "takes": {
+        "female": {
+          "file": "audio/female/solbrent-no.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.325,
+            0.728,
+            1.277,
+            1.327
+          ]
+        },
+        "male": {
+          "file": "audio/male/solbrent-no.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.31,
+            0.69,
+            1.221,
+            1.266
+          ]
+        }
+      }
+    },
+    {
+      "id": "solbrent-da",
+      "lang": "da-DK",
+      "text": "Du er blevet flot solbrændt i sommerferien.",
+      "takes": {
+        "female": {
+          "file": "audio/female/solbrent-da.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.2,
+            0.36,
+            0.659,
+            1.22,
+            1.305
+          ]
+        },
+        "male": {
+          "file": "audio/male/solbrent-da.mp3",
+          "timings": [
+            0.015,
+            0.13,
+            0.195,
+            0.35,
+            0.631,
+            1.198,
+            1.273
+          ]
+        }
+      }
+    },
+    {
+      "id": "middag-no",
+      "lang": "nb-NO",
+      "text": "Vi spiser middag klokka fem her.",
+      "takes": {
+        "female": {
+          "file": "audio/female/middag-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.565,
+            0.876,
+            1.161,
+            1.44
+          ]
+        },
+        "male": {
+          "file": "audio/male/middag-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.56,
+            0.862,
+            1.122,
+            1.413
+          ]
+        }
+      }
+    },
+    {
+      "id": "middag-da",
+      "lang": "da-DK",
+      "text": "Vi spiser middag klokken syv i aften.",
+      "takes": {
+        "female": {
+          "file": "audio/female/middag-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.559,
+            0.845,
+            1.165,
+            1.462,
+            1.592
+          ]
+        },
+        "male": {
+          "file": "audio/male/middag-da.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.53,
+            0.81,
+            1.115,
+            1.426,
+            1.526
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-dag",
+      "lang": "nb-NO",
+      "text": "dag",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-dag.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-dag.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-god",
+      "lang": "nb-NO",
+      "text": "god",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-god.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-god.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-ung",
+      "lang": "nb-NO",
+      "text": "ung",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-ung.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-ung.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-regn",
+      "lang": "nb-NO",
+      "text": "regn",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-regn.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-regn.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-hus",
+      "lang": "nb-NO",
+      "text": "hus",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-hus.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-hus.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-by",
+      "lang": "nb-NO",
+      "text": "by",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-by.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-by.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-rar",
+      "lang": "nb-NO",
+      "text": "rar",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-rar.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-rar.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-her",
+      "lang": "nb-NO",
+      "text": "her",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-her.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-her.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-ore",
+      "lang": "nb-NO",
+      "text": "øre",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-ore.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-ore.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-loper",
+      "lang": "nb-NO",
+      "text": "løper",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-loper.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-loper.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-bonner",
+      "lang": "nb-NO",
+      "text": "bønner",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-bonner.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-bonner.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-tanken",
+      "lang": "nb-NO",
+      "text": "tanken",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-tanken.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-tanken.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-du",
+      "lang": "nb-NO",
+      "text": "du",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-du.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-du.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-sur",
+      "lang": "nb-NO",
+      "text": "sur",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-sur.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-sur.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-mus",
+      "lang": "nb-NO",
+      "text": "mus",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-mus.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-mus.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-tur",
+      "lang": "nb-NO",
+      "text": "tur",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-tur.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-tur.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-kjokken",
+      "lang": "nb-NO",
+      "text": "kjøkken",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-kjokken.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-kjokken.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-skje",
+      "lang": "nb-NO",
+      "text": "skje",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-skje.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-skje.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-kjenne",
+      "lang": "nb-NO",
+      "text": "kjenne",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-kjenne.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-kjenne.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-sjef",
+      "lang": "nb-NO",
+      "text": "sjef",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-sjef.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-sjef.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-kjole",
+      "lang": "nb-NO",
+      "text": "kjole",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-kjole.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-kjole.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-hvordan",
+      "lang": "nb-NO",
+      "text": "hvordan",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-hvordan.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-hvordan.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-tirsdag",
+      "lang": "nb-NO",
+      "text": "tirsdag",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-tirsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-tirsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-no-torsdag",
+      "lang": "nb-NO",
+      "text": "torsdag",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-no-torsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-no-torsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-dag",
+      "lang": "da-DK",
+      "text": "dag",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-dag.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-dag.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-god",
+      "lang": "da-DK",
+      "text": "god",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-god.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-god.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-ung",
+      "lang": "da-DK",
+      "text": "ung",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-ung.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-ung.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-regn",
+      "lang": "da-DK",
+      "text": "regn",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-regn.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-regn.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-hus",
+      "lang": "da-DK",
+      "text": "hus",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-hus.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-hus.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-by",
+      "lang": "da-DK",
+      "text": "by",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-by.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-by.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-rar",
+      "lang": "da-DK",
+      "text": "rar",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-rar.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-rar.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-her",
+      "lang": "da-DK",
+      "text": "her",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-her.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-her.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-ore",
+      "lang": "da-DK",
+      "text": "øre",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-ore.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-ore.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-lober",
+      "lang": "da-DK",
+      "text": "løber",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-lober.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-lober.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-bonner",
+      "lang": "da-DK",
+      "text": "bønner",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-bonner.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-bonner.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-tanken",
+      "lang": "da-DK",
+      "text": "tanken",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-tanken.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-tanken.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-du",
+      "lang": "da-DK",
+      "text": "du",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-du.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-du.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-sur",
+      "lang": "da-DK",
+      "text": "sur",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-sur.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-sur.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-mus",
+      "lang": "da-DK",
+      "text": "mus",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-mus.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-mus.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-tur",
+      "lang": "da-DK",
+      "text": "tur",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-tur.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-tur.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-mad",
+      "lang": "da-DK",
+      "text": "mad",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-mad.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-mad.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-gade",
+      "lang": "da-DK",
+      "text": "gade",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-gade.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-gade.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-hvad",
+      "lang": "da-DK",
+      "text": "hvad",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-hvad.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-hvad.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-glad",
+      "lang": "da-DK",
+      "text": "glad",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-glad.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-glad.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-hvordan",
+      "lang": "da-DK",
+      "text": "hvordan",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-hvordan.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-hvordan.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-tirsdag",
+      "lang": "da-DK",
+      "text": "tirsdag",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-tirsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-tirsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "udtale-da-torsdag",
+      "lang": "da-DK",
+      "text": "torsdag",
+      "takes": {
+        "female": {
+          "file": "audio/female/udtale-da-torsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/udtale-da-torsdag.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "test-no",
+      "lang": "nb-NO",
+      "text": "Hei, dette er Nordenhusker. La oss øve litt norsk sammen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/test-no.mp3",
+          "timings": [
+            0.015,
+            0.41,
+            0.68,
+            0.77,
+            1.928,
+            2.118,
+            2.309,
+            2.534,
+            2.72,
+            3.025
+          ]
+        },
+        "male": {
+          "file": "audio/male/test-no.mp3",
+          "timings": [
+            0.015,
+            0.433,
+            0.678,
+            0.768,
+            1.9,
+            2.1,
+            2.29,
+            2.515,
+            2.683,
+            2.978
+          ]
+        }
+      }
+    },
+    {
+      "id": "test-da",
+      "lang": "da-DK",
+      "text": "Hej, det er Nordenhusker. Lad os øve lidt dansk sammen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/test-da.mp3",
+          "timings": [
+            0.015,
+            0.418,
+            0.523,
+            0.588,
+            1.691,
+            1.841,
+            1.981,
+            2.191,
+            2.346,
+            2.716
+          ]
+        },
+        "male": {
+          "file": "audio/male/test-da.mp3",
+          "timings": [
+            0.015,
+            0.42,
+            0.54,
+            0.605,
+            1.694,
+            1.829,
+            1.969,
+            2.199,
+            2.344,
+            2.694
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-enogtyve",
+      "lang": "da-DK",
+      "text": "enogtyve",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-enogtyve.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-enogtyve.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-tjueen",
+      "lang": "nb-NO",
+      "text": "tjueen",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-tjueen.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-tjueen.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-tredive",
+      "lang": "da-DK",
+      "text": "tredive",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-tredive.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-tredive.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-tretti",
+      "lang": "nb-NO",
+      "text": "tretti",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-tretti.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-tretti.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-halvtreds",
+      "lang": "da-DK",
+      "text": "halvtreds",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-halvtreds.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-halvtreds.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-femti",
+      "lang": "nb-NO",
+      "text": "femti",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-femti.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-femti.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-halvfjerds",
+      "lang": "da-DK",
+      "text": "halvfjerds",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-halvfjerds.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-halvfjerds.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-sytti",
+      "lang": "nb-NO",
+      "text": "sytti",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-sytti.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-sytti.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-halvfems",
+      "lang": "da-DK",
+      "text": "halvfems",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-halvfems.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-halvfems.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-nitti",
+      "lang": "nb-NO",
+      "text": "nitti",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-nitti.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-nitti.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-kvart-i-fem",
+      "lang": "da-DK",
+      "text": "kvart i fem",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-kvart-i-fem.mp3",
+          "timings": [
+            0.015,
+            0.375,
+            0.457
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-kvart-i-fem.mp3",
+          "timings": [
+            0.015,
+            0.36,
+            0.44
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-kvart-pa-fem",
+      "lang": "nb-NO",
+      "text": "kvart på fem",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-kvart-pa-fem.mp3",
+          "timings": [
+            0.015,
+            0.355,
+            0.503
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-kvart-pa-fem.mp3",
+          "timings": [
+            0.015,
+            0.345,
+            0.49
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-kvart-over-fire",
+      "lang": "da-DK",
+      "text": "kvart over fire",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-kvart-over-fire.mp3",
+          "timings": [
+            0.015,
+            0.385,
+            0.566
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-kvart-over-fire.mp3",
+          "timings": [
+            0.015,
+            0.37,
+            0.57
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-kvart-over-fire",
+      "lang": "nb-NO",
+      "text": "kvart over fire",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-kvart-over-fire.mp3",
+          "timings": [
+            0.015,
+            0.375,
+            0.551
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-kvart-over-fire.mp3",
+          "timings": [
+            0.015,
+            0.36,
+            0.53
+          ]
+        }
+      }
+    }
+  ]
+}

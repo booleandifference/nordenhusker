@@ -114,47 +114,59 @@ async function grok(text, lang) {
 }
 
 // ---------- run ----------
-// WaveNet chosen by blind listening test (see Stemmevalg artifact).
-const ENGINES = {
-  wavenet: (c) => google(c.text, c.lang, `${c.lang}-Wavenet-A`),
-  chirp3: (c) => google(c.text, c.lang, `${c.lang}-Chirp3-HD-Achernar`),
-  grok: (c) => grok(c.text, c.lang),
-};
-const ENGINE = (process.argv.find((a) => a.startsWith("--engine=")) ?? "--engine=wavenet").split("=")[1];
-if (!ENGINES[ENGINE]) { console.error(`unknown engine: ${ENGINE}`); process.exit(1); }
+// WaveNet chosen by blind listening test. Voices are discovered at run time
+// rather than hardcoded, so the pair is always a real female/male match.
+const LANGS = ["da-DK", "nb-NO"];
+let VOICES = null;
+async function voices() {
+  if (VOICES) return VOICES;
+  VOICES = { female: {}, male: {} };
+  for (const lang of LANGS) {
+    const r = await fetch(
+      `https://texttospeech.googleapis.com/v1/voices?languageCode=${lang}`,
+      { headers: { Authorization: `Bearer ${token()}`, "x-goog-user-project": PROJECT } }
+    );
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error?.message ?? `voices HTTP ${r.status}`);
+    const wave = (j.voices ?? []).filter((v) => v.name.includes("Wavenet"));
+    for (const g of ["FEMALE", "MALE"]) {
+      const pick = wave.find((v) => v.ssmlGender === g);
+      if (!pick) throw new Error(`no ${g} WaveNet voice for ${lang}`);
+      VOICES[g.toLowerCase()][lang] = pick.name;
+    }
+  }
+  return VOICES;
+}
 
-const sampleMode = process.argv.includes("--sample");
+
+const GENDERS = ["female", "male"];
+
 const all = clips();
-const todo = sampleMode ? all.filter((c) => SAMPLE.includes(c.id)) : all;
+const V = await voices();
+console.log("voices:");
+for (const g of GENDERS) for (const l of LANGS) console.log(`  ${g.padEnd(7)} ${l}  ${V[g][l]}`);
+console.log(`\n${all.length} clips x ${GENDERS.length} voices\n`);
 
-const engines = sampleMode
-  ? [
-      { dir: "chirp3", fn: (c) => google(c.text, c.lang, `${c.lang}-Chirp3-HD-Achernar`) },
-      { dir: "wavenet", fn: (c) => google(c.text, c.lang, `${c.lang}-Wavenet-A`) },
-      { dir: "grok", fn: (c) => grok(c.text, c.lang) },
-    ]
-  : [{ dir: ENGINE, fn: ENGINES[ENGINE] }];
-
-console.log(`${all.length} clips found, generating ${todo.length} x ${engines.length} engine(s)\n`);
-
-const manifest = [];
+const manifest = { voices: V, clips: [] };
 let ok = 0, fail = 0;
-for (const e of engines) {
-  mkdirSync(join(OUT, e.dir), { recursive: true });
-  for (const c of todo) {
-    const path = join(OUT, e.dir, `${c.id}.mp3`);
-    if (existsSync(path) && !sampleMode) { manifest.push({ ...c, file: `audio/${e.dir}/${c.id}.mp3` }); continue; }
+for (const c of all) {
+  const entry = { id: c.id, lang: c.lang, text: c.text, takes: {} };
+  for (const g of GENDERS) {
+    mkdirSync(join(OUT, g), { recursive: true });
+    const rel = `audio/${g}/${c.id}.mp3`;
     try {
-      const { audio, timings } = await e.fn(c);
-      writeFileSync(path, audio);
-      manifest.push({ id: c.id, lang: c.lang, text: c.text, file: `audio/${e.dir}/${c.id}.mp3`, timings });
-      console.log(`  ok   ${e.dir}/${c.id}.mp3  ${(audio.length / 1024).toFixed(1)}KB  ${timings.length}tp  "${c.text.slice(0, 38)}"`);
+      const { audio, timings } = await google(c.text, c.lang, V[g][c.lang]);
+      writeFileSync(join(ROOT, rel), audio);
+      entry.takes[g] = { file: rel, timings };
       ok++;
     } catch (err) {
-      console.log(`  FAIL ${e.dir}/${c.id}: ${err.message}`);
+      console.log(`  FAIL ${g}/${c.id}: ${err.message}`);
       fail++;
     }
   }
+  if (Object.keys(entry.takes).length) manifest.clips.push(entry);
+  const t = entry.takes.female?.timings?.length ?? 0;
+  console.log(`  ok   ${c.id.padEnd(26)} ${t}tp  "${c.text.slice(0, 34)}"`);
 }
-if (!sampleMode) writeFileSync(join(OUT, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
-console.log(`\n${ok} ok, ${fail} failed`);
+writeFileSync(join(OUT, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+console.log(`\n${ok} clips written, ${fail} failed, ${manifest.clips.length} manifest entries`);
