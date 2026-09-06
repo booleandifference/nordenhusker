@@ -14,7 +14,8 @@
       "audio/ssml/**",
       "tools/**",
       "audio/ssml2/**",
-      "audio/ssml3/**"
+      "audio/ssml3/**",
+      "Banner image/**"
     ],
     "headers": [
       {
