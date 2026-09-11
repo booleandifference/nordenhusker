@@ -8,12 +8,11 @@ A Danish ↔ Norwegian "false friend" trainer — teaches the small, specific de
 
 Prototype stage. Single `index.html` (no build step, no backend) plus a folder of pre-generated audio. Progress ("words I know") is saved to `localStorage`.
 
-- 20 curated DA/NO function-word pairs ("Ord der skifter") — words that mean
+- 20 curated DA/NO function-word pairs ("Ord der byttes" / "Ord som byttes") — words that mean
   the same but are simply different, high-frequency words (hinanden/hverandre,
-  måske/kanskje, etc.), plus 30 curated DA/NO false-friend words ("Ord der
-  lurer"), each with meanings, an example sentence, and a tip in both directions
+  måske/kanskje, etc.), plus 30 curated DA/NO false-friend words ("Ord der snyder" / "Ord som lurer"), each with meanings, an example sentence, and a tip in both directions
 - Bidirectional 🇩🇰→🇳🇴 / 🇳🇴→🇩🇰 switch
-- 246 pre-generated Google WaveNet clips — 123 strings x a female and a male voice per language, chosen over Chirp3-HD and Grok in a blind listening test
+- 326 pre-generated Google WaveNet clips — 163 strings x a female and a male voice per language, chosen over Chirp3-HD and Grok in a blind listening test
 - Kvinde / Mand voice switch, remembered in `localStorage`
 - Karaoke word highlighting driven by real word onsets from the TTS API, not estimates
 - Web Speech API retained as a fallback whenever a clip is missing or won't play

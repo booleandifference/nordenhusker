@@ -8,13 +8,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nordenhusker.dk/">
 <meta property="og:title" content="Nordenhusker — Dansk ↔ Norsk">
-<meta property="og:description" content="Norden husker mere end du tror. De ord der lurer, udtalen der driller, og tal/klokkeslæt — med lyd på begge sprog.">
+<meta property="og:description" content="Norden husker mere end du tror. De ord der snyder, udtalen der driller, og tal/klokkeslæt — med lyd på begge sprog.">
 <meta property="og:image" content="https://nordenhusker.dk/social-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nordenhusker — Dansk ↔ Norsk">
-<meta name="twitter:description" content="Norden husker mere end du tror. De ord der lurer, udtalen der driller, og tal/klokkeslæt.">
+<meta name="twitter:description" content="Norden husker mere end du tror. De ord der snyder, udtalen der driller, og tal/klokkeslæt.">
 <meta name="twitter:image" content="https://nordenhusker.dk/social-preview.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -373,14 +373,14 @@
   </header>
 
   <div class="progress-row">
-    <span>Ord der lurer, du kan</span>
+    <span id="progressLabel">Ord der snyder, du kan</span>
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     <span class="progress-count"><span id="progressCount">0</span>/<span id="progressTotal">30</span></span>
   </div>
 
   <div class="tablist" role="tablist" aria-label="Sektioner">
-    <button class="tab" role="tab" aria-selected="true" id="tab-skift" aria-controls="panel-skift">Ord der skifter</button>
-    <button class="tab" role="tab" aria-selected="false" id="tab-ord" aria-controls="panel-ord">Ord der lurer</button>
+    <button class="tab" role="tab" aria-selected="true" id="tab-skift" aria-controls="panel-skift">Ord der byttes</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-ord" aria-controls="panel-ord">Ord der snyder</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-udtale" aria-controls="panel-udtale">Udtale</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-mønstre" aria-controls="panel-mønstre">Tal &amp; tid</button>
   </div>
@@ -558,7 +558,7 @@
     {id:"maaske", da:"m\u00e5ske", no:"kanskje", ex:"Jeg kommer kanskje litt sent i morgen.", exen:"I might be a bit late tomorrow.", exda:"Jeg kommer m\u00e5ske lidt sent i morgen.", exdaen:"I might be a bit late tomorrow.", tip:"Et af de aller hyppigste ord i hverdagssnak \u2014 v\u00e6rd at automatisere f\u00f8rst.", tipno:"Et av de aller vanligste ordene i hverdagsprat \u2014 verdt \u00e5 automatisere f\u00f8rst."},
     {id:"efterhaanden", da:"efterh\u00e5nden", no:"etter hvert", ex:"Jeg blir bedre i norsk etter hvert.", exen:"I'm getting better at Norwegian gradually.", exda:"Jeg bliver bedre til norsk efterh\u00e5nden.", exdaen:"I'm getting better at Norwegian gradually.", tip:"Norsk deler det op i to ord i stedet for \u00e9t sammensat ord \u2014 samme betydning, anden opbygning.", tipno:"Norsk skriver det som to ord i stedet for \u00e9tt sammensatt ord \u2014 samme betydning, annen oppbygning."},
     {id:"kun", da:"kun", no:"bare", ex:"Jeg har bare fem minutter.", exen:"I only have five minutes.", exda:"Jeg har kun fem minutter.", exdaen:"I only have five minutes.", tip:"Et af de mest brugte ord i norsk hverdagssprog \u2014 du kommer til at h\u00f8re det konstant.", tipno:"Et av de mest brukte ordene i dagligtale \u2014 du kommer til \u00e5 h\u00f8re det konstant."},
-    {id:"meget", da:"meget", no:"mye", ex:"Det er mye \u00e5 l\u00e6re p\u00e5 en gang.", exen:"That's a lot to learn at once.", exda:"Det er meget at l\u00e6re p\u00e5 \u00e9n gang.", exdaen:"That's a lot to learn at once.", tip:"OBS: forveksl ikke med \"sv\u00e6rt\", som betyder noget helt andet p\u00e5 norsk (se \"Ord der lurer\").", tipno:"OBS: ikke \u00e5 forveksle med dansk \"sv\u00e6rt\", som betyr \"vanskelig\" p\u00e5 dansk \u2014 helt motsatt av forsterkeren."},
+    {id:"meget", da:"meget", no:"mye", ex:"Det er mye \u00e5 l\u00e6re p\u00e5 en gang.", exen:"That's a lot to learn at once.", exda:"Det er meget at l\u00e6re p\u00e5 \u00e9n gang.", exdaen:"That's a lot to learn at once.", tip:"OBS: forveksl ikke med \"sv\u00e6rt\", som betyder noget helt andet p\u00e5 norsk (se \"Ord der snyder\").", tipno:"OBS: ikke \u00e5 forveksle med dansk \"sv\u00e6rt\", som betyr \"vanskelig\" p\u00e5 dansk \u2014 helt motsatt av forsterkeren."},
     {id:"saadan", da:"s\u00e5dan", no:"s\u00e5nn", ex:"Jeg har aldri gjort det s\u00e5nn f\u00f8r.", exen:"I've never done it like that before.", exda:"Jeg har aldrig gjort det s\u00e5dan f\u00f8r.", exdaen:"I've never done it like that before.", tip:"Besl\u00e6gtet, men stavem\u00e5den er forskellig nok til at forvirre i skrift.", tipno:"Beslektet, men stavem\u00e5ten er forskjellig nok til \u00e5 forvirre i skrift."},
     {id:"lidt", da:"lidt", no:"litt", ex:"Kan jeg f\u00e5 litt mer kaffe?", exen:"Can I get a little more coffee?", exda:"Kan jeg f\u00e5 lidt mere kaffe?", exdaen:"Can I get a little more coffee?", tip:"Et af de mest almindelige ord du siger hver dag \u2014 nemt at g\u00f8re automatisk.", tipno:"Et av de vanligste ordene du sier hver dag \u2014 lett \u00e5 automatisere."},
     {id:"nu", da:"nu", no:"n\u00e5", ex:"Kan vi gj\u00f8re det n\u00e5?", exen:"Can we do it now?", exda:"Kan vi g\u00f8re det nu?", exdaen:"Can we do it now?", tip:"Kort ord, h\u00f8j frekvens \u2014 det er tit dette ord, der afsl\u00f8rer dansk oprindelse i en norsk s\u00e6tning.", tipno:"Kort ord, h\u00f8y frekvens \u2014 det er ofte dette ordet som avsl\u00f8rer dansk opprinnelse i en norsk setning."},
@@ -602,6 +602,9 @@
       speakAria: "Hør sætningen på norsk", testPhrase: "Hei, dette er Nordenhusker. La oss øve litt norsk sammen.",
       voicesFoundOne: " norsk stemme fundet", voicesFoundMany: " norske stemmer fundet", voicesNone: "Ingen norsk stemme fundet",
       voicesFinding: "Finder norsk stemme…", bannerNone: "⚠ Ingen norsk stemme fundet. Prøv Chrome eller Edge — de har normalt \"Norsk bokmål\" indbygget.",
+      tabSkift: "Ord der byttes", tabOrd: "Ord der snyder",
+      tabUdtale: "Udtale", tabMonstre: "Tal & tid",
+      progressLabel: "Ord der snyder, du kan",
       flag: "🇳🇴"
     },
     "no-da": {
@@ -610,6 +613,9 @@
       speakAria: "Hør sætningen på dansk", testPhrase: "Hej, det er Nordenhusker. Lad os øve lidt dansk sammen.",
       voicesFoundOne: " dansk stemme funnet", voicesFoundMany: " danske stemmer funnet", voicesNone: "Ingen dansk stemme funnet",
       voicesFinding: "Finner dansk stemme…", bannerNone: "⚠ Ingen dansk stemme funnet. Prøv Chrome eller Edge — de har normalt danske stemmer innebygget.",
+      tabSkift: "Ord som byttes", tabOrd: "Ord som lurer",
+      tabUdtale: "Uttale", tabMonstre: "Tall & tid",
+      progressLabel: "Ord som lurer, du kan",
       flag: "🇩🇰"
     }
   };
@@ -727,7 +733,9 @@
 
       var sentenceEl = card.querySelector(".example-sentence");
       card.querySelector(".speak-btn").addEventListener("click", function(){
-        speak(exampleText, targetLang, sentenceEl, key + "-" + targetLang);
+        // clip ids come from SWAP_WORDS' own id; the "sw-" prefix in `key`
+        // namespaces localStorage progress only, and is not part of the audio id.
+        speak(exampleText, targetLang, sentenceEl, w.id + "-" + targetLang);
       });
       var knowBtn = card.querySelector(".know-toggle");
       knowBtn.addEventListener("click", function(){
@@ -781,6 +789,12 @@
   function applyDirection(){
     dirBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.dir === direction ? "true" : "false"); });
     document.getElementById("heroText").textContent = UI[direction].hero;
+    var L = UI[direction];
+    document.getElementById("tab-skift").textContent = L.tabSkift;
+    document.getElementById("tab-ord").textContent = L.tabOrd;
+    document.getElementById("tab-udtale").textContent = L.tabUdtale;
+    document.getElementById("tab-mønstre").textContent = L.tabMonstre;
+    document.getElementById("progressLabel").textContent = L.progressLabel;
     document.getElementById("udtale-da-no").classList.toggle("active", direction === "da-no");
     document.getElementById("udtale-no-da").classList.toggle("active", direction === "no-da");
     renderWords();
