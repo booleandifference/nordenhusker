@@ -3,6 +3,18 @@
 Nordenhusker is a single-file (`index.html`) Danish↔Norwegian language app. See
 `README.md` for what it does and how to run/deploy it.
 
+## Workflow: where ideas come from
+
+Morten runs two Claude surfaces on this project: a Cowork session (research,
+content compilation, promo copy, business scoping) and this Claude Code
+session (actual implementation — code, audio generation, git push, deploy).
+As of 2026-09-11, the Cowork side no longer edits `index.html` directly for
+feature work — it writes up ready-to-build items as specs in `BACKLOG.md`
+(data, copy, exact behavior) for a Claude Code session to implement, push,
+and deploy. If a `BACKLOG.md` entry looks spec-ready (has the actual word
+list / copy / exact fields, not just a one-line idea), that's a signal it's
+ready to pick up here.
+
 ## Maintain BACKLOG.md
 
 `BACKLOG.md` is the running list of feature ideas and planned work for this
