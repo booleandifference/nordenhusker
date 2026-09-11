@@ -7,7 +7,6 @@
       "**/.*",
       "**/.*/**",
       "**/node_modules/**",
-      "README.md",
       "brand guide/**",
       "audio/chirp3/**",
       "audio/grok/**",
@@ -15,7 +14,10 @@
       "tools/**",
       "audio/ssml2/**",
       "audio/ssml3/**",
-      "Banner image/**"
+      "Banner image/**",
+      "package.json",
+      "package-lock.json",
+      "**/*.md"
     ],
     "headers": [
       {
