@@ -30,7 +30,12 @@ function clips() {
   const out = [];
   const field = (blob, name) => {
     const m = blob.match(new RegExp(`\\b${name}:"((?:[^"\\\\]|\\\\.)*)"`));
-    return m ? m[1].replace(/\\"/g, '"').replace(/\\\\/g, "\\") : null;
+    if (!m) return null;
+    // SWAP_WORDS writes Danish/Norwegian characters as \uXXXX escapes. Browsers
+    // decode those, but sending them raw to the TTS API would have it read the
+    // escape text aloud. JSON.parse handles \uXXXX, \" and \\ in one go.
+    try { return JSON.parse(`"${m[1]}"`); }
+    catch { return m[1].replace(/\\"/g, '"').replace(/\\\\/g, "\\"); }
   };
   for (const line of src.split("\n")) {
     if (!/^\s*\{id:"/.test(line)) continue;

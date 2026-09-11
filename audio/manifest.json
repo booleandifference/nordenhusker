@@ -1871,6 +1871,1120 @@
       }
     },
     {
+      "id": "hinanden-no",
+      "lang": "nb-NO",
+      "text": "De hjelper hverandre med leksene.",
+      "takes": {
+        "female": {
+          "file": "audio/female/hinanden-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.52,
+            0.94,
+            1.05
+          ]
+        },
+        "male": {
+          "file": "audio/male/hinanden-no.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.499,
+            0.908,
+            1.013
+          ]
+        }
+      }
+    },
+    {
+      "id": "hinanden-da",
+      "lang": "da-DK",
+      "text": "De hjælper hinanden med lektierne.",
+      "takes": {
+        "female": {
+          "file": "audio/female/hinanden-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.484,
+            0.899,
+            0.999
+          ]
+        },
+        "male": {
+          "file": "audio/male/hinanden-da.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.494,
+            0.885,
+            0.995
+          ]
+        }
+      }
+    },
+    {
+      "id": "maaske-no",
+      "lang": "nb-NO",
+      "text": "Jeg kommer kanskje litt sent i morgen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/maaske-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.421,
+            0.706,
+            0.88,
+            1.188,
+            1.238
+          ]
+        },
+        "male": {
+          "file": "audio/male/maaske-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.392,
+            0.667,
+            0.819,
+            1.119,
+            1.154
+          ]
+        }
+      }
+    },
+    {
+      "id": "maaske-da",
+      "lang": "da-DK",
+      "text": "Jeg kommer måske lidt sent i morgen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/maaske-da.mp3",
+          "timings": [
+            0.015,
+            0.13,
+            0.375,
+            0.696,
+            0.877,
+            1.147,
+            1.193
+          ]
+        },
+        "male": {
+          "file": "audio/male/maaske-da.mp3",
+          "timings": [
+            0.015,
+            0.125,
+            0.35,
+            0.665,
+            0.83,
+            1.09,
+            1.135
+          ]
+        }
+      }
+    },
+    {
+      "id": "efterhaanden-no",
+      "lang": "nb-NO",
+      "text": "Jeg blir bedre i norsk etter hvert.",
+      "takes": {
+        "female": {
+          "file": "audio/female/efterhaanden-no.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.35,
+            0.691,
+            0.746,
+            1.076,
+            1.272
+          ]
+        },
+        "male": {
+          "file": "audio/male/efterhaanden-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.335,
+            0.685,
+            0.73,
+            1.055,
+            1.245
+          ]
+        }
+      }
+    },
+    {
+      "id": "efterhaanden-da",
+      "lang": "da-DK",
+      "text": "Jeg bliver bedre til norsk efterhånden.",
+      "takes": {
+        "female": {
+          "file": "audio/female/efterhaanden-da.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.295,
+            0.63,
+            0.765,
+            1.149
+          ]
+        },
+        "male": {
+          "file": "audio/male/efterhaanden-da.mp3",
+          "timings": [
+            0.015,
+            0.125,
+            0.28,
+            0.62,
+            0.745,
+            1.11
+          ]
+        }
+      }
+    },
+    {
+      "id": "kun-no",
+      "lang": "nb-NO",
+      "text": "Jeg har bare fem minutter.",
+      "takes": {
+        "female": {
+          "file": "audio/female/kun-no.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.28,
+            0.501,
+            0.776
+          ]
+        },
+        "male": {
+          "file": "audio/male/kun-no.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.26,
+            0.485,
+            0.755
+          ]
+        }
+      }
+    },
+    {
+      "id": "kun-da",
+      "lang": "da-DK",
+      "text": "Jeg har kun fem minutter.",
+      "takes": {
+        "female": {
+          "file": "audio/female/kun-da.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.265,
+            0.451,
+            0.691
+          ]
+        },
+        "male": {
+          "file": "audio/male/kun-da.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.255,
+            0.441,
+            0.676
+          ]
+        }
+      }
+    },
+    {
+      "id": "meget-no",
+      "lang": "nb-NO",
+      "text": "Det er mye å lære på en gang.",
+      "takes": {
+        "female": {
+          "file": "audio/female/meget-no.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.255,
+            0.494,
+            0.539,
+            0.83,
+            0.995,
+            1.145
+          ]
+        },
+        "male": {
+          "file": "audio/male/meget-no.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.24,
+            0.49,
+            0.535,
+            0.815,
+            0.985,
+            1.13
+          ]
+        }
+      }
+    },
+    {
+      "id": "meget-da",
+      "lang": "da-DK",
+      "text": "Det er meget at lære på én gang.",
+      "takes": {
+        "female": {
+          "file": "audio/female/meget-da.mp3",
+          "timings": [
+            0.015,
+            0.125,
+            0.19,
+            0.48,
+            0.53,
+            0.796,
+            0.971,
+            1.166
+          ]
+        },
+        "male": {
+          "file": "audio/male/meget-da.mp3",
+          "timings": [
+            0.015,
+            0.13,
+            0.195,
+            0.475,
+            0.52,
+            0.78,
+            0.947,
+            1.132
+          ]
+        }
+      }
+    },
+    {
+      "id": "saadan-no",
+      "lang": "nb-NO",
+      "text": "Jeg har aldri gjort det sånn før.",
+      "takes": {
+        "female": {
+          "file": "audio/female/saadan-no.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.285,
+            0.561,
+            0.782,
+            0.912,
+            1.132
+          ]
+        },
+        "male": {
+          "file": "audio/male/saadan-no.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.26,
+            0.54,
+            0.755,
+            0.865,
+            1.08
+          ]
+        }
+      }
+    },
+    {
+      "id": "saadan-da",
+      "lang": "da-DK",
+      "text": "Jeg har aldrig gjort det sådan før.",
+      "takes": {
+        "female": {
+          "file": "audio/female/saadan-da.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.295,
+            0.52,
+            0.75,
+            0.858,
+            1.128
+          ]
+        },
+        "male": {
+          "file": "audio/male/saadan-da.mp3",
+          "timings": [
+            0.015,
+            0.13,
+            0.28,
+            0.488,
+            0.713,
+            0.813,
+            1.083
+          ]
+        }
+      }
+    },
+    {
+      "id": "lidt-no",
+      "lang": "nb-NO",
+      "text": "Kan jeg få litt mer kaffe?",
+      "takes": {
+        "female": {
+          "file": "audio/female/lidt-no.mp3",
+          "timings": [
+            0.015,
+            0.225,
+            0.33,
+            0.507,
+            0.697,
+            0.882
+          ]
+        },
+        "male": {
+          "file": "audio/male/lidt-no.mp3",
+          "timings": [
+            0.015,
+            0.225,
+            0.315,
+            0.486,
+            0.661,
+            0.858
+          ]
+        }
+      }
+    },
+    {
+      "id": "lidt-da",
+      "lang": "da-DK",
+      "text": "Kan jeg få lidt mere kaffe?",
+      "takes": {
+        "female": {
+          "file": "audio/female/lidt-da.mp3",
+          "timings": [
+            0.015,
+            0.185,
+            0.265,
+            0.421,
+            0.581,
+            0.781
+          ]
+        },
+        "male": {
+          "file": "audio/male/lidt-da.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.25,
+            0.405,
+            0.555,
+            0.76
+          ]
+        }
+      }
+    },
+    {
+      "id": "nu-no",
+      "lang": "nb-NO",
+      "text": "Kan vi gjøre det nå?",
+      "takes": {
+        "female": {
+          "file": "audio/female/nu-no.mp3",
+          "timings": [
+            0.015,
+            0.235,
+            0.33,
+            0.601,
+            0.741
+          ]
+        },
+        "male": {
+          "file": "audio/male/nu-no.mp3",
+          "timings": [
+            0.015,
+            0.23,
+            0.32,
+            0.58,
+            0.71
+          ]
+        }
+      }
+    },
+    {
+      "id": "nu-da",
+      "lang": "da-DK",
+      "text": "Kan vi gøre det nu?",
+      "takes": {
+        "female": {
+          "file": "audio/female/nu-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.255,
+            0.465,
+            0.545
+          ]
+        },
+        "male": {
+          "file": "audio/male/nu-da.mp3",
+          "timings": [
+            0.015,
+            0.145,
+            0.245,
+            0.465,
+            0.54
+          ]
+        }
+      }
+    },
+    {
+      "id": "igen-no",
+      "lang": "nb-NO",
+      "text": "Kan du si det igjen?",
+      "takes": {
+        "female": {
+          "file": "audio/female/igen-no.mp3",
+          "timings": [
+            0.015,
+            0.225,
+            0.35,
+            0.591,
+            0.726
+          ]
+        },
+        "male": {
+          "file": "audio/male/igen-no.mp3",
+          "timings": [
+            0.015,
+            0.22,
+            0.335,
+            0.567,
+            0.697
+          ]
+        }
+      }
+    },
+    {
+      "id": "igen-da",
+      "lang": "da-DK",
+      "text": "Kan du sige det igen?",
+      "takes": {
+        "female": {
+          "file": "audio/female/igen-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.27,
+            0.476,
+            0.576
+          ]
+        },
+        "male": {
+          "file": "audio/male/igen-da.mp3",
+          "timings": [
+            0.015,
+            0.145,
+            0.255,
+            0.46,
+            0.575
+          ]
+        }
+      }
+    },
+    {
+      "id": "endnu-no",
+      "lang": "nb-NO",
+      "text": "Vi er ikke ferdige ennå.",
+      "takes": {
+        "female": {
+          "file": "audio/female/endnu-no.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.27,
+            0.427,
+            0.792
+          ]
+        },
+        "male": {
+          "file": "audio/male/endnu-no.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.265,
+            0.425,
+            0.77
+          ]
+        }
+      }
+    },
+    {
+      "id": "endnu-da",
+      "lang": "da-DK",
+      "text": "Vi er ikke færdige endnu.",
+      "takes": {
+        "female": {
+          "file": "audio/female/endnu-da.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.205,
+            0.3,
+            0.731
+          ]
+        },
+        "male": {
+          "file": "audio/male/endnu-da.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.205,
+            0.3,
+            0.74
+          ]
+        }
+      }
+    },
+    {
+      "id": "alligevel-no",
+      "lang": "nb-NO",
+      "text": "Han kom likevel, selv om han var syk.",
+      "takes": {
+        "female": {
+          "file": "audio/female/alligevel-no.mp3",
+          "timings": [
+            0.015,
+            0.205,
+            0.39,
+            0.948,
+            1.217,
+            1.322,
+            1.447,
+            1.578
+          ]
+        },
+        "male": {
+          "file": "audio/male/alligevel-no.mp3",
+          "timings": [
+            0.015,
+            0.19,
+            0.37,
+            0.95,
+            1.21,
+            1.305,
+            1.415,
+            1.545
+          ]
+        }
+      }
+    },
+    {
+      "id": "alligevel-da",
+      "lang": "da-DK",
+      "text": "Han kom alligevel, selvom han var syg.",
+      "takes": {
+        "female": {
+          "file": "audio/female/alligevel-da.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.411,
+            0.876,
+            1.197,
+            1.352,
+            1.452
+          ]
+        },
+        "male": {
+          "file": "audio/male/alligevel-da.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.395,
+            0.835,
+            1.16,
+            1.295,
+            1.39
+          ]
+        }
+      }
+    },
+    {
+      "id": "noget-no",
+      "lang": "nb-NO",
+      "text": "Har du sett noe rart i dag?",
+      "takes": {
+        "female": {
+          "file": "audio/female/noget-no.mp3",
+          "timings": [
+            0.015,
+            0.17,
+            0.295,
+            0.546,
+            0.761,
+            1.056,
+            1.116
+          ]
+        },
+        "male": {
+          "file": "audio/male/noget-no.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.275,
+            0.515,
+            0.725,
+            1.014,
+            1.069
+          ]
+        }
+      }
+    },
+    {
+      "id": "noget-da",
+      "lang": "da-DK",
+      "text": "Har du set noget mærkeligt i dag?",
+      "takes": {
+        "female": {
+          "file": "audio/female/noget-da.mp3",
+          "timings": [
+            0.015,
+            0.145,
+            0.25,
+            0.496,
+            0.681,
+            1.116,
+            1.186
+          ]
+        },
+        "male": {
+          "file": "audio/male/noget-da.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.24,
+            0.48,
+            0.66,
+            1.081,
+            1.136
+          ]
+        }
+      }
+    },
+    {
+      "id": "nogen-no",
+      "lang": "nb-NO",
+      "text": "Er det noen hjemme?",
+      "takes": {
+        "female": {
+          "file": "audio/female/nogen-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.255,
+            0.579
+          ]
+        },
+        "male": {
+          "file": "audio/male/nogen-no.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.25,
+            0.57
+          ]
+        }
+      }
+    },
+    {
+      "id": "nogen-da",
+      "lang": "da-DK",
+      "text": "Er der nogen hjemme?",
+      "takes": {
+        "female": {
+          "file": "audio/female/nogen-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.265,
+            0.495
+          ]
+        },
+        "male": {
+          "file": "audio/male/nogen-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.26,
+            0.485
+          ]
+        }
+      }
+    },
+    {
+      "id": "desuden-no",
+      "lang": "nb-NO",
+      "text": "Jeg er dessuten litt forkjølet.",
+      "takes": {
+        "female": {
+          "file": "audio/female/desuden-no.mp3",
+          "timings": [
+            0.015,
+            0.18,
+            0.28,
+            0.76,
+            0.925
+          ]
+        },
+        "male": {
+          "file": "audio/male/desuden-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.265,
+            0.752,
+            0.908
+          ]
+        }
+      }
+    },
+    {
+      "id": "desuden-da",
+      "lang": "da-DK",
+      "text": "Jeg er desuden lidt forkølet.",
+      "takes": {
+        "female": {
+          "file": "audio/female/desuden-da.mp3",
+          "timings": [
+            0.015,
+            0.125,
+            0.195,
+            0.596,
+            0.746
+          ]
+        },
+        "male": {
+          "file": "audio/male/desuden-da.mp3",
+          "timings": [
+            0.015,
+            0.115,
+            0.185,
+            0.605,
+            0.74
+          ]
+        }
+      }
+    },
+    {
+      "id": "hvad-no",
+      "lang": "nb-NO",
+      "text": "Hva sa du?",
+      "takes": {
+        "female": {
+          "file": "audio/female/hvad-no.mp3",
+          "timings": [
+            0.015,
+            0.235,
+            0.455
+          ]
+        },
+        "male": {
+          "file": "audio/male/hvad-no.mp3",
+          "timings": [
+            0.015,
+            0.235,
+            0.469
+          ]
+        }
+      }
+    },
+    {
+      "id": "hvad-da",
+      "lang": "da-DK",
+      "text": "Hvad sagde du?",
+      "takes": {
+        "female": {
+          "file": "audio/female/hvad-da.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.431
+          ]
+        },
+        "male": {
+          "file": "audio/male/hvad-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.411
+          ]
+        }
+      }
+    },
+    {
+      "id": "hvornaar-no",
+      "lang": "nb-NO",
+      "text": "Når kommer du?",
+      "takes": {
+        "female": {
+          "file": "audio/female/hvornaar-no.mp3",
+          "timings": [
+            0.015,
+            0.225,
+            0.525
+          ]
+        },
+        "male": {
+          "file": "audio/male/hvornaar-no.mp3",
+          "timings": [
+            0.015,
+            0.23,
+            0.52
+          ]
+        }
+      }
+    },
+    {
+      "id": "hvornaar-da",
+      "lang": "da-DK",
+      "text": "Hvornår kommer du?",
+      "takes": {
+        "female": {
+          "file": "audio/female/hvornaar-da.mp3",
+          "timings": [
+            0.015,
+            0.375,
+            0.689
+          ]
+        },
+        "male": {
+          "file": "audio/male/hvornaar-da.mp3",
+          "timings": [
+            0.015,
+            0.37,
+            0.673
+          ]
+        }
+      }
+    },
+    {
+      "id": "vaersgo-no",
+      "lang": "nb-NO",
+      "text": "Vær så god, maten er klar.",
+      "takes": {
+        "female": {
+          "file": "audio/female/vaersgo-no.mp3",
+          "timings": [
+            0.015,
+            0.24,
+            0.39,
+            0.716,
+            1.116,
+            1.207
+          ]
+        },
+        "male": {
+          "file": "audio/male/vaersgo-no.mp3",
+          "timings": [
+            0.015,
+            0.25,
+            0.395,
+            0.735,
+            1.114,
+            1.205
+          ]
+        }
+      }
+    },
+    {
+      "id": "vaersgo-da",
+      "lang": "da-DK",
+      "text": "Værsgo, maden er klar.",
+      "takes": {
+        "female": {
+          "file": "audio/female/vaersgo-da.mp3",
+          "timings": [
+            0.015,
+            0.66,
+            0.965,
+            1.04
+          ]
+        },
+        "male": {
+          "file": "audio/male/vaersgo-da.mp3",
+          "timings": [
+            0.015,
+            0.64,
+            0.94,
+            1.01
+          ]
+        }
+      }
+    },
+    {
+      "id": "stakkels-no",
+      "lang": "nb-NO",
+      "text": "Stakkars deg, det høres tøft ut.",
+      "takes": {
+        "female": {
+          "file": "audio/female/stakkels-no.mp3",
+          "timings": [
+            0.015,
+            0.495,
+            0.785,
+            0.94,
+            1.265,
+            1.592
+          ]
+        },
+        "male": {
+          "file": "audio/male/stakkels-no.mp3",
+          "timings": [
+            0.015,
+            0.479,
+            0.779,
+            0.925,
+            1.251,
+            1.566
+          ]
+        }
+      }
+    },
+    {
+      "id": "stakkels-da",
+      "lang": "da-DK",
+      "text": "Stakkels dig, det lyder hårdt.",
+      "takes": {
+        "female": {
+          "file": "audio/female/stakkels-da.mp3",
+          "timings": [
+            0.015,
+            0.526,
+            0.837,
+            0.942,
+            1.237
+          ]
+        },
+        "male": {
+          "file": "audio/male/stakkels-da.mp3",
+          "timings": [
+            0.015,
+            0.515,
+            0.817,
+            0.932,
+            1.208
+          ]
+        }
+      }
+    },
+    {
+      "id": "liksom-no",
+      "lang": "nb-NO",
+      "text": "Det var liksom ikke meningen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/liksom-no.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.32,
+            0.681,
+            0.832
+          ]
+        },
+        "male": {
+          "file": "audio/male/liksom-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.315,
+            0.665,
+            0.81
+          ]
+        }
+      }
+    },
+    {
+      "id": "liksom-da",
+      "lang": "da-DK",
+      "text": "Det var ligesom ikke meningen.",
+      "takes": {
+        "female": {
+          "file": "audio/female/liksom-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.275,
+            0.575,
+            0.69
+          ]
+        },
+        "male": {
+          "file": "audio/male/liksom-da.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.255,
+            0.551,
+            0.651
+          ]
+        }
+      }
+    },
+    {
+      "id": "skikkelig-no",
+      "lang": "nb-NO",
+      "text": "Det var skikkelig bra!",
+      "takes": {
+        "female": {
+          "file": "audio/female/skikkelig-no.mp3",
+          "timings": [
+            0.015,
+            0.175,
+            0.325,
+            0.696
+          ]
+        },
+        "male": {
+          "file": "audio/male/skikkelig-no.mp3",
+          "timings": [
+            0.015,
+            0.165,
+            0.31,
+            0.67
+          ]
+        }
+      }
+    },
+    {
+      "id": "skikkelig-da",
+      "lang": "da-DK",
+      "text": "Det var ordentlig godt!",
+      "takes": {
+        "female": {
+          "file": "audio/female/skikkelig-da.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.3,
+            0.581
+          ]
+        },
+        "male": {
+          "file": "audio/male/skikkelig-da.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.285,
+            0.59
+          ]
+        }
+      }
+    },
+    {
       "id": "udtale-no-dag",
       "lang": "nb-NO",
       "text": "dag",
