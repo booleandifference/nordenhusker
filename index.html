@@ -16,6 +16,11 @@
 <meta name="twitter:title" content="Nordenhusker — Dansk ↔ Norsk">
 <meta name="twitter:description" content="Norden husker mere end du tror. De ord der lurer, udtalen der driller, og tal/klokkeslæt.">
 <meta name="twitter:image" content="https://nordenhusker.dk/social-preview.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FFC531">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -226,6 +231,10 @@
   .subpanel{display:none;}
   .subpanel.active{display:block;}
 
+  .panel-intro{
+    font-size:13.5px; color:var(--ink-soft); margin:0 0 14px; max-width:640px; line-height:1.5;
+  }
+
   /* ---------- word cards ---------- */
   .grid{
     display:grid; grid-template-columns:repeat(auto-fill, minmax(272px,1fr)); gap:14px;
@@ -364,18 +373,24 @@
   </header>
 
   <div class="progress-row">
-    <span>Ord du kan</span>
+    <span>Ord der lurer, du kan</span>
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     <span class="progress-count"><span id="progressCount">0</span>/<span id="progressTotal">30</span></span>
   </div>
 
   <div class="tablist" role="tablist" aria-label="Sektioner">
-    <button class="tab" role="tab" aria-selected="true" id="tab-ord" aria-controls="panel-ord">Ord der lurer</button>
+    <button class="tab" role="tab" aria-selected="true" id="tab-skift" aria-controls="panel-skift">Ord der skifter</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-ord" aria-controls="panel-ord">Ord der lurer</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-udtale" aria-controls="panel-udtale">Udtale</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-mønstre" aria-controls="panel-mønstre">Tal &amp; tid</button>
   </div>
 
-  <section class="panel active" id="panel-ord" role="tabpanel" aria-labelledby="tab-ord">
+  <section class="panel active" id="panel-skift" role="tabpanel" aria-labelledby="tab-skift">
+    <p class="panel-intro">20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.</p>
+    <div class="grid" id="swapGrid"></div>
+  </section>
+
+  <section class="panel" id="panel-ord" role="tabpanel" aria-labelledby="tab-ord">
     <div class="grid" id="wordGrid"></div>
   </section>
 
@@ -538,6 +553,29 @@
     {id:"middag", word:"middag", da:"middag (aftensmåltid, sent — kl. 18-20)", no:"middag (aftensmåltid, tidligt — ofte kl. 16-17)", ex:"Vi spiser middag klokka fem her.", exen:"We eat dinner at five o'clock here.", tip:"Bliver du inviteret til middag i Norge, så mød op tidligere end du er vant til hjemmefra.", exda:"Vi spiser middag klokken syv i aften.", exdaen:"We're eating dinner at seven tonight.", tipno:"På dansk spiser man middag sent, ofte klokken 18-20 — møt ikke opp klokken fem som hjemme."}
   ];
 
+  var SWAP_WORDS = [
+    {id:"hinanden", da:"hinanden", no:"hverandre", ex:"De hjelper hverandre med leksene.", exen:"They help each other with the homework.", exda:"De hjælper hinanden med lektierne.", exdaen:"They help each other with the homework.", tip:"Ikke en falsk ven \u2014 bare et helt andet ord for det samme. Et af de mest brugte gensidige pronominer, s\u00e5 det er v\u00e6rd at l\u00e6re udenad f\u00f8rst.", tipno:"Ikke en falsk venn \u2014 bare et helt annet ord for det samme. Et av de mest brukte gjensidige pronomenene, verdt \u00e5 pugge f\u00f8rst."},
+    {id:"maaske", da:"m\u00e5ske", no:"kanskje", ex:"Jeg kommer kanskje litt sent i morgen.", exen:"I might be a bit late tomorrow.", exda:"Jeg kommer m\u00e5ske lidt sent i morgen.", exdaen:"I might be a bit late tomorrow.", tip:"Et af de aller hyppigste ord i hverdagssnak \u2014 v\u00e6rd at automatisere f\u00f8rst.", tipno:"Et av de aller vanligste ordene i hverdagsprat \u2014 verdt \u00e5 automatisere f\u00f8rst."},
+    {id:"efterhaanden", da:"efterh\u00e5nden", no:"etter hvert", ex:"Jeg blir bedre i norsk etter hvert.", exen:"I'm getting better at Norwegian gradually.", exda:"Jeg bliver bedre til norsk efterh\u00e5nden.", exdaen:"I'm getting better at Norwegian gradually.", tip:"Norsk deler det op i to ord i stedet for \u00e9t sammensat ord \u2014 samme betydning, anden opbygning.", tipno:"Norsk skriver det som to ord i stedet for \u00e9tt sammensatt ord \u2014 samme betydning, annen oppbygning."},
+    {id:"kun", da:"kun", no:"bare", ex:"Jeg har bare fem minutter.", exen:"I only have five minutes.", exda:"Jeg har kun fem minutter.", exdaen:"I only have five minutes.", tip:"Et af de mest brugte ord i norsk hverdagssprog \u2014 du kommer til at h\u00f8re det konstant.", tipno:"Et av de mest brukte ordene i dagligtale \u2014 du kommer til \u00e5 h\u00f8re det konstant."},
+    {id:"meget", da:"meget", no:"mye", ex:"Det er mye \u00e5 l\u00e6re p\u00e5 en gang.", exen:"That's a lot to learn at once.", exda:"Det er meget at l\u00e6re p\u00e5 \u00e9n gang.", exdaen:"That's a lot to learn at once.", tip:"OBS: forveksl ikke med \"sv\u00e6rt\", som betyder noget helt andet p\u00e5 norsk (se \"Ord der lurer\").", tipno:"OBS: ikke \u00e5 forveksle med dansk \"sv\u00e6rt\", som betyr \"vanskelig\" p\u00e5 dansk \u2014 helt motsatt av forsterkeren."},
+    {id:"saadan", da:"s\u00e5dan", no:"s\u00e5nn", ex:"Jeg har aldri gjort det s\u00e5nn f\u00f8r.", exen:"I've never done it like that before.", exda:"Jeg har aldrig gjort det s\u00e5dan f\u00f8r.", exdaen:"I've never done it like that before.", tip:"Besl\u00e6gtet, men stavem\u00e5den er forskellig nok til at forvirre i skrift.", tipno:"Beslektet, men stavem\u00e5ten er forskjellig nok til \u00e5 forvirre i skrift."},
+    {id:"lidt", da:"lidt", no:"litt", ex:"Kan jeg f\u00e5 litt mer kaffe?", exen:"Can I get a little more coffee?", exda:"Kan jeg f\u00e5 lidt mere kaffe?", exdaen:"Can I get a little more coffee?", tip:"Et af de mest almindelige ord du siger hver dag \u2014 nemt at g\u00f8re automatisk.", tipno:"Et av de vanligste ordene du sier hver dag \u2014 lett \u00e5 automatisere."},
+    {id:"nu", da:"nu", no:"n\u00e5", ex:"Kan vi gj\u00f8re det n\u00e5?", exen:"Can we do it now?", exda:"Kan vi g\u00f8re det nu?", exdaen:"Can we do it now?", tip:"Kort ord, h\u00f8j frekvens \u2014 det er tit dette ord, der afsl\u00f8rer dansk oprindelse i en norsk s\u00e6tning.", tipno:"Kort ord, h\u00f8y frekvens \u2014 det er ofte dette ordet som avsl\u00f8rer dansk opprinnelse i en norsk setning."},
+    {id:"igen", da:"igen", no:"igjen", ex:"Kan du si det igjen?", exen:"Can you say that again?", exda:"Kan du sige det igen?", exdaen:"Can you say that again?", tip:"Samme lyd, anden stavem\u00e5de \u2014 g bliver til gj.", tipno:"Samme lyd, annen staving \u2014 g blir til gj."},
+    {id:"endnu", da:"endnu", no:"enn\u00e5", ex:"Vi er ikke ferdige enn\u00e5.", exen:"We're not finished yet.", exda:"Vi er ikke f\u00e6rdige endnu.", exdaen:"We're not finished yet.", tip:"Bruges tit sammen med \"ikke\" \u2014 \"ikke endnu\" / \"ikke enn\u00e5\".", tipno:"Brukes ofte sammen med \"ikke\" \u2014 \"ikke enn\u00e5\" / \"ikke endnu\"."},
+    {id:"alligevel", da:"alligevel", no:"likevel", ex:"Han kom likevel, selv om han var syk.", exen:"He came anyway, even though he was sick.", exda:"Han kom alligevel, selvom han var syg.", exdaen:"He came anyway, even though he was sick.", tip:"Ikke helt uden sl\u00e6gtskab, men stavem\u00e5den er nok anderledes til at give bump i teksten.", tipno:"Ikke helt uten slektskap, men stavem\u00e5ten er annerledes nok til \u00e5 skape en kul i teksten."},
+    {id:"noget", da:"noget", no:"noe", ex:"Har du sett noe rart i dag?", exen:"Have you seen anything strange today?", exda:"Har du set noget m\u00e6rkeligt i dag?", exdaen:"Have you seen anything strange today?", tip:"Dukker op flere gange i n\u00e6sten enhver samtale \u2014 v\u00e6rd at f\u00e5 helt automatisk.", tipno:"Dukker opp flere ganger i nesten enhver samtale \u2014 verdt \u00e5 f\u00e5 helt automatisk."},
+    {id:"nogen", da:"nogen", no:"noen", ex:"Er det noen hjemme?", exen:"Is anyone home?", exda:"Er der nogen hjemme?", exdaen:"Is anyone home?", tip:"Ligner \"noget/noe\" (ovenfor), men er et andet ord \u2014 \"nogen\" er personer, \"noget\" er ting.", tipno:"Ligner \"noget/noe\" (over), men er et annet ord \u2014 \"nogen\" er personer, \"noget\" er ting."},
+    {id:"desuden", da:"desuden", no:"dessuten", ex:"Jeg er dessuten litt forkj\u00f8let.", exen:"Besides, I'm also a bit under the weather.", exda:"Jeg er desuden lidt fork\u00f8let.", exdaen:"Besides, I'm also a bit under the weather.", tip:"Almindeligt bindeord i b\u00e5de skrift og tale \u2014 besl\u00e6gtet, men stavem\u00e5den driller.", tipno:"Vanlig bindeord i b\u00e5de skrift og tale \u2014 beslektet, men stavem\u00e5ten skaper forvirring."},
+    {id:"hvad", da:"hvad", no:"hva", ex:"Hva sa du?", exen:"What did you say?", exda:"Hvad sagde du?", exdaen:"What did you say?", tip:"Et af de allermest almindelige ord i talesprog \u2014 nemt at forveksle skriftligt, selvom lyden er t\u00e6t p\u00e5.", tipno:"Et av de aller vanligste ordene i talespr\u00e5k \u2014 lett \u00e5 skrive feil selv om lyden ligger t\u00e6tt opptil."},
+    {id:"hvornaar", da:"hvorn\u00e5r", no:"n\u00e5r", ex:"N\u00e5r kommer du?", exen:"When are you coming?", exda:"Hvorn\u00e5r kommer du?", exdaen:"When are you coming?", tip:"Dansk har to ord: \"hvorn\u00e5r\" i sp\u00f8rgsm\u00e5l, \"n\u00e5r\" i bis\u00e6tninger (\"n\u00e5r du kommer\"). Norsk bruger \"n\u00e5r\" til begge dele.", tipno:"Dansk har to ord: \"hvorn\u00e5r\" i sp\u00f8rsm\u00e5l, \"n\u00e5r\" i bisetninger (\"n\u00e5r du kommer\"). Norsk bruker bare \"n\u00e5r\" til begge deler \u2014 pass p\u00e5 at du ikke sier \"hvorn\u00e5r\", det h\u00f8res gammeldags/dansk ut."},
+    {id:"vaersgo", da:"v\u00e6rsgo", no:"v\u00e6r s\u00e5 god", ex:"V\u00e6r s\u00e5 god, maten er klar.", exen:"Here you go, the food is ready.", exda:"V\u00e6rsgo, maden er klar.", exdaen:"Here you go, the food is ready.", tip:"Dansk har sammentrukket det til \u00e9t ord \u2014 norsk holder p\u00e5 tre.", tipno:"Dansk har trukket det sammen til \u00e9tt ord \u2014 norsk holder p\u00e5 tre ord."},
+    {id:"stakkels", da:"stakkels", no:"stakkars", ex:"Stakkars deg, det h\u00f8res t\u00f8ft ut.", exen:"Poor you, that sounds tough.", exda:"Stakkels dig, det lyder h\u00e5rdt.", exdaen:"Poor you, that sounds tough.", tip:"Bruges tit som medf\u00f8lende udbrud i hverdagssnak.", tipno:"Brukes ofte som et medf\u00f8lende utrop i dagligtale."},
+    {id:"liksom", da:"ligesom", no:"liksom", ex:"Det var liksom ikke meningen.", exen:"That wasn't, like, the intention.", exda:"Det var ligesom ikke meningen.", exdaen:"That wasn't, like, the intention.", tip:"P\u00e5 norsk er \"liksom\" ogs\u00e5 et meget almindeligt fyldord (svarende til engelsk \"like\") \u2014 h\u00f8r efter det i l\u00f8s snak, det er overalt.", tipno:"P\u00e5 dansk brukes \"ligesom\" sjeldnere som fyllord enn norsk \"liksom\", som er overalt i l\u00f8s prat."},
+    {id:"skikkelig", da:"ordentlig", no:"skikkelig", ex:"Det var skikkelig bra!", exen:"That was really good!", exda:"Det var ordentlig godt!", exdaen:"That was really good!", tip:"Som forst\u00e6rkerord ('rigtig/virkelig') hedder det \"ordentlig\" p\u00e5 dansk og \"skikkelig\" p\u00e5 norsk \u2014 meget hyppigt i afslappet tale.", tipno:"Som forsterker ('virkelig/veldig') heter det \"skikkelig\" p\u00e5 norsk og \"ordentlig\" p\u00e5 dansk \u2014 veldig vanlig i uformell tale."}
+  ];
+
   var UDTALE_WORDS = {
     no: {
       "dag":"[dɑːɡ]", "god":"[ɡuː]", "ung":"[ʉŋ]", "regn":"[rɛɪn]",
@@ -651,6 +689,59 @@
     });
   }
 
+  // ---------- swap-word cards ("ord der skifter") ----------
+  var swapGrid = document.getElementById("swapGrid");
+
+  function renderSwapWords(){
+    if(!swapGrid) return;
+    swapGrid.innerHTML = "";
+    var targetLang = direction === "da-no" ? "no" : "da";
+    var flag = UI[direction].flag;
+
+    SWAP_WORDS.forEach(function(w){
+      var key = "sw-" + w.id;
+      var card = document.createElement("article");
+      card.className = "card" + (known[key] ? " known" : "");
+      card.dataset.id = key;
+
+      var exampleText = direction === "da-no" ? w.ex : w.exda;
+      var exampleEn = direction === "da-no" ? w.exen : w.exdaen;
+      var tipText = direction === "da-no" ? w.tip : w.tipno;
+      var daTarget = targetLang === "da";
+      var noTarget = targetLang === "no";
+      var headline = daTarget ? w.da : w.no;
+
+      card.innerHTML =
+        '<div class="card-top"><span class="word">' + headline + '</span></div>' +
+        '<div class="split">' +
+          '<div class="' + (daTarget ? "target" : "") + '"><div class="meaning-label da">' + (daTarget ? "\ud83c\udfaf " : "") + 'DA</div><div class="meaning-text">' + w.da + '</div></div>' +
+          '<div class="divider"></div>' +
+          '<div class="' + (noTarget ? "target" : "") + '"><div class="meaning-label no">' + (noTarget ? "\ud83c\udfaf " : "") + 'NO</div><div class="meaning-text">' + w.no + '</div></div>' +
+        '</div>' +
+        '<div class="example">' + flag + ' <span><span class="example-sentence">' + karaokeMarkup(exampleText) + '</span><span class="en">' + exampleEn + '</span></span></div>' +
+        '<div class="tip">' + tipText + '</div>' +
+        '<div class="card-actions">' +
+          '<button class="speak-btn' + (targetLang === "da" ? " target-da" : "") + '" type="button" aria-label="' + UI[direction].speakAria + '">\u25b6 H\u00f8r</button>' +
+          '<button class="know-toggle" type="button" aria-pressed="' + (known[key]?"true":"false") + '">' + (known[key] ? UI[direction].knownLabel : UI[direction].knowLabel) + '</button>' +
+        '</div>';
+
+      var sentenceEl = card.querySelector(".example-sentence");
+      card.querySelector(".speak-btn").addEventListener("click", function(){
+        speak(exampleText, targetLang, sentenceEl, key + "-" + targetLang);
+      });
+      var knowBtn = card.querySelector(".know-toggle");
+      knowBtn.addEventListener("click", function(){
+        known[key] = !known[key];
+        saveKnown();
+        card.classList.toggle("known", !!known[key]);
+        knowBtn.setAttribute("aria-pressed", known[key] ? "true" : "false");
+        knowBtn.textContent = known[key] ? UI[direction].knownLabel : UI[direction].knowLabel;
+      });
+
+      swapGrid.appendChild(card);
+    });
+  }
+
   // ---------- pronunciation chip rows (rendered once, both langs, toggled by subpanel) ----------
   document.querySelectorAll(".chipword-row").forEach(function(row){
     var lang = row.dataset.lang;
@@ -693,6 +784,7 @@
     document.getElementById("udtale-da-no").classList.toggle("active", direction === "da-no");
     document.getElementById("udtale-no-da").classList.toggle("active", direction === "no-da");
     renderWords();
+    renderSwapWords();
     updateProgress();
     refreshVoiceUI();
   }
