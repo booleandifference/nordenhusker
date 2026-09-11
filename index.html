@@ -386,7 +386,7 @@
   </div>
 
   <section class="panel active" id="panel-skift" role="tabpanel" aria-labelledby="tab-skift">
-    <p class="panel-intro">20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.</p>
+    <p class="panel-intro" id="swapIntro">20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.</p>
     <div class="grid" id="swapGrid"></div>
   </section>
 
@@ -510,7 +510,7 @@
 
   </section>
 
-  <footer>
+  <footer id="footerText">
     Ordliste bygget på dokumenterede danske/norske "falske venner" — brug siden til at øve, ikke som ordbog for tvivlstilfælde. Fremskridt gemmes kun i denne browser.
   </footer>
 
@@ -605,6 +605,7 @@
       tabSkift: "Ord der byttes", tabOrd: "Ord der snyder",
       tabUdtale: "Udtale", tabMonstre: "Tal & tid",
       progressLabel: "Ord der snyder, du kan",
+      swapIntro: "20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.",
       flag: "🇳🇴"
     },
     "no-da": {
@@ -616,7 +617,29 @@
       tabSkift: "Ord som byttes", tabOrd: "Ord som lurer",
       tabUdtale: "Uttale", tabMonstre: "Tall & tid",
       progressLabel: "Ord som lurer, du kan",
+      swapIntro: "20 småord som ikke er falske venner — bare et helt annet ord for det samme. Høyfrekvente ord du bruker daglig, så det lønner seg mest å lære dem først.",
       flag: "🇩🇰"
+    }
+  };
+
+  // Footer copy is per-tab and per-direction: the old single sentence described
+  // the false-friends list even when another tab was open.
+  var FOOTER_TEXT = {
+    "panel-skift": {
+      "da-no": "Ordliste over danske/norske ord, der betyder det samme men bare er forskellige ord — ikke falske venner. Fremskridt gemmes kun i denne browser.",
+      "no-da": "Ordliste over norske/danske ord som betyr det samme, men bare er forskjellige ord — ikke falske venner. Fremgang lagres kun i denne nettleseren."
+    },
+    "panel-ord": {
+      "da-no": "Ordliste bygget på dokumenterede danske/norske \"falske venner\" — brug siden til at øve, ikke som ordbog for tvivlstilfælde. Fremskridt gemmes kun i denne browser.",
+      "no-da": "Ordliste bygget på dokumenterte danske/norske \"falske venner\" — bruk siden til å øve, ikke som oppslagsverk ved tvil. Fremgang lagres kun i denne nettleseren."
+    },
+    "panel-udtale": {
+      "da-no": "Udtalen er baseret på østnorsk (Oslo-udtale) og rigsdansk — dialekter kan afvige. Lyt efter forskellen, ikke kun stavemåden.",
+      "no-da": "Uttalen er basert på østnorsk (Oslo-uttale) og riksdansk — dialekter kan avvike. Lytt etter forskjellen, ikke bare stavemåten."
+    },
+    "panel-mønstre": {
+      "da-no": "Tal og klokkeslæt er klikbare i begge sprog — øv dem uafhængigt af hvilken retning du har valgt ovenfor.",
+      "no-da": "Tall og klokkeslett er klikkbare på begge språk — øv dem uavhengig av hvilken retning du har valgt over."
     }
   };
 
@@ -781,10 +804,18 @@
       document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("active"); });
       tab.setAttribute("aria-selected","true");
       document.getElementById(tab.getAttribute("aria-controls")).classList.add("active");
+      updateFooter();
     });
   });
 
   // ---------- direction switch ----------
+  function updateFooter(){
+    var selected = document.querySelector('.tab[aria-selected="true"]');
+    var panelId = selected ? selected.getAttribute("aria-controls") : "panel-skift";
+    var entry = FOOTER_TEXT[panelId];
+    if(entry) document.getElementById("footerText").textContent = entry[direction];
+  }
+
   var dirBtns = document.querySelectorAll(".dirBtn");
   function applyDirection(){
     dirBtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.dir === direction ? "true" : "false"); });
@@ -795,6 +826,8 @@
     document.getElementById("tab-udtale").textContent = L.tabUdtale;
     document.getElementById("tab-mønstre").textContent = L.tabMonstre;
     document.getElementById("progressLabel").textContent = L.progressLabel;
+    document.getElementById("swapIntro").textContent = L.swapIntro;
+    updateFooter();
     document.getElementById("udtale-da-no").classList.toggle("active", direction === "da-no");
     document.getElementById("udtale-no-da").classList.toggle("active", direction === "no-da");
     renderWords();
