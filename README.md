@@ -37,11 +37,43 @@ index.html          the whole app — markup, styles, and logic in one file
 audio/female/       123 mp3s, da-DK-Wavenet-F / nb-NO-Wavenet-F
 audio/male/         123 mp3s, da-DK-Wavenet-G / nb-NO-Wavenet-G
 audio/manifest.json clip id -> per-voice file + word timings, fetched at startup
-tools/              audio generator + card pre-renderer (not deployed)
+til-norge.html      generated — Danish-facing landing page (do not edit)
+til-danmark.html    generated — Norwegian-facing landing page (do not edit)
+tools/              audio generator + page generator (not deployed)
 brand guide/        reference brand deck (PDF, not deployed)
 firebase.json       Firebase Hosting config
 .firebaserc         pins the default project (nordenhusker-5ed3c)
 ```
+
+## Two landing paths
+
+One URL means one `<title>`, one meta description and one language, but the
+site serves two audiences searching for different things: Danes moving to
+Norway, and Norwegians moving to Denmark. So there are three pages, all the
+same app:
+
+| path | audience | direction | language |
+| --- | --- | --- | --- |
+| `/` | either, and brand queries | last used, else da→no | da |
+| `/til-norge` | Danes learning Norwegian | da→no | da |
+| `/til-danmark` | Norwegians learning Danish | no→da | nb |
+
+`til-norge.html` and `til-danmark.html` are **generated** by
+`tools/prerender.mjs` — never edit them. The script loads the real page,
+switches direction, and serializes the result, so the variants cannot drift
+from `index.html`; their titles and descriptions come from the `VARIANTS`
+array at the top of that script. The three pages carry a reciprocal `hreflang`
+set (`da` / `nb` / `x-default`), each canonicals to itself, and all three are
+in `sitemap.xml`.
+
+At runtime `index.html` reads the path and pre-sets the direction, ahead of
+any saved preference — arriving on `/til-danmark` is a more explicit statement
+of intent than whatever the last visit toggled. The switch still works from
+either page.
+
+`cleanUrls` in `firebase.json` is what serves `til-norge.html` at `/til-norge`.
+It also 301s `/index.html` to `/`, which removes the duplicate Google had
+indexed alongside the real home page.
 
 ## Pre-rendered word cards and structured data
 
@@ -106,8 +138,8 @@ to Web Speech voices. Serve the folder over HTTP to hear the real clips locally.
 
 ## Deploying
 
-Run `npm run prerender` before deploying if the word data or card markup
-changed, so the shipped HTML matches the app.
+Run `npm run prerender` before deploying if anything in `index.html` changed,
+so the two generated landing pages match it.
 
 Hosted on Firebase Hosting, project `nordenhusker-5ed3c`. The repo root is the
 public directory, so `index.html` stays openable straight from disk; `README.md`,

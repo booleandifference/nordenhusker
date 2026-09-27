@@ -60,10 +60,14 @@ a non-code half, put it where the work is and cross-reference the other file.
 - No build step — `index.html` is edited directly. Run the JS-syntax check
   (extract the `<script>` block, `new Function()` it) after any script edit
   before committing.
-- Re-run `npm run prerender` after touching `WORDS`, `SWAP_WORDS` or the card
-  markup. The da→no cards and the schema.org JSON-LD are generated into
+- `index.html` is the only page you edit. `til-norge.html` and
+  `til-danmark.html` are generated from it — re-run `npm run prerender` after
+  *any* change to `index.html`, or the two landing pages silently go stale.
+  Their titles/descriptions live in the `VARIANTS` array in
+  `tools/prerender.mjs`, not in the generated files.
+- The same command generates the da→no cards and the schema.org JSON-LD into
   `index.html` (see README's "Pre-rendered word cards and structured data");
-  the generated blocks live between
+  those blocks live between
   `<!--prerender:*-->` markers and must not be hand-edited — edit the render
   functions and regenerate.
 - Regenerate audio (`tools/generate-audio.mjs`) after editing any spoken
