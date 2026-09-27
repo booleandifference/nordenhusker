@@ -1,4 +1,5 @@
-// Pre-render the word cards into index.html so they exist for crawlers.
+// Pre-render the word cards into index.html so they exist for crawlers, and
+// emit the schema.org JSON-LD that describes them.
 //
 // Why: both word grids are built at runtime by renderWords()/renderSwapWords()
 // via innerHTML, so a crawler that doesn't execute JS sees two empty <div>s —
@@ -11,6 +12,11 @@
 //
 // Only the default direction (da-no) is pre-rendered — the direction switch is
 // interactive anyway, and the canonical page is the Danish-facing one.
+//
+// The JSON-LD is built from the same rendered cards, for the same reason: the
+// word pairs are described once, in index.html, and everything else is derived.
+// Note there is no Google rich result for DefinedTerm — this is about machine-
+// readable content, not stars in the SERP. See README.
 //
 // Re-run after changing WORDS, SWAP_WORDS, or the card markup:
 //   npm run prerender
@@ -67,6 +73,88 @@ function tidy(markup) {
   return "\n" + markup.replaceAll("</article><article", "</article>\n<article").trim() + "\n";
 }
 
+const SITE = "https://nordenhusker.dk/";
+
+// Read the pairs back out of the cards the app just rendered, so the structured
+// data cannot describe something the page doesn't show.
+function readTerms(page, gridId) {
+  return page.$$eval(`#${gridId} article`, (cards) =>
+    cards.map((card) => {
+      const meanings = card.querySelectorAll(".meaning-text");
+      return {
+        id: card.dataset.id,
+        word: card.querySelector(".word").textContent.trim(),
+        da: meanings[0]?.textContent.trim(),
+        no: meanings[1]?.textContent.trim(),
+      };
+    }),
+  );
+}
+
+function definedTerm(setId, t, description) {
+  return {
+    "@type": "DefinedTerm",
+    // the "sw-" prefix namespaces localStorage progress, not the term itself
+    "@id": `${SITE}#term-${setId}-${t.id.replace(/^sw-/, "")}`,
+    name: t.word,
+    description,
+    inDefinedTermSet: { "@id": `${SITE}#${setId}` },
+  };
+}
+
+function buildJsonLd(falseFriends, swaps) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": `${SITE}#app`,
+        name: "Nordenhusker",
+        url: SITE,
+        description:
+          "Flytter du mellem Danmark og Norge? Nordenhusker øver præcis forskellen: " +
+          "ordene der snyder, udtalen og tal — med lyd på begge sprog. Gratis, ingen login.",
+        applicationCategory: "EducationalApplication",
+        inLanguage: ["da", "nb"],
+        isAccessibleForFree: true,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "DKK" },
+        teaches:
+          "Forskellene mellem dansk og norsk bokmål: falske venner, ord der byttes ud, " +
+          "udtale, tal og klokkeslæt.",
+        audience: {
+          "@type": "Audience",
+          audienceType:
+            "Danskere der flytter til Norge, og nordmænd der flytter til Danmark",
+        },
+      },
+      {
+        "@type": "DefinedTermSet",
+        "@id": `${SITE}#ord-der-snyder`,
+        name: "Ord der snyder — falske venner mellem dansk og norsk",
+        description:
+          "Ord der staves ens på dansk og norsk, men betyder noget forskelligt.",
+        inLanguage: ["da", "nb"],
+        hasDefinedTerm: falseFriends.map((t) =>
+          definedTerm("ord-der-snyder", t, `Betyder «${t.da}» på dansk, men «${t.no}» på norsk.`),
+        ),
+      },
+      {
+        "@type": "DefinedTermSet",
+        "@id": `${SITE}#ord-der-byttes`,
+        name: "Ord der byttes — samme betydning, forskelligt ord",
+        description:
+          "Højfrekvente ord der betyder det samme på dansk og norsk, men hvor sprogene bruger hvert sit ord.",
+        inLanguage: ["da", "nb"],
+        hasDefinedTerm: swaps.map((t) => ({
+          ...definedTerm("ord-der-byttes", t, `Norsk «${t.no}» svarer til dansk «${t.da}».`),
+          name: t.no,
+          alternateName: t.da,
+        })),
+      },
+    ],
+  };
+}
+
 const server = await serve();
 const url = `http://127.0.0.1:${server.address().port}/`;
 const browser = await chromium.launch();
@@ -97,9 +185,29 @@ try {
     console.log(`${id}: ${n} cards`);
   }
 
+  const jsonLd = buildJsonLd(
+    await readTerms(page, "wordGrid"),
+    await readTerms(page, "swapGrid"),
+  );
+  const terms = jsonLd["@graph"].reduce((n, node) => n + (node.hasDefinedTerm?.length ?? 0), 0);
+  if (terms !== 50) throw new Error(`expected 50 defined terms, built ${terms}`);
+  for (const node of jsonLd["@graph"]) {
+    for (const t of node.hasDefinedTerm ?? []) {
+      if (!t.name || !t.description.includes("«")) throw new Error(`incomplete term: ${t["@id"]}`);
+    }
+  }
+  console.log(`json-ld: ${terms} defined terms`);
+
+  // "<" is escaped so the payload can never close its own <script> element.
+  const script =
+    '\n<script type="application/ld+json">\n' +
+    JSON.stringify(jsonLd, null, 2).replaceAll("<", "\\u003c") +
+    "\n</" + "script>\n";
+
   let html = await readFile(FILE, "utf8");
   const before = html.length;
   for (const [id, markup] of Object.entries(grids)) html = inject(html, id, tidy(markup));
+  html = inject(html, "jsonld", script);
   await writeFile(FILE, html);
   console.log(`index.html: ${before} -> ${html.length} bytes`);
 } finally {

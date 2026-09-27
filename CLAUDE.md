@@ -61,8 +61,9 @@ a non-code half, put it where the work is and cross-reference the other file.
   (extract the `<script>` block, `new Function()` it) after any script edit
   before committing.
 - Re-run `npm run prerender` after touching `WORDS`, `SWAP_WORDS` or the card
-  markup. The da→no cards are pre-rendered into `index.html` for crawlers (see
-  README's "Pre-rendered word cards"); the generated block lives between
+  markup. The da→no cards and the schema.org JSON-LD are generated into
+  `index.html` (see README's "Pre-rendered word cards and structured data");
+  the generated blocks live between
   `<!--prerender:*-->` markers and must not be hand-edited — edit the render
   functions and regenerate.
 - Regenerate audio (`tools/generate-audio.mjs`) after editing any spoken

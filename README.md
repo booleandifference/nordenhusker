@@ -43,7 +43,7 @@ firebase.json       Firebase Hosting config
 .firebaserc         pins the default project (nordenhusker-5ed3c)
 ```
 
-## Pre-rendered word cards
+## Pre-rendered word cards and structured data
 
 The word cards are built at runtime by `renderWords()`/`renderSwapWords()`, so
 for a crawler that doesn't execute JS the two grids were empty `<div>`s — none
@@ -57,6 +57,18 @@ there is still exactly one card template — the one in `index.html`. At runtime
 the app wipes the grids and re-renders as before, which is what makes the
 direction switch and the progress toggles work; the static copy is progressive
 enhancement for crawlers and for no-JS visitors.
+
+The same script also emits the schema.org JSON-LD in `<head>`: a
+`WebApplication` node for the app plus two `DefinedTermSet`s (30 false friends,
+20 swapped words) with a `DefinedTerm` per pair. It is built by reading the
+pairs back out of the cards that were just rendered, so the structured data
+cannot describe something the page doesn't show.
+
+Worth being clear about what that buys: Google has no rich result for
+`DefinedTerm`, so this will not produce snippets in the search results. It
+makes the content machine-readable — for Google's understanding of what the
+page is, and for the AI answer engines that increasingly read schema — and it
+costs ~2 KB gzipped.
 
 Re-run after changing `WORDS`, `SWAP_WORDS`, or the card markup — it is
 idempotent, so running it when nothing changed rewrites the same bytes:
