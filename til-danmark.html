@@ -827,7 +827,7 @@
     background:var(--surface); border:1px solid var(--border); border-radius:14px;
     box-shadow:var(--shadow); padding:18px 20px; margin-bottom:14px;
   }
-  .sound-card h3{font-size:18px; margin-bottom:6px;}
+  .sound-card h3{font-size:18px; margin:0 0 6px;}
   .sound-card p{font-size:13.5px; color:var(--ink-soft); margin:0 0 12px; max-width:64ch;}
   .chipword-row{display:flex; flex-wrap:wrap; gap:8px;}
   .chipword{
@@ -858,6 +858,40 @@
   table.contrast td{padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:middle;}
   table.contrast tr:last-child td{border-bottom:none;}
   table.contrast td.num{font-family:"IBM Plex Mono"; font-variant-numeric:tabular-nums; color:var(--ink-soft); width:40px;}
+
+  /* usage tables: prose in the cells, so top-aligned and roomier than .contrast */
+  table.usage td{vertical-align:top; padding:10px; font-size:13px; line-height:1.45;}
+  table.usage td.key{font-weight:600; width:23%; white-space:normal;}
+  table.usage td.ex{color:var(--ink-soft); font-style:italic; width:28%;}
+  table.usage .note{display:block; margin-top:4px; font-size:12px; color:var(--ink-soft); font-style:normal;}
+
+  /* three prose columns don't fit a phone: stack each row into a block */
+  @media (max-width:640px){
+    table.usage, table.usage tr, table.usage td{display:block; width:auto;}
+    table.usage tr{border-bottom:1px solid var(--border); padding:6px 0;}
+    table.usage tr:last-child{border-bottom:none;}
+    table.usage tr:first-child{display:none;}
+    table.usage td{border-bottom:none; padding:2px 0;}
+    /* the percentage widths are more specific than the reset above, so the
+       stacked cells need them cleared by name */
+    table.usage td.key{width:auto; font-size:14px;}
+    table.usage td.ex{width:auto;}
+  }
+
+  .callout{margin-top:14px; background:var(--gold-soft); border:1px solid var(--gold); border-radius:10px; padding:12px 14px;}
+  .callout h4{font-size:14px; margin:0 0 6px;}
+  .callout p{font-size:13px; color:var(--ink-soft); margin:0 0 6px; max-width:64ch;}
+  .callout p:last-child{margin-bottom:0;}
+
+  .sense{border-top:1px solid var(--border); padding:12px 0;}
+  .sense:last-of-type{padding-bottom:4px;}
+  .sense h4{font-size:14px; margin:0 0 6px;}
+  .sense p{font-size:13.5px; margin:0; max-width:64ch;}
+  .sense p.note{font-size:12.5px; color:var(--ink-soft); margin-top:6px;}
+  .sense.flag h4{color:var(--accent-da);}
+  .da-ex{font-style:italic;}
+  .no-ex{font-style:italic; font-weight:600;}
+  .footnote{margin:14px 0 0; font-size:12px; color:var(--ink-soft); max-width:64ch;}
   .lang-word{display:inline-flex; align-items:center; gap:7px; cursor:pointer;}
   .lang-word .speaker-ico{width:18px; height:18px; font-size:9px;}
   .lang-word.lang-da .speaker-ico{background:var(--accent-da);}
@@ -922,6 +956,7 @@
     <button class="tab" role="tab" aria-selected="false" id="tab-ord" aria-controls="panel-ord">Ord som lurer</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-udtale" aria-controls="panel-udtale">Uttale</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-mønstre" aria-controls="panel-mønstre">Tall &amp; tid</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-småord" aria-controls="panel-småord">Småord &amp; skriveregler</button>
   </div>
 
   <section class="panel active" id="panel-skift" role="tabpanel" aria-labelledby="tab-skift">
@@ -935,7 +970,7 @@
 
   <section class="panel" id="panel-udtale" role="tabpanel" aria-labelledby="tab-udtale">
 
-    <div class="subpanel" id="udtale-da-no">
+    <div class="subpanel" id="udtale-da-no" data-dir="da-no">
 
       <div class="sound-card">
         <h3>Norsk dropper ikke bogstaverne</h3>
@@ -975,7 +1010,7 @@
 
     </div>
 
-    <div class="subpanel active" id="udtale-no-da">
+    <div class="subpanel active" id="udtale-no-da" data-dir="no-da">
 
       <div class="sound-card">
         <h3>Dansk blødgør bogstaverne</h3>
@@ -1045,6 +1080,184 @@
     <div class="sound-card">
       <h3>Resten af sætningen? Rolig.</h3>
       <p>Bortset fra tal og klokkeslæt er sætningsbygningen praktisk talt identisk mellem dansk og norsk — samme ordstilling (verbet på andenpladsen), samme endelser for bestemt form ("bilen" er "bilen" i begge sprog), samme bøjning af udsagnsord. Det er ikke grammatikken der forråder dig, det er ordene i første fane.</p>
+    </div>
+
+  </section>
+
+  <section class="panel" id="panel-småord" role="tabpanel" aria-labelledby="tab-småord">
+
+    <div class="sound-card">
+      <div class="subpanel" data-dir="da-no">
+        <h3>Fyldord: de små ord der afslører dig til sidst</h3>
+        <p>Du kan sige det helt rigtige og stadig lyde udenlandsk, fordi de små ord mangler. Fyldord oversættes sjældent til noget konkret — det er ikke betydningen, du skal lære, men hvad de <em>gør</em> ved sætningen.</p>
+        <table class="contrast usage">
+          <tbody><tr><th>Ord</th><th>Hvad det gør</th><th>Eksempel</th></tr>
+          <tr>
+            <td class="key">liksom</td>
+            <td>Blødgør eller gør omtrentligt — "ligesom, på en måde". Kan også signalere skepsis, altså "angiveligt".<span class="note">Meget uformelt ungdomssprog — brug det sparsomt på arbejdet.</span></td>
+            <td class="ex">Han var liksom ikke enig.</td>
+          </tr>
+          <tr>
+            <td class="key">altså</td>
+            <td>Opsummerer eller konkluderer ("altså, jeg mener"). Sidst i sætningen udtrykker det frustration.<span class="note">Næsten identisk med dansk "altså" — den kan du tage med dig.</span></td>
+            <td class="ex">Det er bare irriterende, altså.</td>
+          </tr>
+          <tr>
+            <td class="key">vel</td>
+            <td>Blødgør et udsagn til noget bekræftelsessøgende — "…ikke?".<span class="note">Direkte modstykke til dansk "vel". Kan oversættes 1:1.</span></td>
+            <td class="ex">Du kommer vel i morgen?</td>
+          </tr>
+          <tr>
+            <td class="key">ikke sant</td>
+            <td>Oprindeligt en "ikke?"-tag i slutningen af en sætning, men bruges i stigende grad alene som et selvstændigt svar, der bekræfter enighed.<span class="note">Den selvstændige brug har ingen dansk parallel — dansk "ik'" er en tag, ikke et svar.</span></td>
+            <td class="ex">— Det var koldt i dag.<br>— Ikke sant.</td>
+          </tr>
+          <tr>
+            <td class="key">jaja · neinei · joda</td>
+            <td>Gentagelsen tilføjer en tone — resignation, eller varm forsikring — som det enkelte ord ikke har.<span class="note">Hør efter tonefaldet før du bruger dem: samme ord, meget forskellig temperatur.</span></td>
+            <td class="ex">—</td>
+          </tr>
+          <tr>
+            <td class="key">da</td>
+            <td>Blødgør en opfordring eller en påstand, omtrent "kom nu".<span class="note">Delt kognat med dansk "da", og bruges nogenlunde ens.</span></td>
+            <td class="ex">Kom da igen!</td>
+          </tr>
+        </tbody></table>
+      </div>
+      <div class="subpanel active" data-dir="no-da">
+        <h3>Fyllord: de små ordene som avslører deg til slutt</h3>
+        <p>Du kan si det helt riktige og fortsatt høres utenlandsk ut, fordi småordene mangler. Dansk har en stor beholdning av dem, og de oversettes sjelden til noe konkret — det er ikke betydningen du skal lære, men hva de <em>gjør</em> med setningen.</p>
+        <table class="contrast usage">
+          <tbody><tr><th>Ord</th><th>Hva det gjør</th><th>Eksempel</th></tr>
+          <tr><td class="key">jo</td><td>Markerer informasjon som felles eller allerede kjent — "som du jo vet".<span class="note">Deler funksjon med norsk "jo" i store trekk.</span></td><td class="ex">Han er jo syg.</td></tr>
+          <tr><td class="key">sgu</td><td>Avsvekket ed ("så Gud"), en hverdagslig forsterker ≈ "sgu da, virkelig".<span class="note">Uformelt, mildt frekt register — ingen norsk 1:1-oversettelse.</span></td><td class="ex">Det var sgu koldt.</td></tr>
+          <tr><td class="key">da</td><td>"Sikkert, selvfølgelig" — imøtegår mildt og inviterer til enighet.<span class="note">Delt kognat med norsk "da".</span></td><td class="ex">Det går da fint.</td></tr>
+          <tr><td class="key">dog</td><td>"Dog, likevel" — innrømmende.</td><td class="ex">Det er dog underligt.</td></tr>
+          <tr><td class="key">skam</td><td>"Faktisk, virkelig" — varm forsikring mot tvil, litt gammeldags.</td><td class="ex">Det er skam ikke svært.</td></tr>
+          <tr><td class="key">vel</td><td>"Jeg antar" — gjør utsagnet til et mykt spørsmål.<span class="note">Speilbilde av norsk "vel".</span></td><td class="ex">Du kommer vel?</td></tr>
+          <tr><td class="key">vist</td><td>"Jeg tror, jeg antar" — taleren mangler full sikkerhet.</td><td class="ex">Han er vist ikke hjemme.</td></tr>
+          <tr><td class="key">nok</td><td>Epistemisk "jeg er ganske sikker på, sannsynligvis".</td><td class="ex">Det går nok.</td></tr>
+          <tr><td class="key">ikke · ik'</td><td>Uformell tag ("…ikke?") som myker opp utsagnet.</td><td class="ex">Det er koldt, ik'?</td></tr>
+          <tr><td class="key">mon</td><td>Gjør spørsmålet til en undring — "mon ikke…".</td><td class="ex">Mon han kommer?</td></tr>
+          <tr><td class="key">bare</td><td>Forsterker oppfordringer og utsagn.<span class="note">Delt kognat med norsk "bare", men brukes ikke helt likt.</span></td><td class="ex">Gør det bare!</td></tr>
+          <tr><td class="key">sådan</td><td>Eksemplifiserende eller oppmykende markør — omtrent som norsk "sånn".</td><td class="ex">Det er sådan lidt svært at forklare.</td></tr>
+        </tbody></table>
+        <div class="callout">
+          <h4>Danske halespørsmål: <span class="mono">ikke?</span> og <span class="mono">vel?</span></h4>
+          <p>Dansk bruker <strong>ikke?</strong> etter et positivt utsagn og <strong>vel?</strong> etter et negativt — og formen endrer seg aldri med verbet, slik den gjør på engelsk. <em>Det er koldt, ikke?</em> · <em>Det er ikke koldt, vel?</em></p>
+          <p>Og én regel til: et positivt halespørsmål kan bare motsies med <strong>jo</strong>, aldri med "ja".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sound-card">
+      <div class="subpanel" data-dir="da-no">
+        <h3>"Lige": Danmarks mest umulige ord</h3>
+        <p>Ét dansk ord, seks jobs — og de oversættes ikke til det samme norske ord. Det er her, en ellers god norsk sætning knækker.</p>
+      </div>
+      <div class="subpanel active" data-dir="no-da">
+        <h3>«Lige»: Danmarks mest umulige ord</h3>
+        <p>Ett dansk ord, seks jobber. Du møter det overalt i dansk tale, og det betyr noe nytt nesten hver gang — her er hva det gjør, sett fra norsk.</p>
+      </div>
+
+      <div class="sense">
+        <h4>1 · Adjektiv: lige, jævn</h4>
+        <p><span class="da-ex">en lige linje</span> → <span class="no-ex">en rett / rak linje</span> · <span class="da-ex">et lige tal</span> → <span class="no-ex">et like tall</span></p>
+      </div>
+      <div class="sense">
+        <h4>2 · Adverbium: præcis, nøjagtig</h4>
+        <p><span class="da-ex">Det er lige det jeg mente</span> → <span class="no-ex">Det er akkurat / nettopp det jeg mente</span></p>
+      </div>
+      <div class="sense">
+        <h4>3 · Adverbium: lige nu, for et øjeblik siden</h4>
+        <p><span class="da-ex">Han er lige gået</span> → <span class="no-ex">Han har nettopp gått</span> · <span class="no-ex">Han er akkurat gått</span></p>
+        <p class="note">Nettopp og akkurat er nærmest synonyme her.</p>
+      </div>
+      <div class="sense flag">
+        <h4>4 · Sammenligning: "lige så … som" — fælden</h4>
+        <p><span class="da-ex">lige så god som</span> → <span class="no-ex">like god som</span></p>
+        <p class="note">Her bliver "lige" til <strong>like</strong> — ikke akkurat, ikke nettopp. Det er den mest almindelige fejl: man lærer én oversættelse af "lige" og bruger den også i sammenligninger, hvor den er forkert.</p>
+      </div>
+      <div class="sense">
+        <h4>5 · "ikke lige" — ikke ligefrem</h4>
+        <p><span class="da-ex">ikke lige det bedste</span> → <span class="no-ex">ikke akkurat det beste</span></p>
+        <p class="note">Her passer akkurat faktisk direkte.</p>
+      </div>
+      <div class="sense flag">
+        <h4>6 · Blødgørende partikel — ingen god oversættelse</h4>
+        <p><span class="da-ex">Kom lige her</span> · <span class="da-ex">jeg skal lige …</span></p>
+        <p class="note">Her gør "lige" en anmodning triviel og uformel, og der findes ikke noget rigtigt norsk modstykke. Det nærmeste er <strong>bare</strong> (<em>kom bare her</em>), men det gør ikke helt det samme arbejde. Nogle gange er der ikke et 1:1-ord — brug bare, og accepter at nuancen forsvinder lidt.</p>
+      </div>
+      <p class="footnote">"Lige" findes slet ikke som ord i bokmål — nul opslag i ordbokene.no. Modsat de fleste andre småord kan du ikke regne med genkendelse her overhovedet.</p>
+    </div>
+
+    <div class="sound-card">
+      <div class="subpanel" data-dir="da-no">
+        <h3>Skriveregler: hvad ændrer sig, når du skriver?</h3>
+        <p>Mønstre, du kan bruge som <em>tjekliste</em> — ikke som søg-og-erstat. Næsten alle har undtagelser, og de undtagelser er almindelige ord.</p>
+      </div>
+      <div class="subpanel active" data-dir="no-da">
+        <h3>Skriveregler: hva endrer seg når du skriver?</h3>
+        <p>Mønstre du kan bruke som <em>sjekkliste</em> — ikke som søk-og-erstatt. Nesten alle har unntak, og unntakene er vanlige ord. Lest motsatt vei viser tabellen hva du skal endre for å skrive dansk.</p>
+      </div>
+      <table class="contrast usage">
+        <tbody><tr><th>Mønster</th><th>Eksempler</th><th>NB</th></tr>
+        <tr>
+          <td class="key">-nd- / -ld- bliver nogle gange -nn- / -ll-</td>
+          <td class="ex">kende → kjenne · finde → finne · vinde → vinne · brænde → brenne · vand → vann · sandt → sant</td>
+          <td><strong>Ikke pålideligt.</strong> denne bliver denne, sende bliver sende, hund bliver hund, land bliver land. Tjek altid det enkelte ord.</td>
+        </tr>
+        <tr>
+          <td class="key">Blødt b/d/g bliver hårdt p/t/k efter vokal</td>
+          <td class="ex">løbe → løpe · kage → kake · gade → gate · bog → bok · mad → mat</td>
+          <td>Ret systematisk — det mest pålidelige mønster på listen.</td>
+        </tr>
+        <tr>
+          <td class="key">Diftonger: ej → ei, øj → øy</td>
+          <td class="ex">vej → vei · løj → løy</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="key">Pronominer: -ig → -eg</td>
+          <td class="ex">mig → meg · dig → deg · sig → seg</td>
+          <td>Lille, lukket liste — den kan læres udenad på et minut.</td>
+        </tr>
+        <tr>
+          <td class="key">æ bliver e i mange ord</td>
+          <td class="ex">bæger → beger · læber → lepper · mærkelig → merkelig</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="key">Bevaret gj-, kj-, skj- foran e/æ/ø</td>
+          <td class="ex">gemme → gjemme · kær → kjær · skøn → skjønn</td>
+          <td>Dansk har forenklet disse væk, norsk har beholdt dem.</td>
+        </tr>
+        <tr>
+          <td class="key">af bliver av</td>
+          <td class="ex">af → av</td>
+          <td>Ligesom svensk.</td>
+        </tr>
+        <tr>
+          <td class="key">Dobbelt slutkonsonant adskiller ord, dansk slår sammen</td>
+          <td class="ex">dansk "vis" (både klog og sikker) → vis / viss</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="key">Låneord: dansk beholder kildesprogets stavning, norsk fornorsker</td>
+          <td class="ex">bureau → byrå · chauffør → sjåfør · information → informasjon</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td class="key">Kommaregler</td>
+          <td class="ex">—</td>
+          <td>Traditionelt dansk komma sættes både før og efter en bisætning; norsk kun efter. Relevant hvis du skriver formelt.</td>
+        </tr>
+        <tr>
+          <td class="key">Fire meget almindelige verber, der bare forkortes</td>
+          <td class="ex">have → ha · blive → bli · give → gi · tage → ta</td>
+          <td>Ikke et mønster — lær de fire. De fleste andre udsagnsord er identiske: spise, drikke, skrive.</td>
+        </tr>
+      </tbody></table>
     </div>
 
   </section>
@@ -1182,6 +1395,10 @@
     "panel-mønstre": {
       "da-no": "Tal og klokkeslæt er klikbare i begge sprog — øv dem uafhængigt af hvilken retning du har valgt ovenfor.",
       "no-da": "Tall og klokkeslett er klikkbare på begge språk — øv dem uavhengig av hvilken retning du har valgt over."
+    },
+    "panel-småord": {
+      "da-no": "Disse mønstre er tendenser, ikke faste regler — tjek altid det enkelte ord.",
+      "no-da": "Disse mønstrene er tendenser, ikke faste regler — sjekk alltid hvert enkelt ord."
     }
   };
 
@@ -1381,8 +1598,9 @@
     document.getElementById("progressLabel").textContent = L.progressLabel;
     document.getElementById("swapIntro").textContent = L.swapIntro;
     updateFooter();
-    document.getElementById("udtale-da-no").classList.toggle("active", direction === "da-no");
-    document.getElementById("udtale-no-da").classList.toggle("active", direction === "no-da");
+    document.querySelectorAll(".subpanel[data-dir]").forEach(function(sp){
+      sp.classList.toggle("active", sp.dataset.dir === direction);
+    });
     renderWords();
     renderSwapWords();
     updateProgress();

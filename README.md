@@ -17,6 +17,10 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
 - Karaoke word highlighting driven by real word onsets from the TTS API, not estimates
 - Web Speech API retained as a fallback whenever a clip is missing or won't play
 - Pronunciation cards (6 per direction) and a numbers/time section
+- "Småord & skriveregler" tab — filler words per direction, a deep-dive on the
+  many senses of Danish "lige", and a spelling/writing-pattern table. Static
+  HTML rather than JS-rendered, and framed as tendencies to check rather than
+  find-and-replace rules
 - Branded "Nordenhusker" — gold/red/blue palette, blackletter + mono type (see `brand guide/Main.pdf`)
 
 ## Roadmap
