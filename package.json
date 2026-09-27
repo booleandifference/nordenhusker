@@ -5,7 +5,8 @@
   "description": "Dev tooling only — the app itself is a single static index.html with no build step.",
   "scripts": {
     "audio": "node tools/generate-audio.mjs",
-    "favicons": "node tools/generate-favicons.mjs"
+    "favicons": "node tools/generate-favicons.mjs",
+    "prerender": "node tools/prerender.mjs"
   },
   "devDependencies": {
     "playwright": "^1.63.0"

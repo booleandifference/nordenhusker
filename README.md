@@ -37,10 +37,32 @@ index.html          the whole app — markup, styles, and logic in one file
 audio/female/       123 mp3s, da-DK-Wavenet-F / nb-NO-Wavenet-F
 audio/male/         123 mp3s, da-DK-Wavenet-G / nb-NO-Wavenet-G
 audio/manifest.json clip id -> per-voice file + word timings, fetched at startup
-tools/              audio generator (not deployed)
+tools/              audio generator + card pre-renderer (not deployed)
 brand guide/        reference brand deck (PDF, not deployed)
 firebase.json       Firebase Hosting config
 .firebaserc         pins the default project (nordenhusker-5ed3c)
+```
+
+## Pre-rendered word cards
+
+The word cards are built at runtime by `renderWords()`/`renderSwapWords()`, so
+for a crawler that doesn't execute JS the two grids were empty `<div>`s — none
+of the actual searchable content (the word pairs) was in the HTML. The cards for
+the default direction (da→no) are therefore pre-rendered into `index.html`
+between `<!--prerender:wordGrid-->` / `<!--prerender:swapGrid-->` markers.
+
+`tools/prerender.mjs` loads the real page in Playwright, lets the app's own
+render functions run, and writes the resulting markup back into the file, so
+there is still exactly one card template — the one in `index.html`. At runtime
+the app wipes the grids and re-renders as before, which is what makes the
+direction switch and the progress toggles work; the static copy is progressive
+enhancement for crawlers and for no-JS visitors.
+
+Re-run after changing `WORDS`, `SWAP_WORDS`, or the card markup — it is
+idempotent, so running it when nothing changed rewrites the same bytes:
+
+```
+npm run prerender
 ```
 
 ## Audio
@@ -71,6 +93,9 @@ Note: `audio/manifest.json` is loaded with `fetch`, which browsers block over
 to Web Speech voices. Serve the folder over HTTP to hear the real clips locally.
 
 ## Deploying
+
+Run `npm run prerender` before deploying if the word data or card markup
+changed, so the shipped HTML matches the app.
 
 Hosted on Firebase Hosting, project `nordenhusker-5ed3c`. The repo root is the
 public directory, so `index.html` stays openable straight from disk; `README.md`,

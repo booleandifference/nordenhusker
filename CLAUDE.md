@@ -60,6 +60,11 @@ a non-code half, put it where the work is and cross-reference the other file.
 - No build step — `index.html` is edited directly. Run the JS-syntax check
   (extract the `<script>` block, `new Function()` it) after any script edit
   before committing.
+- Re-run `npm run prerender` after touching `WORDS`, `SWAP_WORDS` or the card
+  markup. The da→no cards are pre-rendered into `index.html` for crawlers (see
+  README's "Pre-rendered word cards"); the generated block lives between
+  `<!--prerender:*-->` markers and must not be hand-edited — edit the render
+  functions and regenerate.
 - Regenerate audio (`tools/generate-audio.mjs`) after editing any spoken
   string — see README's Audio section.
 - Deploy with `firebase deploy --only hosting` once a change is committed and
