@@ -45,6 +45,16 @@ project. Keep it current as part of normal work here, not as a separate chore:
   the file, don't replace it wholesale (it's plain markdown, so treat edits
   like any other file: read, patch, write back).
 
+## Maintain PROMOTION-IDEAS.md
+
+`PROMOTION-IDEAS.md` is the same kind of running list as `BACKLOG.md`, but for
+the non-code side: competitions and funding calls, backlink and outreach
+targets, channel ideas. Same status tags, same rules — add ideas as they come
+up, keep entries short, mark things `dropped` with a reason rather than
+deleting them. Deadlines are the one thing worth spelling out in full, since
+they're what makes an entry actionable or not. If an item has both a code and
+a non-code half, put it where the work is and cross-reference the other file.
+
 ## Other conventions
 
 - No build step — `index.html` is edited directly. Run the JS-syntax check

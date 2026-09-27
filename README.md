@@ -21,7 +21,7 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
 
 ## Roadmap
 
-See the project notes (kept outside this repo, in the Claude project) for full detail. Short version:
+See the project notes (kept outside this repo, in the Claude project) for full detail. In the repo, `BACKLOG.md` is the running list of planned features and `PROMOTION-IDEAS.md` the non-code side (competitions, funding calls, outreach targets). Short version:
 
 - ~~Move onto real hosting (Firebase)~~ — done, see Deploying below
 - Move progress off `localStorage` onto Firebase Auth + Firestore for accounts and cross-device sync
