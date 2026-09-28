@@ -22,8 +22,11 @@ const PROJECT = "nordenhusker-5ed3c";
 const SAMPLE = ["rar-no", "rar-da", "grine-da", "bolle-no", "udtale-no-kjokken"];
 
 // ---------- extract clips from index.html ----------
+// ids become audio filenames and URL paths, so strip everything that isn't a
+// letter or digit — keep this in sync with slugify() in index.html.
 const slug = (w) => w.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-  .replace(/ø/g, "o").replace(/æ/g, "ae").replace(/å/g, "aa").toLowerCase();
+  .replace(/ø/g, "o").replace(/æ/g, "ae").replace(/å/g, "aa").toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
 function clips() {
   const src = readFileSync(join(ROOT, "index.html"), "utf8");
