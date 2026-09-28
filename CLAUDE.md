@@ -74,3 +74,8 @@ a non-code half, put it where the work is and cross-reference the other file.
   string — see README's Audio section.
 - Deploy with `firebase deploy --only hosting` once a change is committed and
   verified locally.
+- After changing `sw.js`, the manifest, or anything about the cached asset
+  list, run `npm run check-offline` — it installs the worker in a real
+  browser, waits for the audio precache, cuts the network and asserts the site
+  still works. A broken service worker fails silently and shows up later as
+  "the app is stuck on an old version".

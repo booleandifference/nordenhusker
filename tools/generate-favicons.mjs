@@ -21,6 +21,11 @@ const SET = [
   { file: "favicon-32.png",       size: 32,  text: "NH", ratio: 0.78 },
   { file: "favicon-48.png",       size: 48,  text: "NH", ratio: 0.78 },
   { file: "apple-touch-icon.png", size: 180, text: "NH", ratio: 0.62, pad: true },
+  // PWA install icons. Chrome won't offer to install without a 192 and a 512.
+  // Both are declared "any maskable" in the manifest, so the mark is drawn
+  // small enough to survive Android cropping it to a circle or a squircle.
+  { file: "icon-192.png",         size: 192, text: "NH", ratio: 0.52, pad: true },
+  { file: "icon-512.png",         size: 512, text: "NH", ratio: 0.52, pad: true },
 ];
 
 const browser = await chromium.launch();

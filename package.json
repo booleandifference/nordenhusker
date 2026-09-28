@@ -6,7 +6,8 @@
   "scripts": {
     "audio": "node tools/generate-audio.mjs",
     "favicons": "node tools/generate-favicons.mjs",
-    "prerender": "node tools/prerender.mjs"
+    "prerender": "node tools/prerender.mjs",
+    "check-offline": "node tools/check-offline.mjs"
   },
   "devDependencies": {
     "playwright": "^1.63.0"

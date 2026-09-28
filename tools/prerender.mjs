@@ -29,6 +29,7 @@
 //   npm run prerender
 // It is idempotent: the generated files are rewritten from the data each time.
 
+import { createHash } from "node:crypto";
 import { createServer } from "node:http";
 import { readFile, writeFile } from "node:fs/promises";
 import { extname, join, resolve } from "node:path";
@@ -352,6 +353,20 @@ try {
     await writeFile(join(ROOT, cfg.file), out);
     console.log(`${cfg.file}: ${cards} cards, lang=${cfg.lang}, ${out.length} chars`);
   }
+  // --- stamp the service worker's cache version from what we just wrote ---
+  const pages = [FILE, ...VARIANTS.map((v) => join(ROOT, v.file))];
+  const hash = createHash("sha256");
+  for (const f of pages) hash.update(await readFile(f));
+  const version = hash.digest("hex").slice(0, 12);
+
+  const swPath = join(ROOT, "sw.js");
+  const sw = await readFile(swPath, "utf8");
+  const stamped = sw.replace(/const VERSION = "[^"]*";/, `const VERSION = "${version}";`);
+  if (stamped === sw && !sw.includes(`"${version}"`)) {
+    throw new Error("sw.js: no VERSION line to stamp");
+  }
+  if (stamped !== sw) await writeFile(swPath, stamped);
+  console.log(`sw.js: shell cache version ${version}`);
 } finally {
   await browser.close();
   server.close();

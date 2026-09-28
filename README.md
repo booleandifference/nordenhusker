@@ -41,6 +41,8 @@ index.html          the whole app — markup, styles, and logic in one file
 audio/female/       123 mp3s, da-DK-Wavenet-F / nb-NO-Wavenet-F
 audio/male/         123 mp3s, da-DK-Wavenet-G / nb-NO-Wavenet-G
 audio/manifest.json clip id -> per-voice file + word timings, fetched at startup
+manifest.webmanifest  PWA manifest
+sw.js               service worker — precaches the app and all audio
 til-norge.html      generated — Danish-facing landing page (do not edit)
 til-danmark.html    generated — Norwegian-facing landing page (do not edit)
 tools/              audio generator + page generator (not deployed)
@@ -111,6 +113,40 @@ idempotent, so running it when nothing changed rewrites the same bytes:
 
 ```
 npm run prerender
+```
+
+## Installable and offline (PWA)
+
+The site is installable: an icon on the home screen, its own window with no
+browser chrome, and — the point of the exercise — **all 326 audio clips
+(4.6 MB) precached**, so the whole app works on a metro with no signal. For a
+pronunciation tool aimed at people who have just moved country, offline is the
+feature; the icon is a side effect.
+
+- `manifest.webmanifest` — name, icons, `display: standalone`, plus shortcuts
+  straight to the two landing paths.
+- `sw.js` — the service worker. It reads the clip list out of
+  `audio/manifest.json` rather than hardcoding it, so regenerating the audio
+  never means editing the worker.
+- `tools/prerender.mjs` stamps `VERSION` in `sw.js` with a hash of the three
+  HTML pages, so a deploy retires the old shell cache.
+
+**Caching strategy, and why:** HTML is network-first, everything else
+cache-first. A cache-first worker serving HTML is the classic own-goal — it
+pins people to a stale version of the app for as long as the cache lives.
+Clips and icons never change under a given name, so they are safe to serve
+from cache first.
+
+The install prompt is two different things. On Android and desktop Chrome the
+browser hands over a deferred prompt and the "Tilføj til telefonen" button
+installs on a tap. **iOS has no install API at all** — Safari only offers it
+behind the Share menu — so there the bar shows an instruction instead of a
+button. It hides itself when already installed, and a dismissal is remembered.
+
+Verify the whole thing, including a genuine network cut, with:
+
+```
+npm run check-offline
 ```
 
 ## Audio

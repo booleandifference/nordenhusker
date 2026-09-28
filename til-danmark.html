@@ -556,6 +556,9 @@
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#FFC531">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Nordenhusker">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Pirata+One&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -897,6 +900,17 @@
   .lang-word.lang-da .speaker-ico{background:var(--accent-da);}
 
   footer{margin-top:44px; font-size:12px; color:var(--ink-soft); border-top:1px solid var(--border); padding-top:16px;}
+  .installbar{
+    margin-top:22px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    background:var(--gold-soft); border:1px solid var(--gold); border-radius:10px;
+    padding:10px 12px; font-size:13px; color:var(--ink-soft);
+  }
+  .installbar span{flex:1 1 220px;}
+  .installClose{
+    background:none; border:none; cursor:pointer; font-size:18px; line-height:1;
+    color:var(--ink-soft); padding:0 4px;
+  }
+  .installClose:hover{color:var(--ink);}
   .pathnav{margin-top:14px; display:flex; flex-wrap:wrap; gap:8px 20px; font-size:12px;}
   .pathnav a{color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--border);}
   .pathnav a:hover{color:var(--ink); border-bottom-color:currentColor;}
@@ -1264,6 +1278,12 @@
 
   <footer id="footerText">Ordliste over norske/danske ord som betyr det samme, men bare er forskjellige ord — ikke falske venner. Fremgang lagres kun i denne nettleseren.</footer>
 
+  <div class="installbar" id="installBar" hidden="">
+    <span id="installText"></span>
+    <button class="btn" type="button" id="installBtn" hidden=""></button>
+    <button class="installClose" type="button" id="installDismiss" aria-label="Luk">×</button>
+  </div>
+
   <nav class="pathnav" aria-label="Flytteretning">
     <a href="/til-norge">🇩🇰→🇳🇴 Flytter du til Norge?</a>
     <a href="/til-danmark" aria-current="page">🇳🇴→🇩🇰 Flytter du til Danmark?</a>
@@ -1361,7 +1381,10 @@
       tabUdtale: "Udtale", tabMonstre: "Tal & tid",
       progressLabel: "Ord der snyder, du kan",
       swapIntro: "20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.",
-      flag: "🇳🇴"
+      flag: "🇳🇴",
+      installPrompt: "Brug den offline: læg Nordenhusker på telefonen.",
+      installBtn: "Tilføj til telefonen",
+      installIos: "Vil du have den på telefonen? Tryk på del-ikonet i Safari og vælg «Føj til hjemmeskærm»."
     },
     "no-da": {
       hero: "Du kan allerede 90 % av dansk. Denne siden øver bare forskjellen: ordene som lyder like men betyr noe annet, hvordan setninger skiller seg litt, og hvordan det faktisk skal høres ut — sagt høyt av nettleseren, ikke av deg med norsk uttale.",
@@ -1373,7 +1396,10 @@
       tabUdtale: "Uttale", tabMonstre: "Tall & tid",
       progressLabel: "Ord som lurer, du kan",
       swapIntro: "20 småord som ikke er falske venner — bare et helt annet ord for det samme. Høyfrekvente ord du bruker daglig, så det lønner seg mest å lære dem først.",
-      flag: "🇩🇰"
+      flag: "🇩🇰",
+      installPrompt: "Bruk den offline: legg Nordenhusker på telefonen.",
+      installBtn: "Legg til på telefonen",
+      installIos: "Vil du ha den på telefonen? Trykk på del-ikonet i Safari og velg «Legg til på Hjem-skjerm»."
     }
   };
 
@@ -1605,6 +1631,7 @@
     renderSwapWords();
     updateProgress();
     refreshVoiceUI();
+    refreshInstallBar();
   }
   dirBtns.forEach(function(btn){
     btn.addEventListener("click", function(){
@@ -1614,6 +1641,80 @@
       applyDirection();
     });
   });
+
+  // ---------- install to home screen ----------
+  // Two different jobs. On Android and desktop Chrome the browser hands us a
+  // deferred prompt and we can install on a tap. iOS has no install API at
+  // all — Safari only offers it behind the Share menu — so there we can do
+  // nothing but point at it.
+  var installBar = document.getElementById("installBar");
+  var installBtn = document.getElementById("installBtn");
+  var installText = document.getElementById("installText");
+  var deferredPrompt = null;
+
+  function installed(){
+    return window.matchMedia("(display-mode: standalone)").matches ||
+           window.navigator.standalone === true;
+  }
+  function dismissed(){
+    try{ return localStorage.getItem("norsk-snarvei:install-dismissed") === "1"; }
+    catch(e){ return false; }
+  }
+  function isIosSafari(){
+    var ua = navigator.userAgent;
+    return /iPad|iPhone|iPod/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+  }
+
+  function refreshInstallBar(){
+    if(!installBar) return;
+    var L = UI[direction];
+    if(installed() || dismissed()){ installBar.hidden = true; return; }
+
+    if(deferredPrompt){
+      installText.textContent = L.installPrompt;
+      installBtn.textContent = L.installBtn;
+      installBtn.hidden = false;
+      installBar.hidden = false;
+    }else if(isIosSafari()){
+      installText.textContent = L.installIos;
+      installBtn.hidden = true;
+      installBar.hidden = false;
+    }else{
+      installBar.hidden = true;
+    }
+  }
+
+  window.addEventListener("beforeinstallprompt", function(e){
+    e.preventDefault();          // keep Chrome's own mini-infobar out of the way
+    deferredPrompt = e;
+    refreshInstallBar();
+  });
+
+  window.addEventListener("appinstalled", function(){
+    deferredPrompt = null;
+    installBar.hidden = true;
+  });
+
+  if(installBtn) installBtn.addEventListener("click", function(){
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.finally(function(){
+      deferredPrompt = null;
+      installBar.hidden = true;
+    });
+  });
+
+  var installDismiss = document.getElementById("installDismiss");
+  if(installDismiss) installDismiss.addEventListener("click", function(){
+    try{ localStorage.setItem("norsk-snarvei:install-dismissed", "1"); }catch(e){}
+    installBar.hidden = true;
+  });
+
+  if("serviceWorker" in navigator && window.isSecureContext){
+    window.addEventListener("load", function(){
+      navigator.serviceWorker.register("/sw.js").catch(function(){});
+    });
+  }
 
   // ---------- speech ----------
   var noVoicePool = [];

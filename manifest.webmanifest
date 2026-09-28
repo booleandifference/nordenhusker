@@ -1,0 +1,21 @@
+{
+  "name": "Nordenhusker — dansk og norsk",
+  "short_name": "Nordenhusker",
+  "description": "Øv forskellen mellem dansk og norsk: ordene der snyder, udtalen, tal og småord — med lyd på begge sprog.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFC531",
+  "theme_color": "#FFC531",
+  "lang": "da",
+  "categories": ["education", "books"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Til Norge", "url": "/til-norge" },
+    { "name": "Til Danmark", "url": "/til-danmark" }
+  ]
+}
