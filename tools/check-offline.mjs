@@ -86,7 +86,10 @@ try {
     cards: document.querySelectorAll("#wordGrid article").length,
     tabs: document.querySelectorAll(".tab").length,
   }));
-  check("page loads offline", offline.cards === 30 && offline.tabs === 5, `${offline.cards} cards, ${offline.tabs} tabs`);
+  // counted out of the source rather than hardcoded, so adding a tab doesn't
+  // fail a check that is really asking "did the page render at all?"
+  const wantTabs = (await readFile(join(ROOT, "index.html"), "utf8")).match(/role="tab"/g).length;
+  check("page loads offline", offline.cards === 30 && offline.tabs === wantTabs, `${offline.cards} cards, ${offline.tabs}/${wantTabs} tabs`);
 
   const clip = await page.evaluate(async () => {
     const m = await (await fetch("/audio/manifest.json")).json();

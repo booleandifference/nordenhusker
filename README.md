@@ -21,6 +21,8 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
   many senses of Danish "lige", and a spelling/writing-pattern table. Static
   HTML rather than JS-rendered, and framed as tendencies to check rather than
   find-and-replace rules
+- "Om siden" tab — a short personal note on why the site exists, in both
+  directions, with an email address for feedback
 - Branded "Nordenhusker" — gold/red/blue palette, blackletter + mono type (see `brand guide/Main.pdf`)
 
 ## Roadmap

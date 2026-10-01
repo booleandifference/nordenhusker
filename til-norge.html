@@ -899,6 +899,16 @@
   .lang-word .speaker-ico{width:18px; height:18px; font-size:9px;}
   .lang-word.lang-da .speaker-ico{background:var(--accent-da);}
 
+  /* ---------- about ---------- */
+  .sound-card.about p{font-size:14px; color:var(--ink); max-width:62ch; margin:0 0 12px;}
+  .sound-card.about p:last-child{margin-bottom:0;}
+  .sound-card.about a{color:var(--accent-da); text-decoration:none; border-bottom:1px solid currentColor;}
+  .sound-card.about a:hover{color:var(--ink);}
+  .sound-card.about p.contact{
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:13px;
+    margin-top:16px; padding-top:14px; border-top:1px solid var(--border);
+  }
+
   footer{margin-top:44px; font-size:12px; color:var(--ink-soft); border-top:1px solid var(--border); padding-top:16px;}
   .installbar{
     margin-top:22px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
@@ -971,6 +981,7 @@
     <button class="tab" role="tab" aria-selected="false" id="tab-udtale" aria-controls="panel-udtale">Udtale</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-mønstre" aria-controls="panel-mønstre">Tal &amp; tid</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-småord" aria-controls="panel-småord">Småord &amp; skriveregler</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-om" aria-controls="panel-om">Om siden</button>
   </div>
 
   <section class="panel active" id="panel-skift" role="tabpanel" aria-labelledby="tab-skift">
@@ -1276,6 +1287,27 @@
 
   </section>
 
+  <section class="panel" id="panel-om" role="tabpanel" aria-labelledby="tab-om">
+
+    <div class="sound-card about">
+      <div class="subpanel active" data-dir="da-no">
+        <h3>Hej — jeg er Morten 🙂</h3>
+        <p>Jeg er netop flyttet til Oslo. Mine børn på 7 og 10 er startet i skole på Sankt Hanshaugen, og vi skal alle tre lære norsk. Så jeg lavede denne lille dansk/norske sprogside til at hjælpe os i gang 😅</p>
+        <p>Jeg tænkte, at andre i samme situation kunne have glæde af den, så nu ligger den frit tilgængelig her. Prøv den gerne — og kom gerne med input og idéer: hvilke ord snød dig? Hvad mangler?</p>
+        <p>Siden er gratis. Ingen reklamer, ingen konto, ingen sporing — dine fremskridt ("kan den") gemmes kun i din egen browser, og jeg kan ikke se dem.</p>
+        <p class="contact">Skriv til mig: <a href="mailto:mortensylvest@gmail.com">mortensylvest@gmail.com</a></p>
+      </div>
+      <div class="subpanel" data-dir="no-da">
+        <h3>Hei — jeg er Morten 🙂</h3>
+        <p>Jeg har nettopp flyttet til Oslo. Barna mine på 7 og 10 har begynt på skolen på Sankt Hanshaugen, og alle tre skal vi lære norsk. Så jeg lagde denne lille dansk/norsk-siden for å hjelpe oss i gang 😅</p>
+        <p>Siden ble altså laget andre veien — av en danske som skal lære norsk — men alt inneholdet finnes i begge retninger, så den fungerer like godt for deg som skal lære dansk. Prøv den gjerne, og si gjerne fra med innspill og ideer: hvilke ord lurte deg? Hva mangler?</p>
+        <p>Siden er gratis. Ingen reklame, ingen konto, ingen sporing — fremgangen din ("kan det") lagres bare i din egen nettleser, og jeg kan ikke se den.</p>
+        <p class="contact">Skriv til meg: <a href="mailto:mortensylvest@gmail.com">mortensylvest@gmail.com</a></p>
+      </div>
+    </div>
+
+  </section>
+
   <footer id="footerText">Ordliste over danske/norske ord, der betyder det samme men bare er forskellige ord — ikke falske venner. Fremskridt gemmes kun i denne browser.</footer>
 
   <div class="installbar" id="installBar" hidden="">
@@ -1379,6 +1411,7 @@
       voicesFinding: "Finder norsk stemme…", bannerNone: "⚠ Ingen norsk stemme fundet. Prøv Chrome eller Edge — de har normalt \"Norsk bokmål\" indbygget.",
       tabSkift: "Ord der byttes", tabOrd: "Ord der snyder",
       tabUdtale: "Udtale", tabMonstre: "Tal & tid",
+      tabSmaord: "Småord & skriveregler", tabOm: "Om siden",
       progressLabel: "Ord der snyder, du kan",
       swapIntro: "20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.",
       flag: "🇳🇴",
@@ -1394,6 +1427,7 @@
       voicesFinding: "Finner dansk stemme…", bannerNone: "⚠ Ingen dansk stemme funnet. Prøv Chrome eller Edge — de har normalt danske stemmer innebygget.",
       tabSkift: "Ord som byttes", tabOrd: "Ord som lurer",
       tabUdtale: "Uttale", tabMonstre: "Tall & tid",
+      tabSmaord: "Småord & skriveregler", tabOm: "Om siden",
       progressLabel: "Ord som lurer, du kan",
       swapIntro: "20 småord som ikke er falske venner — bare et helt annet ord for det samme. Høyfrekvente ord du bruker daglig, så det lønner seg mest å lære dem først.",
       flag: "🇩🇰",
@@ -1425,6 +1459,10 @@
     "panel-småord": {
       "da-no": "Disse mønstre er tendenser, ikke faste regler — tjek altid det enkelte ord.",
       "no-da": "Disse mønstrene er tendenser, ikke faste regler — sjekk alltid hvert enkelt ord."
+    },
+    "panel-om": {
+      "da-no": "Siden er lavet af Morten Sylvest — skriv til mortensylvest@gmail.com hvis du har rettelser, idéer eller ord, der mangler.",
+      "no-da": "Siden er laget av Morten Sylvest — skriv til mortensylvest@gmail.com hvis du har rettelser, ideer eller ord som mangler."
     }
   };
 
@@ -1621,6 +1659,8 @@
     document.getElementById("tab-ord").textContent = L.tabOrd;
     document.getElementById("tab-udtale").textContent = L.tabUdtale;
     document.getElementById("tab-mønstre").textContent = L.tabMonstre;
+    document.getElementById("tab-småord").textContent = L.tabSmaord;
+    document.getElementById("tab-om").textContent = L.tabOm;
     document.getElementById("progressLabel").textContent = L.progressLabel;
     document.getElementById("swapIntro").textContent = L.swapIntro;
     updateFooter();
