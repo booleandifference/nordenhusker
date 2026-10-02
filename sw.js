@@ -9,7 +9,7 @@
 // VERSION is stamped by tools/prerender.mjs from the content of the three HTML
 // pages. Bumping it drops the old caches on activate.
 
-const VERSION = "047efec1c526";
+const VERSION = "b918e7840316";
 const SHELL = `shell-${VERSION}`;
 const MEDIA = "media-v1"; // clip files are immutable; keyed by name, never restamped
 
