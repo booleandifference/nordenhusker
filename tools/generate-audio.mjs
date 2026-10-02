@@ -64,7 +64,12 @@ function clips() {
       lang: l === "no" ? "nb-NO" : "da-DK",
     });
   }
-  return out;
+  // ids are slugs, so two strings differing only in punctuation collide
+  // ("ikke sant" and "— Ikke sant."). They are the same utterance, so the first
+  // wins; left in, the duplicate would write one file but two manifest entries,
+  // and check-offline would then wait forever for a clip that cannot exist.
+  const seen = new Set();
+  return out.filter((c) => !seen.has(c.id) && seen.add(c.id));
 }
 
 // ---------- google ----------
@@ -149,6 +154,17 @@ async function voices() {
 
 const GENDERS = ["female", "male"];
 
+// A clip already on disk whose text has not changed is reused as it is: the mp3
+// stands and its word timings are read back out of the old manifest. So a run
+// after adding a handful of strings pays for those strings only, instead of
+// re-synthesising all 300-odd and rewriting every file in git. --force redoes
+// the lot, which is what a new voice or a changed engine needs.
+const FORCE = process.argv.includes("--force");
+const PREV = new Map();
+try {
+  for (const c of JSON.parse(readFileSync(join(OUT, "manifest.json"), "utf8")).clips) PREV.set(c.id, c);
+} catch { /* no manifest yet: generate everything */ }
+
 const all = clips();
 const V = await voices();
 console.log("voices:");
@@ -156,12 +172,18 @@ for (const g of GENDERS) for (const l of LANGS) console.log(`  ${g.padEnd(7)} ${
 console.log(`\n${all.length} clips x ${GENDERS.length} voices\n`);
 
 const manifest = { voices: V, clips: [] };
-let ok = 0, fail = 0;
+let ok = 0, fail = 0, kept = 0;
 for (const c of all) {
   const entry = { id: c.id, lang: c.lang, text: c.text, takes: {} };
   for (const g of GENDERS) {
     mkdirSync(join(OUT, g), { recursive: true });
     const rel = `audio/${g}/${c.id}.mp3`;
+    const old = PREV.get(c.id);
+    if (!FORCE && old?.text === c.text && old.takes?.[g] && existsSync(join(ROOT, rel))) {
+      entry.takes[g] = old.takes[g];
+      kept++;
+      continue;
+    }
     try {
       const { audio, timings } = await google(c.text, c.lang, V[g][c.lang]);
       writeFileSync(join(ROOT, rel), audio);
@@ -174,7 +196,8 @@ for (const c of all) {
   }
   if (Object.keys(entry.takes).length) manifest.clips.push(entry);
   const t = entry.takes.female?.timings?.length ?? 0;
-  console.log(`  ok   ${c.id.padEnd(26)} ${t}tp  "${c.text.slice(0, 34)}"`);
+  const how = PREV.get(c.id)?.text === c.text && !FORCE ? "kept" : "new ";
+  console.log(`  ${how} ${c.id.padEnd(26)} ${t}tp  "${c.text.slice(0, 34)}"`);
 }
 writeFileSync(join(OUT, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
-console.log(`\n${ok} clips written, ${fail} failed, ${manifest.clips.length} manifest entries`);
+console.log(`\n${ok} clips written, ${kept} reused, ${fail} failed, ${manifest.clips.length} manifest entries`);

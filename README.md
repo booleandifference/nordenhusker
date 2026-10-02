@@ -178,13 +178,18 @@ voice, since word onsets differ between them. It requests SSML `<mark>`
 timepoints, which give exact word onsets for the karaoke highlight; marks are
 zero-width, so the audio is identical to a plain-text request.
 
-Regenerate after editing any spoken text — existing files are skipped, so only new
-clips cost anything:
+Regenerate after editing any spoken text. A clip already on disk whose text has
+not changed is reused as it is — the mp3 stands and its word timings are read
+back out of the old manifest — so a run after adding a few strings pays for
+those strings only, and does not rewrite 300-odd binaries in git:
 
 ```
 gcloud auth application-default login
 node tools/generate-audio.mjs
 ```
+
+Add `--force` to re-synthesise everything, which is what a new voice or a
+changed engine needs.
 
 Note: `audio/manifest.json` is loaded with `fetch`, which browsers block over
 `file://`. Opening `index.html` straight from disk still works — it just falls back
