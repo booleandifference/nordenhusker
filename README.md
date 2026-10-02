@@ -115,6 +115,13 @@ makes the content machine-readable — for Google's understanding of what the
 page is, and for the AI answer engines that increasingly read schema — and it
 costs ~2 KB gzipped.
 
+The same run stamps `<lastmod>` in `sitemap.xml`. Each `<url>` carries the
+hash of the page as last published, in an XML comment next to its date, so a
+date moves only when that page's content actually moved — a no-op prerender
+leaves the dates alone rather than telling Google everything changed today.
+This replaced a hand-maintained date that had gone three days stale without
+anyone noticing.
+
 Re-run after changing `WORDS`, `SWAP_WORDS`, or the card markup — it is
 idempotent, so running it when nothing changed rewrites the same bytes:
 

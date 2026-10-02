@@ -368,6 +368,43 @@ try {
   }
   if (stamped !== sw) await writeFile(swPath, stamped);
   console.log(`sw.js: shell cache version ${version}`);
+
+  // --- stamp the sitemap's lastmod from the same pages ---
+  // lastmod was hand-maintained and went stale silently: Search Console was
+  // still being told 2026-09-27 after three days of changes. Each <url> now
+  // carries the hash of the page as last published, so a date moves only when
+  // that page's content actually moved — a no-op prerender leaves the dates
+  // alone instead of claiming everything changed today.
+  const sitemapPath = join(ROOT, "sitemap.xml");
+  const today = new Date().toISOString().slice(0, 10);
+  const published = new Map(
+    await Promise.all(
+      [{ file: FILE, loc: `${SITE}/` }, ...VARIANTS.map((v) => ({ file: join(ROOT, v.file), loc: SITE + v.path }))].map(
+        async ({ file, loc }) => [loc, createHash("sha256").update(await readFile(file)).digest("hex").slice(0, 12)],
+      ),
+    ),
+  );
+
+  const sitemap = await readFile(sitemapPath, "utf8");
+  const seen = new Set();
+  const moved = [];
+  const next = sitemap.replace(/<url>[\s\S]*?<\/url>/g, (block) => {
+    const loc = block.match(/<loc>([^<]*)<\/loc>/)?.[1];
+    const want = published.get(loc);
+    if (!want) throw new Error(`sitemap.xml: <loc> ${loc} is not a page this script generates`);
+    seen.add(loc);
+    if (block.includes(`<!--content:${want}-->`)) return block;
+    moved.push(loc);
+    return block.replace(
+      /<lastmod>[^<]*<\/lastmod>(<!--content:[0-9a-f]*-->)?/,
+      `<lastmod>${today}</lastmod><!--content:${want}-->`,
+    );
+  });
+  for (const loc of published.keys()) {
+    if (!seen.has(loc)) throw new Error(`sitemap.xml: no <url> for ${loc}`);
+  }
+  if (moved.length) await writeFile(sitemapPath, next);
+  console.log(`sitemap.xml: ${moved.length ? `lastmod ${today} on ${moved.length} page(s)` : "lastmod unchanged"}`);
 } finally {
   await browser.close();
   server.close();
