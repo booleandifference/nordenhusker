@@ -4232,6 +4232,842 @@
           ]
         }
       }
+    },
+    {
+      "id": "say-no-liksom",
+      "lang": "nb-NO",
+      "text": "liksom",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-liksom.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-liksom.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-han-var-liksom-ikke-enig",
+      "lang": "nb-NO",
+      "text": "Han var liksom ikke enig.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-han-var-liksom-ikke-enig.mp3",
+          "timings": [
+            0.015,
+            0.22,
+            0.355,
+            0.706,
+            0.868
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-han-var-liksom-ikke-enig.mp3",
+          "timings": [
+            0.015,
+            0.21,
+            0.335,
+            0.675,
+            0.831
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-altsa",
+      "lang": "nb-NO",
+      "text": "altså",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-altsa.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-altsa.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-det-er-bare-irriterende-altsa",
+      "lang": "nb-NO",
+      "text": "Det er bare irriterende, altså.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-det-er-bare-irriterende-altsa.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.26,
+            0.475,
+            1.236
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-det-er-bare-irriterende-altsa.mp3",
+          "timings": [
+            0.015,
+            0.145,
+            0.245,
+            0.49,
+            1.215
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-vel",
+      "lang": "nb-NO",
+      "text": "vel",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-vel.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-vel.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-du-kommer-vel-i-morgen",
+      "lang": "nb-NO",
+      "text": "Du kommer vel i morgen?",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-du-kommer-vel-i-morgen.mp3",
+          "timings": [
+            0.015,
+            0.2,
+            0.5,
+            0.635,
+            0.69
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-du-kommer-vel-i-morgen.mp3",
+          "timings": [
+            0.015,
+            0.19,
+            0.476,
+            0.606,
+            0.646
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-ikke-sant",
+      "lang": "nb-NO",
+      "text": "ikke sant",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-ikke-sant.mp3",
+          "timings": [
+            0.015,
+            0.245
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-ikke-sant.mp3",
+          "timings": [
+            0.015,
+            0.24
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-det-var-kaldt-i-dag",
+      "lang": "nb-NO",
+      "text": "— Det var kaldt i dag.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-det-var-kaldt-i-dag.mp3",
+          "timings": [
+            0,
+            0.015,
+            0.17,
+            0.315,
+            0.642,
+            0.702
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-det-var-kaldt-i-dag.mp3",
+          "timings": [
+            0,
+            0.015,
+            0.16,
+            0.31,
+            0.635,
+            0.69
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-jaja",
+      "lang": "nb-NO",
+      "text": "jaja",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-jaja.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-jaja.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-neinei",
+      "lang": "nb-NO",
+      "text": "neinei",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-neinei.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-neinei.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-joda",
+      "lang": "nb-NO",
+      "text": "joda",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-joda.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-joda.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-da",
+      "lang": "nb-NO",
+      "text": "da",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-da.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-da.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-no-kom-da-igjen",
+      "lang": "nb-NO",
+      "text": "Kom da igjen!",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-no-kom-da-igjen.mp3",
+          "timings": [
+            0.015,
+            0.285,
+            0.425
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-no-kom-da-igjen.mp3",
+          "timings": [
+            0.015,
+            0.27,
+            0.435
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-jo",
+      "lang": "da-DK",
+      "text": "jo",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-jo.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-jo.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-han-er-jo-syg",
+      "lang": "da-DK",
+      "text": "Han er jo syg.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-han-er-jo-syg.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.275,
+            0.385
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-han-er-jo-syg.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.265,
+            0.375
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-sgu",
+      "lang": "da-DK",
+      "text": "sgu",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-sgu.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-sgu.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-var-sgu-koldt",
+      "lang": "da-DK",
+      "text": "Det var sgu koldt.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-var-sgu-koldt.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.27,
+            0.499
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-var-sgu-koldt.mp3",
+          "timings": [
+            0.015,
+            0.155,
+            0.26,
+            0.5
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-da",
+      "lang": "da-DK",
+      "text": "da",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-da.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-da.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-gar-da-fint",
+      "lang": "da-DK",
+      "text": "Det går da fint.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-gar-da-fint.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.305,
+            0.415
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-gar-da-fint.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.3,
+            0.41
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-dog",
+      "lang": "da-DK",
+      "text": "dog",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-dog.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-dog.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-er-dog-underligt",
+      "lang": "da-DK",
+      "text": "Det er dog underligt.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-er-dog-underligt.mp3",
+          "timings": [
+            0.015,
+            0.13,
+            0.2,
+            0.385
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-er-dog-underligt.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.2,
+            0.38
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-skam",
+      "lang": "da-DK",
+      "text": "skam",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-skam.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-skam.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-er-skam-ikke-svaert",
+      "lang": "da-DK",
+      "text": "Det er skam ikke svært.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-er-skam-ikke-svaert.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.2,
+            0.505,
+            0.655
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-er-skam-ikke-svaert.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.205,
+            0.51,
+            0.64
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-vel",
+      "lang": "da-DK",
+      "text": "vel",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-vel.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-vel.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-du-kommer-vel",
+      "lang": "da-DK",
+      "text": "Du kommer vel?",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-du-kommer-vel.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.435
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-du-kommer-vel.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.411
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-vist",
+      "lang": "da-DK",
+      "text": "vist",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-vist.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-vist.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-han-er-vist-ikke-hjemme",
+      "lang": "da-DK",
+      "text": "Han er vist ikke hjemme.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-han-er-vist-ikke-hjemme.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.275,
+            0.544,
+            0.704
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-han-er-vist-ikke-hjemme.mp3",
+          "timings": [
+            0.015,
+            0.185,
+            0.26,
+            0.521,
+            0.681
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-nok",
+      "lang": "da-DK",
+      "text": "nok",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-nok.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-nok.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-gar-nok",
+      "lang": "da-DK",
+      "text": "Det går nok.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-gar-nok.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.31
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-gar-nok.mp3",
+          "timings": [
+            0.015,
+            0.13,
+            0.3
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-ikke",
+      "lang": "da-DK",
+      "text": "ikke",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-ikke.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-ikke.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-ik",
+      "lang": "da-DK",
+      "text": "ik'",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-ik.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-ik.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-er-koldt-ik",
+      "lang": "da-DK",
+      "text": "Det er koldt, ik'?",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-er-koldt-ik.mp3",
+          "timings": [
+            0.015,
+            0.15,
+            0.21,
+            0.606
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-er-koldt-ik.mp3",
+          "timings": [
+            0.015,
+            0.16,
+            0.225,
+            0.645
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-mon",
+      "lang": "da-DK",
+      "text": "mon",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-mon.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-mon.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-mon-han-kommer",
+      "lang": "da-DK",
+      "text": "Mon han kommer?",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-mon-han-kommer.mp3",
+          "timings": [
+            0.015,
+            0.195,
+            0.36
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-mon-han-kommer.mp3",
+          "timings": [
+            0.015,
+            0.185,
+            0.33
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-bare",
+      "lang": "da-DK",
+      "text": "bare",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-bare.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-bare.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-gor-det-bare",
+      "lang": "da-DK",
+      "text": "Gør det bare!",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-gor-det-bare.mp3",
+          "timings": [
+            0.015,
+            0.215,
+            0.3
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-gor-det-bare.mp3",
+          "timings": [
+            0.015,
+            0.215,
+            0.305
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-sadan",
+      "lang": "da-DK",
+      "text": "sådan",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-sadan.mp3",
+          "timings": [
+            0.015
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-sadan.mp3",
+          "timings": [
+            0.015
+          ]
+        }
+      }
+    },
+    {
+      "id": "say-da-det-er-sadan-lidt-svaert-at-forklare",
+      "lang": "da-DK",
+      "text": "Det er sådan lidt svært at forklare.",
+      "takes": {
+        "female": {
+          "file": "audio/female/say-da-det-er-sadan-lidt-svaert-at-forklare.mp3",
+          "timings": [
+            0.015,
+            0.135,
+            0.2,
+            0.421,
+            0.586,
+            0.886,
+            0.941
+          ]
+        },
+        "male": {
+          "file": "audio/male/say-da-det-er-sadan-lidt-svaert-at-forklare.mp3",
+          "timings": [
+            0.015,
+            0.14,
+            0.21,
+            0.42,
+            0.565,
+            0.866,
+            0.921
+          ]
+        }
+      }
     }
   ]
 }
