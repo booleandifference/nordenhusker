@@ -11,6 +11,10 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
 - 20 curated DA/NO function-word pairs ("Ord der byttes" / "Ord som byttes") — words that mean
   the same but are simply different, high-frequency words (hinanden/hverandre,
   måske/kanskje, etc.), plus 30 curated DA/NO false-friend words ("Ord der snyder" / "Ord som lurer"), each with meanings, an example sentence, and a tip in both directions
+- Front page is one card per section — name, count, a line on what is in it,
+  and a sample you can play on the spot; the tab row appears once you are
+  inside a section. The samples point at clips that already exist, so the
+  front page costs no new audio
 - Bidirectional 🇩🇰→🇳🇴 / 🇳🇴→🇩🇰 switch
 - 326 pre-generated Google WaveNet clips — 163 strings x a female and a male voice per language, chosen over Chirp3-HD and Grok in a blind listening test
 - Kvinde / Mand voice switch, remembered in `localStorage`
@@ -89,7 +93,8 @@ The word cards are built at runtime by `renderWords()`/`renderSwapWords()`, so
 for a crawler that doesn't execute JS the two grids were empty `<div>`s — none
 of the actual searchable content (the word pairs) was in the HTML. The cards for
 the default direction (da→no) are therefore pre-rendered into `index.html`
-between `<!--prerender:wordGrid-->` / `<!--prerender:swapGrid-->` markers.
+between `<!--prerender:wordGrid-->` / `<!--prerender:swapGrid-->` markers,
+and the front page's section cards between `<!--prerender:sectionGrid-->`.
 
 `tools/prerender.mjs` loads the real page in Playwright, lets the app's own
 render functions run, and writes the resulting markup back into the file, so

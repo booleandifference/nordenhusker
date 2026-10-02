@@ -288,6 +288,7 @@ async function load(context) {
   const attached = { state: "attached", timeout: 10_000 };
   await page.waitForSelector("#wordGrid article", attached);
   await page.waitForSelector("#swapGrid article", attached);
+  await page.waitForSelector("#sectionGrid article", attached);
   if (errors.length) throw new Error(`page errors: ${errors.join("; ")}`);
   return page;
 }
@@ -300,7 +301,7 @@ try {
   if (dir !== "true") throw new Error(`expected the da-no direction to be active, got ${dir}`);
 
   const grids = {};
-  for (const id of ["wordGrid", "swapGrid"]) {
+  for (const id of ["wordGrid", "swapGrid", "sectionGrid"]) {
     grids[id] = await page.$eval("#" + id, (el) => el.innerHTML);
     // A "known" card would bake one browser's localStorage into the shipped
     // HTML; the run should start from a clean profile, so this must be zero.

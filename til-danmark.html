@@ -806,7 +806,7 @@
   .example{font-size:13.5px; font-style:italic; color:var(--ink-soft); display:flex; align-items:flex-start; gap:8px;}
   .example .en{font-style:normal; font-size:12px; color:var(--ink-soft); display:block; margin-top:2px;}
   .example-sentence .kw{border-radius:3px; padding:0 2px; margin:0 -2px; transition:background-color .12s ease, color .12s ease;}
-  .example-sentence .kw.active{background:var(--accent-da); color:var(--surface); font-style:normal;}
+  .example-sentence .kw.active, .section-quote .kw.active{background:var(--accent-da); color:var(--surface); font-style:normal;}
   .tip{font-size:12px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:8px 10px;}
   .card-actions{display:flex; align-items:center; justify-content:space-between; gap:8px;}
   .speak-btn{
@@ -899,6 +899,58 @@
   .lang-word .speaker-ico{width:18px; height:18px; font-size:9px;}
   .lang-word.lang-da .speaker-ico{background:var(--accent-da);}
 
+  /* ---------- front page: one card per section ---------- */
+  .tablist[hidden]{display:none;}
+  .section-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(290px,1fr)); gap:16px;
+  }
+  .section-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    box-shadow:var(--shadow); padding:18px; display:flex; flex-direction:column; gap:10px;
+  }
+  .section-card.about{background:var(--gold-soft); border-color:var(--gold); box-shadow:none;}
+  .section-top{display:flex; align-items:baseline; gap:10px;}
+  .section-title{
+    font-family:"Pirata One", Cardo, Georgia, serif; font-size:25px; font-weight:700;
+    margin:0; flex:1; line-height:1.1;
+  }
+  .section-count{
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11px; color:var(--ink-soft);
+    background:var(--gold-soft); border-radius:99px; padding:3px 9px; white-space:nowrap;
+  }
+  /* the blurb takes the slack, so the sample and the link line up across a row */
+  .section-blurb{font-size:13px; color:var(--ink-soft); line-height:1.45; margin:0; flex:1;}
+  .section-sample{
+    background:var(--accent-no-soft); border-radius:10px; padding:11px 12px;
+    display:flex; flex-direction:column; gap:9px;
+  }
+  .section-sample.lang-da{background:var(--accent-da-soft);}
+  .section-quote{margin:0; font-size:13px; font-style:italic; line-height:1.4;}
+  .sample-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .sample-btn{
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid var(--accent-no); background:var(--surface); color:var(--ink);
+    border-radius:99px; padding:9px 14px 9px 9px; font-size:12.5px; font-weight:500;
+    cursor:pointer;
+  }
+  .sample-btn:hover{background:var(--accent-no); color:var(--surface);}
+  .sample-btn:hover .speaker-ico{background:var(--surface); color:var(--accent-no);}
+  .sample-btn.lang-da{border-color:var(--accent-da);}
+  .sample-btn.lang-da .speaker-ico{background:var(--accent-da);}
+  .sample-btn.lang-da:hover{background:var(--accent-da);}
+  .sample-btn.lang-da:hover .speaker-ico{color:var(--accent-da);}
+  .section-open{
+    background:none; border:none; padding:0; align-self:flex-start; cursor:pointer;
+    font-family:inherit; font-size:12.5px; font-weight:500; color:var(--accent-da);
+    border-bottom:1px solid var(--accent-da-soft);
+  }
+  .section-open:hover{border-bottom-color:currentColor;}
+  .section-contact{
+    font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:12.5px; margin:0;
+  }
+  .section-contact a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--border);}
+  .section-contact a:hover{border-bottom-color:currentColor;}
+
   /* ---------- about ---------- */
   .sound-card.about p{font-size:14px; color:var(--ink); max-width:62ch; margin:0 0 12px;}
   .sound-card.about p:last-child{margin-bottom:0;}
@@ -982,8 +1034,9 @@
     <span class="progress-count"><span id="progressCount">0</span>/<span id="progressTotal">30</span></span>
   </div>
 
-  <div class="tablist" role="tablist" aria-label="Sektioner">
-    <button class="tab" role="tab" aria-selected="true" id="tab-skift" aria-controls="panel-skift">Ord som byttes</button>
+  <div class="tablist" role="tablist" aria-label="Sektioner" hidden="">
+    <button class="tab" role="tab" aria-selected="true" id="tab-forside" aria-controls="panel-forside">Forside</button>
+    <button class="tab" role="tab" aria-selected="false" id="tab-skift" aria-controls="panel-skift">Ord som byttes</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-ord" aria-controls="panel-ord">Ord som lurer</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-udtale" aria-controls="panel-udtale">Uttale</button>
     <button class="tab" role="tab" aria-selected="false" id="tab-mønstre" aria-controls="panel-mønstre">Tall &amp; tid</button>
@@ -991,7 +1044,11 @@
     <button class="tab" role="tab" aria-selected="false" id="tab-om" aria-controls="panel-om">Om siden</button>
   </div>
 
-  <section class="panel active" id="panel-skift" role="tabpanel" aria-labelledby="tab-skift">
+  <section class="panel active" id="panel-forside" role="tabpanel" aria-labelledby="tab-forside">
+    <div class="section-grid" id="sectionGrid"><article class="section-card"><div class="section-top"><h2 class="section-title">Ord som byttes</h2><span class="section-count">20 ord</span></div><p class="section-blurb">Ikke falske venner — bare et helt annet ord for det samme. Høyfrekvente ord du bruker daglig, så de lønner seg mest å lære først.</p><div class="section-sample lang-da"><p class="section-quote"><span class="kw" data-start="0" data-end="3">Jeg</span> <span class="kw" data-start="4" data-end="10">kommer</span> <span class="kw" data-start="11" data-end="16">måske</span> <span class="kw" data-start="17" data-end="21">lidt</span> <span class="kw" data-start="22" data-end="26">sent</span> <span class="kw" data-start="27" data-end="28">i</span> <span class="kw" data-start="29" data-end="36">morgen.</span></p><div class="sample-row"><button class="sample-btn lang-da" type="button" data-clip="maaske-da"><span class="speaker-ico">▶</span>Hør den</button></div></div><button class="section-open" type="button">Åpne Ord som byttes →</button></article><article class="section-card"><div class="section-top"><h2 class="section-title">Ord som lurer</h2><span class="section-count">30 ord</span></div><p class="section-blurb">Ser like ut, betyr noe annet. «Rar» er en kompliment i Danmark og en advarsel i Norge.</p><div class="section-sample lang-da"><p class="section-quote"><span class="kw" data-start="0" data-end="3">Hun</span> <span class="kw" data-start="4" data-end="6">er</span> <span class="kw" data-start="7" data-end="9">så</span> <span class="kw" data-start="10" data-end="14">rar,</span> <span class="kw" data-start="15" data-end="18">hun</span> <span class="kw" data-start="19" data-end="26">hjælper</span> <span class="kw" data-start="27" data-end="33">altid.</span></p><div class="sample-row"><button class="sample-btn lang-da" type="button" data-clip="rar-da"><span class="speaker-ico">▶</span>Hør den</button></div></div><button class="section-open" type="button">Åpne Ord som lurer →</button></article><article class="section-card"><div class="section-top"><h2 class="section-title">Uttale</h2><span class="section-count">6 forskjeller</span></div><p class="section-blurb">Tonefall mot stød, bløt d, dansk r bakerst i halsen. Hør de to språkene si det samme ordet etter hverandre.</p><div class="section-sample"><div class="sample-row"><button class="sample-btn" type="button" data-clip="udtale-no-dag"><span class="speaker-ico">▶</span>🇳🇴 dag</button><button class="sample-btn lang-da" type="button" data-clip="udtale-da-dag"><span class="speaker-ico">▶</span>🇩🇰 dag</button></div></div><button class="section-open" type="button">Åpne Uttale →</button></article><article class="section-card"><div class="section-top"><h2 class="section-title">Tall &amp; tid</h2></div><p class="section-blurb">Nitti eller halvfems? Og klokken halv åtte, som betyr det samme på begge språk — men sies helt forskjellig.</p><div class="section-sample"><div class="sample-row"><button class="sample-btn" type="button" data-clip="say-no-nitti"><span class="speaker-ico">▶</span>🇳🇴 nitti</button><button class="sample-btn lang-da" type="button" data-clip="say-da-halvfems"><span class="speaker-ico">▶</span>🇩🇰 halvfems</button></div></div><button class="section-open" type="button">Åpne Tall &amp; tid →</button></article><article class="section-card"><div class="section-top"><h2 class="section-title">Småord &amp; skriveregler</h2><span class="section-count">12 fyllord</span></div><p class="section-blurb">Jo, sgu, dog, vist — de små ordene som avslører deg til slutt. Pluss hva som endrer seg når du skriver.</p><div class="section-sample lang-da"><p class="section-quote"><span class="kw" data-start="0" data-end="3">Det</span> <span class="kw" data-start="4" data-end="7">var</span> <span class="kw" data-start="8" data-end="15">ligesom</span> <span class="kw" data-start="16" data-end="20">ikke</span> <span class="kw" data-start="21" data-end="30">meningen.</span></p><div class="sample-row"><button class="sample-btn lang-da" type="button" data-clip="liksom-da"><span class="speaker-ico">▶</span>Hør den</button></div></div><button class="section-open" type="button">Åpne Småord &amp; skriveregler →</button></article><article class="section-card about"><div class="section-top"><h2 class="section-title">Om siden</h2></div><p class="section-blurb">Jeg har nettopp flyttet til Oslo med to barn på skolen på Sankt Hanshaugen. Siden er laget for å hjelpe oss i gang — gratis, uten reklame og uten sporing.</p><p class="section-contact"><a href="mailto:mortensylvest@gmail.com">mortensylvest@gmail.com</a></p><button class="section-open" type="button">Åpne Om siden →</button></article></div>
+  </section>
+
+  <section class="panel" id="panel-skift" role="tabpanel" aria-labelledby="tab-skift">
     <p class="panel-intro" id="swapIntro">20 småord som ikke er falske venner — bare et helt annet ord for det samme. Høyfrekvente ord du bruker daglig, så det lønner seg mest å lære dem først.</p>
     <div class="grid" id="swapGrid"><article class="card" data-id="sw-hinanden"><div class="card-top"><h2 class="word">hinanden</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">hinanden</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">hverandre</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="2">De</span> <span class="kw" data-start="3" data-end="10">hjælper</span> <span class="kw" data-start="11" data-end="19">hinanden</span> <span class="kw" data-start="20" data-end="23">med</span> <span class="kw" data-start="24" data-end="34">lektierne.</span></span><span class="en">They help each other with the homework.</span></span></div><div class="tip">Ikke en falsk venn — bare et helt annet ord for det samme. Et av de mest brukte gjensidige pronomenene, verdt å pugge først.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-maaske"><div class="card-top"><h2 class="word">måske</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">måske</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">kanskje</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Jeg</span> <span class="kw" data-start="4" data-end="10">kommer</span> <span class="kw" data-start="11" data-end="16">måske</span> <span class="kw" data-start="17" data-end="21">lidt</span> <span class="kw" data-start="22" data-end="26">sent</span> <span class="kw" data-start="27" data-end="28">i</span> <span class="kw" data-start="29" data-end="36">morgen.</span></span><span class="en">I might be a bit late tomorrow.</span></span></div><div class="tip">Et av de aller vanligste ordene i hverdagsprat — verdt å automatisere først.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-efterhaanden"><div class="card-top"><h2 class="word">efterhånden</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">efterhånden</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">etter hvert</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Jeg</span> <span class="kw" data-start="4" data-end="10">bliver</span> <span class="kw" data-start="11" data-end="16">bedre</span> <span class="kw" data-start="17" data-end="20">til</span> <span class="kw" data-start="21" data-end="26">norsk</span> <span class="kw" data-start="27" data-end="39">efterhånden.</span></span><span class="en">I'm getting better at Norwegian gradually.</span></span></div><div class="tip">Norsk skriver det som to ord i stedet for étt sammensatt ord — samme betydning, annen oppbygning.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-kun"><div class="card-top"><h2 class="word">kun</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">kun</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">bare</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Jeg</span> <span class="kw" data-start="4" data-end="7">har</span> <span class="kw" data-start="8" data-end="11">kun</span> <span class="kw" data-start="12" data-end="15">fem</span> <span class="kw" data-start="16" data-end="25">minutter.</span></span><span class="en">I only have five minutes.</span></span></div><div class="tip">Et av de mest brukte ordene i dagligtale — du kommer til å høre det konstant.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-meget"><div class="card-top"><h2 class="word">meget</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">meget</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">mye</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Det</span> <span class="kw" data-start="4" data-end="6">er</span> <span class="kw" data-start="7" data-end="12">meget</span> <span class="kw" data-start="13" data-end="15">at</span> <span class="kw" data-start="16" data-end="20">lære</span> <span class="kw" data-start="21" data-end="23">på</span> <span class="kw" data-start="24" data-end="26">én</span> <span class="kw" data-start="27" data-end="32">gang.</span></span><span class="en">That's a lot to learn at once.</span></span></div><div class="tip">OBS: ikke å forveksle med dansk "svært", som betyr "vanskelig" på dansk — helt motsatt av forsterkeren.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-saadan"><div class="card-top"><h2 class="word">sådan</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">sådan</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">sånn</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Jeg</span> <span class="kw" data-start="4" data-end="7">har</span> <span class="kw" data-start="8" data-end="14">aldrig</span> <span class="kw" data-start="15" data-end="20">gjort</span> <span class="kw" data-start="21" data-end="24">det</span> <span class="kw" data-start="25" data-end="30">sådan</span> <span class="kw" data-start="31" data-end="35">før.</span></span><span class="en">I've never done it like that before.</span></span></div><div class="tip">Beslektet, men stavemåten er forskjellig nok til å forvirre i skrift.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-lidt"><div class="card-top"><h2 class="word">lidt</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">lidt</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">litt</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Kan</span> <span class="kw" data-start="4" data-end="7">jeg</span> <span class="kw" data-start="8" data-end="10">få</span> <span class="kw" data-start="11" data-end="15">lidt</span> <span class="kw" data-start="16" data-end="20">mere</span> <span class="kw" data-start="21" data-end="27">kaffe?</span></span><span class="en">Can I get a little more coffee?</span></span></div><div class="tip">Et av de vanligste ordene du sier hver dag — lett å automatisere.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-nu"><div class="card-top"><h2 class="word">nu</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">nu</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">nå</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Kan</span> <span class="kw" data-start="4" data-end="6">vi</span> <span class="kw" data-start="7" data-end="11">gøre</span> <span class="kw" data-start="12" data-end="15">det</span> <span class="kw" data-start="16" data-end="19">nu?</span></span><span class="en">Can we do it now?</span></span></div><div class="tip">Kort ord, høy frekvens — det er ofte dette ordet som avslører dansk opprinnelse i en norsk setning.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-igen"><div class="card-top"><h2 class="word">igen</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">igen</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">igjen</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Kan</span> <span class="kw" data-start="4" data-end="6">du</span> <span class="kw" data-start="7" data-end="11">sige</span> <span class="kw" data-start="12" data-end="15">det</span> <span class="kw" data-start="16" data-end="21">igen?</span></span><span class="en">Can you say that again?</span></span></div><div class="tip">Samme lyd, annen staving — g blir til gj.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-endnu"><div class="card-top"><h2 class="word">endnu</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">endnu</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">ennå</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="2">Vi</span> <span class="kw" data-start="3" data-end="5">er</span> <span class="kw" data-start="6" data-end="10">ikke</span> <span class="kw" data-start="11" data-end="18">færdige</span> <span class="kw" data-start="19" data-end="25">endnu.</span></span><span class="en">We're not finished yet.</span></span></div><div class="tip">Brukes ofte sammen med "ikke" — "ikke ennå" / "ikke endnu".</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-alligevel"><div class="card-top"><h2 class="word">alligevel</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">alligevel</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">likevel</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Han</span> <span class="kw" data-start="4" data-end="7">kom</span> <span class="kw" data-start="8" data-end="18">alligevel,</span> <span class="kw" data-start="19" data-end="25">selvom</span> <span class="kw" data-start="26" data-end="29">han</span> <span class="kw" data-start="30" data-end="33">var</span> <span class="kw" data-start="34" data-end="38">syg.</span></span><span class="en">He came anyway, even though he was sick.</span></span></div><div class="tip">Ikke helt uten slektskap, men stavemåten er annerledes nok til å skape en kul i teksten.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-noget"><div class="card-top"><h2 class="word">noget</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">noget</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">noe</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Har</span> <span class="kw" data-start="4" data-end="6">du</span> <span class="kw" data-start="7" data-end="10">set</span> <span class="kw" data-start="11" data-end="16">noget</span> <span class="kw" data-start="17" data-end="26">mærkeligt</span> <span class="kw" data-start="27" data-end="28">i</span> <span class="kw" data-start="29" data-end="33">dag?</span></span><span class="en">Have you seen anything strange today?</span></span></div><div class="tip">Dukker opp flere ganger i nesten enhver samtale — verdt å få helt automatisk.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-nogen"><div class="card-top"><h2 class="word">nogen</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">nogen</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">noen</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="2">Er</span> <span class="kw" data-start="3" data-end="6">der</span> <span class="kw" data-start="7" data-end="12">nogen</span> <span class="kw" data-start="13" data-end="20">hjemme?</span></span><span class="en">Is anyone home?</span></span></div><div class="tip">Ligner "noget/noe" (over), men er et annet ord — "nogen" er personer, "noget" er ting.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-desuden"><div class="card-top"><h2 class="word">desuden</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">desuden</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">dessuten</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Jeg</span> <span class="kw" data-start="4" data-end="6">er</span> <span class="kw" data-start="7" data-end="14">desuden</span> <span class="kw" data-start="15" data-end="19">lidt</span> <span class="kw" data-start="20" data-end="29">forkølet.</span></span><span class="en">Besides, I'm also a bit under the weather.</span></span></div><div class="tip">Vanlig bindeord i både skrift og tale — beslektet, men stavemåten skaper forvirring.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-hvad"><div class="card-top"><h2 class="word">hvad</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">hvad</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">hva</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="4">Hvad</span> <span class="kw" data-start="5" data-end="10">sagde</span> <span class="kw" data-start="11" data-end="14">du?</span></span><span class="en">What did you say?</span></span></div><div class="tip">Et av de aller vanligste ordene i talespråk — lett å skrive feil selv om lyden ligger tætt opptil.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-hvornaar"><div class="card-top"><h2 class="word">hvornår</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">hvornår</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">når</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="7">Hvornår</span> <span class="kw" data-start="8" data-end="14">kommer</span> <span class="kw" data-start="15" data-end="18">du?</span></span><span class="en">When are you coming?</span></span></div><div class="tip">Dansk har to ord: "hvornår" i spørsmål, "når" i bisetninger ("når du kommer"). Norsk bruker bare "når" til begge deler — pass på at du ikke sier "hvornår", det høres gammeldags/dansk ut.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-vaersgo"><div class="card-top"><h2 class="word">værsgo</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">værsgo</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">vær så god</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="7">Værsgo,</span> <span class="kw" data-start="8" data-end="13">maden</span> <span class="kw" data-start="14" data-end="16">er</span> <span class="kw" data-start="17" data-end="22">klar.</span></span><span class="en">Here you go, the food is ready.</span></span></div><div class="tip">Dansk har trukket det sammen til étt ord — norsk holder på tre ord.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-stakkels"><div class="card-top"><h2 class="word">stakkels</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">stakkels</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">stakkars</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="8">Stakkels</span> <span class="kw" data-start="9" data-end="13">dig,</span> <span class="kw" data-start="14" data-end="17">det</span> <span class="kw" data-start="18" data-end="23">lyder</span> <span class="kw" data-start="24" data-end="30">hårdt.</span></span><span class="en">Poor you, that sounds tough.</span></span></div><div class="tip">Brukes ofte som et medfølende utrop i dagligtale.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-liksom"><div class="card-top"><h2 class="word">ligesom</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">ligesom</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">liksom</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Det</span> <span class="kw" data-start="4" data-end="7">var</span> <span class="kw" data-start="8" data-end="15">ligesom</span> <span class="kw" data-start="16" data-end="20">ikke</span> <span class="kw" data-start="21" data-end="30">meningen.</span></span><span class="en">That wasn't, like, the intention.</span></span></div><div class="tip">På dansk brukes "ligesom" sjeldnere som fyllord enn norsk "liksom", som er overalt i løs prat.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article><article class="card" data-id="sw-skikkelig"><div class="card-top"><h2 class="word">ordentlig</h2></div><div class="split"><div class="target"><div class="meaning-label da">🎯 DA</div><div class="meaning-text">ordentlig</div></div><div class="divider"></div><div class=""><div class="meaning-label no">NO</div><div class="meaning-text">skikkelig</div></div></div><div class="example">🇩🇰 <span><span class="example-sentence"><span class="kw" data-start="0" data-end="3">Det</span> <span class="kw" data-start="4" data-end="7">var</span> <span class="kw" data-start="8" data-end="17">ordentlig</span> <span class="kw" data-start="18" data-end="23">godt!</span></span><span class="en">That was really good!</span></span></div><div class="tip">Som forsterker ('virkelig/veldig') heter det "skikkelig" på norsk og "ordentlig" på dansk — veldig vanlig i uformell tale.</div><div class="card-actions"><button class="speak-btn target-da" type="button" aria-label="Hør sætningen på dansk">▶ Hør</button><button class="know-toggle" type="button" aria-pressed="false">Kan det</button></div></article></div>
   </section>
@@ -1316,7 +1373,7 @@
   </section>
 
   <footer>
-    <span id="footerText">Ordliste over norske/danske ord som betyr det samme, men bare er forskjellige ord — ikke falske venner. Fremgang lagres kun i denne nettleseren.</span>
+    <span id="footerText">Hver seksjon har et eksempel du kan høre med en gang — lyden er poenget, ikke en innstilling. Fremgang lagres kun i denne nettleseren.</span>
     <button type="button" class="linklike" id="footerAbout">Om siden</button>
   </footer>
 
@@ -1421,7 +1478,8 @@
       voicesFinding: "Finder norsk stemme…", bannerNone: "⚠ Ingen norsk stemme fundet. Prøv Chrome eller Edge — de har normalt \"Norsk bokmål\" indbygget.",
       tabSkift: "Ord der byttes", tabOrd: "Ord der snyder",
       tabUdtale: "Udtale", tabMonstre: "Tal & tid",
-      tabSmaord: "Småord & skriveregler", tabOm: "Om siden",
+      tabSmaord: "Småord & skriveregler", tabOm: "Om siden", tabForside: "Forside",
+      openPrefix: "Åbn", listenLabel: "Hør den",
       progressLabel: "Ord der snyder, du kan",
       swapIntro: "20 småord der ikke er falske venner — bare et helt andet ord for det samme. Højfrekvente ord du bruger dagligt, så det bedst kan betale sig at lære dem først.",
       flag: "🇳🇴",
@@ -1437,7 +1495,8 @@
       voicesFinding: "Finner dansk stemme…", bannerNone: "⚠ Ingen dansk stemme funnet. Prøv Chrome eller Edge — de har normalt danske stemmer innebygget.",
       tabSkift: "Ord som byttes", tabOrd: "Ord som lurer",
       tabUdtale: "Uttale", tabMonstre: "Tall & tid",
-      tabSmaord: "Småord & skriveregler", tabOm: "Om siden",
+      tabSmaord: "Småord & skriveregler", tabOm: "Om siden", tabForside: "Forside",
+      openPrefix: "Åpne", listenLabel: "Hør den",
       progressLabel: "Ord som lurer, du kan",
       swapIntro: "20 småord som ikke er falske venner — bare et helt annet ord for det samme. Høyfrekvente ord du bruker daglig, så det lønner seg mest å lære dem først.",
       flag: "🇩🇰",
@@ -1450,6 +1509,10 @@
   // Footer copy is per-tab and per-direction: the old single sentence described
   // the false-friends list even when another tab was open.
   var FOOTER_TEXT = {
+    "panel-forside": {
+      "da-no": "Hver sektion har et eksempel du kan høre med det samme — lyden er pointen, ikke en indstilling. Fremskridt gemmes kun i denne browser.",
+      "no-da": "Hver seksjon har et eksempel du kan høre med en gang — lyden er poenget, ikke en innstilling. Fremgang lagres kun i denne nettleseren."
+    },
     "panel-skift": {
       "da-no": "Ordliste over danske/norske ord, der betyder det samme men bare er forskellige ord — ikke falske venner. Fremskridt gemmes kun i denne browser.",
       "no-da": "Ordliste over norske/danske ord som betyr det samme, men bare er forskjellige ord — ikke falske venner. Fremgang lagres kun i denne nettleseren."
@@ -1475,6 +1538,101 @@
       "no-da": "Siden er laget av Morten Sylvest — skriv til mortensylvest@gmail.com hvis du har rettelser, ideer eller ord som mangler."
     }
   };
+
+
+  // The front page is one card per section. Every sample points at a clip that
+  // already exists in audio/manifest.json — reusing the sections' own example
+  // sentences rather than new strings, so the front page costs no new audio.
+  var SECTIONS = [
+    {
+      tab: "tab-skift",
+      "da-no": {
+        title: "Ord der byttes", count: "20 ord",
+        blurb: "Ikke falske venner \u2014 bare et helt andet ord for det samme. H\u00f8jfrekvente ord du bruger dagligt, s\u00e5 dem kan det bedst betale sig at l\u00e6re f\u00f8rst.",
+        samples: [{ clip: "maaske-no", lang: "no", text: "Jeg kommer kanskje litt sent i morgen." }]
+      },
+      "no-da": {
+        title: "Ord som byttes", count: "20 ord",
+        blurb: "Ikke falske venner \u2014 bare et helt annet ord for det samme. H\u00f8yfrekvente ord du bruker daglig, s\u00e5 de l\u00f8nner seg mest \u00e5 l\u00e6re f\u00f8rst.",
+        samples: [{ clip: "maaske-da", lang: "da", text: "Jeg kommer m\u00e5ske lidt sent i morgen." }]
+      }
+    },
+    {
+      tab: "tab-ord",
+      "da-no": {
+        title: "Ord der snyder", count: "30 ord",
+        blurb: "Ser ens ud, betyder noget andet. \u00abRar\u00bb er en kompliment i Danmark og en advarsel i Norge.",
+        samples: [{ clip: "rar-no", lang: "no", text: "Han er egentlig ganske rar." }]
+      },
+      "no-da": {
+        title: "Ord som lurer", count: "30 ord",
+        blurb: "Ser like ut, betyr noe annet. \u00abRar\u00bb er en kompliment i Danmark og en advarsel i Norge.",
+        samples: [{ clip: "rar-da", lang: "da", text: "Hun er s\u00e5 rar, hun hj\u00e6lper altid." }]
+      }
+    },
+    {
+      tab: "tab-udtale",
+      "da-no": {
+        title: "Udtale", count: "6 forskelle",
+        blurb: "St\u00f8d mod tonefald, bl\u00f8dt d, \u00f8stnorsk r. H\u00f8r de to sprog sige det samme ord lige efter hinanden.",
+        samples: [
+          { clip: "udtale-da-dag", lang: "da", text: "dag", label: "\ud83c\udde9\ud83c\uddf0 dag" },
+          { clip: "udtale-no-dag", lang: "no", text: "dag", label: "\ud83c\uddf3\ud83c\uddf4 dag" }
+        ]
+      },
+      "no-da": {
+        title: "Uttale", count: "6 forskjeller",
+        blurb: "Tonefall mot st\u00f8d, bl\u00f8t d, dansk r bakerst i halsen. H\u00f8r de to spr\u00e5kene si det samme ordet etter hverandre.",
+        samples: [
+          { clip: "udtale-no-dag", lang: "no", text: "dag", label: "\ud83c\uddf3\ud83c\uddf4 dag" },
+          { clip: "udtale-da-dag", lang: "da", text: "dag", label: "\ud83c\udde9\ud83c\uddf0 dag" }
+        ]
+      }
+    },
+    {
+      tab: "tab-m\u00f8nstre",
+      "da-no": {
+        title: "Tal & tid", count: "",
+        blurb: "Halvfems eller nitti? Og klokken halv otte, der betyder det samme i begge sprog \u2014 men siges helt forskelligt.",
+        samples: [
+          { clip: "say-da-halvfems", lang: "da", text: "halvfems", label: "\ud83c\udde9\ud83c\uddf0 halvfems" },
+          { clip: "say-no-nitti", lang: "no", text: "nitti", label: "\ud83c\uddf3\ud83c\uddf4 nitti" }
+        ]
+      },
+      "no-da": {
+        title: "Tall & tid", count: "",
+        blurb: "Nitti eller halvfems? Og klokken halv \u00e5tte, som betyr det samme p\u00e5 begge spr\u00e5k \u2014 men sies helt forskjellig.",
+        samples: [
+          { clip: "say-no-nitti", lang: "no", text: "nitti", label: "\ud83c\uddf3\ud83c\uddf4 nitti" },
+          { clip: "say-da-halvfems", lang: "da", text: "halvfems", label: "\ud83c\udde9\ud83c\uddf0 halvfems" }
+        ]
+      }
+    },
+    {
+      tab: "tab-sm\u00e5ord",
+      "da-no": {
+        title: "Sm\u00e5ord & skriveregler", count: "6 fyldord",
+        blurb: "Liksom, alts\u00e5, vel \u2014 de sm\u00e5 ord der afsl\u00f8rer dig til sidst. Plus hvad der \u00e6ndrer sig, n\u00e5r du skriver.",
+        samples: [{ clip: "liksom-no", lang: "no", text: "Det var liksom ikke meningen." }]
+      },
+      "no-da": {
+        title: "Sm\u00e5ord & skriveregler", count: "12 fyllord",
+        blurb: "Jo, sgu, dog, vist \u2014 de sm\u00e5 ordene som avsl\u00f8rer deg til slutt. Pluss hva som endrer seg n\u00e5r du skriver.",
+        samples: [{ clip: "liksom-da", lang: "da", text: "Det var ligesom ikke meningen." }]
+      }
+    },
+    {
+      tab: "tab-om", about: true,
+      "da-no": {
+        title: "Om siden", count: "",
+        blurb: "Jeg er netop flyttet til Oslo med to b\u00f8rn i skole p\u00e5 Sankt Hanshaugen. Siden er lavet for at hj\u00e6lpe os i gang \u2014 gratis, uden reklamer og uden sporing."
+      },
+      "no-da": {
+        title: "Om siden", count: "",
+        blurb: "Jeg har nettopp flyttet til Oslo med to barn p\u00e5 skolen p\u00e5 Sankt Hanshaugen. Siden er laget for \u00e5 hjelpe oss i gang \u2014 gratis, uten reklame og uten sporing."
+      }
+    }
+  ];
 
   // /til-norge and /til-danmark are the two audience-specific landing pages
   // (see README, "Two landing paths"). Arriving on one of them is a more
@@ -1640,6 +1798,54 @@
     });
   });
 
+  function renderSections(){
+    var grid = document.getElementById("sectionGrid");
+    if(!grid) return;
+    grid.innerHTML = "";
+    var L = UI[direction];
+
+    SECTIONS.forEach(function(sec){
+      var c = sec[direction];
+      var card = document.createElement("article");
+      card.className = "section-card" + (sec.about ? " about" : "");
+
+      var body = "";
+      if(sec.about){
+        body = '<p class="section-contact"><a href="mailto:mortensylvest@gmail.com">mortensylvest@gmail.com</a></p>';
+      }else{
+        // One sample gets the sentence above the button; a pair of samples is a
+        // contrast (the same word in both languages), where the labels say it all.
+        var pair = c.samples.length > 1;
+        var buttons = c.samples.map(function(sm){
+          return '<button class="sample-btn' + (sm.lang === "da" ? " lang-da" : "") + '" type="button" data-clip="' + sm.clip + '">' +
+                 '<span class="speaker-ico">\u25b6</span>' + (sm.label || L.listenLabel) + '</button>';
+        }).join("");
+        body = '<div class="section-sample' + (!pair && c.samples[0].lang === "da" ? " lang-da" : "") + '">' +
+               (pair ? "" : '<p class="section-quote">' + karaokeMarkup(c.samples[0].text) + '</p>') +
+               '<div class="sample-row">' + buttons + '</div></div>';
+      }
+
+      card.innerHTML =
+        '<div class="section-top"><h2 class="section-title">' + c.title + '</h2>' +
+        (c.count ? '<span class="section-count">' + c.count + '</span>' : '') + '</div>' +
+        '<p class="section-blurb">' + c.blurb + '</p>' +
+        body +
+        '<button class="section-open" type="button">' + L.openPrefix + " " + c.title + ' \u2192</button>';
+
+      var quote = card.querySelector(".section-quote");
+      card.querySelectorAll(".sample-btn").forEach(function(btn, i){
+        var sm = c.samples[i];
+        btn.addEventListener("click", function(){ speak(sm.text, sm.lang, quote, sm.clip); });
+      });
+      card.querySelector(".section-open").addEventListener("click", function(){
+        selectTab(document.getElementById(sec.tab));
+        document.querySelector(".tablist").scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
   // ---------- tabs ----------
   var tabs = document.querySelectorAll(".tab");
   function selectTab(tab){
@@ -1647,7 +1853,7 @@
     document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("active"); });
     tab.setAttribute("aria-selected","true");
     document.getElementById(tab.getAttribute("aria-controls")).classList.add("active");
-    updateFooter();
+    updateChrome();
   }
   tabs.forEach(function(tab){
     tab.addEventListener("click", function(){ selectTab(tab); });
@@ -1664,12 +1870,16 @@
   });
 
   // ---------- direction switch ----------
-  function updateFooter(){
+  // The front page carries its own navigation \u2014 one card per section \u2014 so the
+  // tab row would say the same thing twice there. It comes back on every other
+  // tab, where it is the only way across.
+  function updateChrome(){
     var selected = document.querySelector('.tab[aria-selected="true"]');
-    var panelId = selected ? selected.getAttribute("aria-controls") : "panel-skift";
+    var panelId = selected ? selected.getAttribute("aria-controls") : "panel-forside";
     var entry = FOOTER_TEXT[panelId];
     if(entry) document.getElementById("footerText").textContent = entry[direction];
     footerAbout.hidden = panelId === "panel-om";
+    document.querySelector(".tablist").hidden = panelId === "panel-forside";
   }
 
   var dirBtns = document.querySelectorAll(".dirBtn");
@@ -1683,13 +1893,15 @@
     document.getElementById("tab-mønstre").textContent = L.tabMonstre;
     document.getElementById("tab-småord").textContent = L.tabSmaord;
     document.getElementById("tab-om").textContent = L.tabOm;
+    document.getElementById("tab-forside").textContent = L.tabForside;
     footerAbout.textContent = L.tabOm;
     document.getElementById("progressLabel").textContent = L.progressLabel;
     document.getElementById("swapIntro").textContent = L.swapIntro;
-    updateFooter();
+    updateChrome();
     document.querySelectorAll(".subpanel[data-dir]").forEach(function(sp){
       sp.classList.toggle("active", sp.dataset.dir === direction);
     });
+    renderSections();
     renderWords();
     renderSwapWords();
     updateProgress();
