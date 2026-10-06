@@ -2,6 +2,8 @@
 
 A Danish ↔ Norwegian "false friend" trainer — teaches the small, specific delta between the two languages (tricky look-alike words, key pronunciation differences, numbers/time quirks) rather than starting from zero like a general language app.
 
+Live at **https://nordenhusker.dk** — `/til-norge` for Danes, `/til-danmark` for Norwegians.
+
 **Core idea:** Danish and Norwegian (Bokmål) are already close to mutually intelligible. What actually trips a fluent neighbor-language speaker up is a short, learnable list of false friends, a handful of pronunciation differences, and a couple of structural quirks (numbers, telling time) — not broad grammar.
 
 ## Status
@@ -16,7 +18,7 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
   inside a section. The samples point at clips that already exist, so the
   front page costs no new audio
 - Bidirectional 🇩🇰→🇳🇴 / 🇳🇴→🇩🇰 switch
-- 326 pre-generated Google WaveNet clips — 163 strings x a female and a male voice per language, chosen over Chirp3-HD and Grok in a blind listening test
+- 402 pre-generated Google WaveNet clips — 201 strings x a female and a male voice per language, chosen over Chirp3-HD and Grok in a blind listening test
 - Kvinde / Mand voice switch, remembered in `localStorage`
 - Karaoke word highlighting driven by real word onsets from the TTS API, not estimates
 - Web Speech API retained as a fallback whenever a clip is missing or won't play
@@ -31,30 +33,50 @@ Prototype stage. Single `index.html` (no build step, no backend) plus a folder o
 
 ## Roadmap
 
-See the project notes (kept outside this repo, in the Claude project) for full detail. In the repo, `BACKLOG.md` is the running list of planned features and `PROMOTION-IDEAS.md` the non-code side (competitions, funding calls, outreach targets). Short version:
+Detailed planning notes are kept privately, outside this repo. Short version:
 
 - ~~Move onto real hosting (Firebase)~~ — done, see Deploying below
 - Move progress off `localStorage` onto Firebase Auth + Firestore for accounts and cross-device sync
 - ~~Swap browser TTS for a real TTS API~~ — done, Google Cloud TTS WaveNet
 - Consider driving the 47 pronunciation words through SSML `<phoneme>` using the IPA already in `UDTALE_WORDS`
 - Possibly add Swedish (SV↔DA, SV↔NO) as a third language pair — each is its own content research effort, not a quick add
-- Register nordenhusker.dk (.no/.se as insurance)
+- ~~Register nordenhusker.dk~~ — done, live; a `.no` domain is blocked on needing a Norwegian personnummer/org number
 
 ## Structure
 
 ```
 index.html          the whole app — markup, styles, and logic in one file
-audio/female/       123 mp3s, da-DK-Wavenet-F / nb-NO-Wavenet-F
-audio/male/         123 mp3s, da-DK-Wavenet-G / nb-NO-Wavenet-G
+audio/female/       201 mp3s, da-DK-Wavenet-F / nb-NO-Wavenet-F
+audio/male/         201 mp3s, da-DK-Wavenet-G / nb-NO-Wavenet-G
 audio/manifest.json clip id -> per-voice file + word timings, fetched at startup
+audio/ssml2/, ssml3/  SSML pronunciation experiments (kept for reference, not deployed)
 manifest.webmanifest  PWA manifest
 sw.js               service worker — precaches the app and all audio
 til-norge.html      generated — Danish-facing landing page (do not edit)
 til-danmark.html    generated — Norwegian-facing landing page (do not edit)
-tools/              audio generator + page generator (not deployed)
+sitemap.xml, robots.txt  SEO; sitemap lastmod is stamped by the prerender
+*.png               favicons, PWA icons (tools/generate-favicons.mjs), social preview
+tools/              audio, page, favicon generators + offline check (not deployed)
 brand guide/        reference brand deck (PDF, not deployed)
 firebase.json       Firebase Hosting config
 .firebaserc         pins the default project (nordenhusker-5ed3c)
+```
+
+## Running locally
+
+The app is static — serve the folder over HTTP (audio is fetched, so `file://`
+falls back to browser voices):
+
+```
+python3 -m http.server 8123
+```
+
+then open http://localhost:8123. The tools in `tools/` need Node and
+Playwright's Chromium:
+
+```
+npm install
+npx playwright install chromium
 ```
 
 ## Two landing paths
@@ -132,8 +154,8 @@ npm run prerender
 ## Installable and offline (PWA)
 
 The site is installable: an icon on the home screen, its own window with no
-browser chrome, and — the point of the exercise — **all 326 audio clips
-(4.6 MB) precached**, so the whole app works on a metro with no signal. For a
+browser chrome, and — the point of the exercise — **all 402 audio clips
+(5.4 MB) precached**, so the whole app works on a metro with no signal. For a
 pronunciation tool aimed at people who have just moved country, offline is the
 feature; the icon is a side effect.
 
@@ -188,7 +210,9 @@ gcloud auth application-default login
 node tools/generate-audio.mjs
 ```
 
-Add `--force` to re-synthesise everything, which is what a new voice or a
+`--sample` renders five hard sentences through every engine for a side-by-side
+listen; its optional Grok leg reads `XAI_API_KEY` from a local `.env`
+(gitignored — never commit it). Add `--force` to re-synthesise everything, which is what a new voice or a
 changed engine needs.
 
 Note: `audio/manifest.json` is loaded with `fetch`, which browsers block over

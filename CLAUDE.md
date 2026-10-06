@@ -17,6 +17,12 @@ ready to pick up here.
 
 ## Maintain BACKLOG.md
 
+The planning docs (`BACKLOG.md`, `PROMOTION-IDEAS.md`, `BROBYGGER-SUBMISSION.md`,
+`ART-PRINTS-BRIEF.md`) are **local-only and gitignored** — the repo is public
+and these are private. Edit them on disk as below, but never `git add` them
+(or `git add -f` them), and don't quote them in commit messages, the README or
+anything deployed.
+
 `BACKLOG.md` is the running list of feature ideas and planned work for this
 project. Keep it current as part of normal work here, not as a separate chore:
 

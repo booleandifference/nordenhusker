@@ -8,3 +8,9 @@ audio/grok/
 audio/ssml/
 audio/ssml2/
 audio/ssml3/
+
+# private planning docs — kept on disk, never committed
+BACKLOG.md
+PROMOTION-IDEAS.md
+BROBYGGER-SUBMISSION.md
+ART-PRINTS-BRIEF.md
