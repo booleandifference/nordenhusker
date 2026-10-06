@@ -18,6 +18,7 @@
       "Banner image/**",
       "package.json",
       "package-lock.json",
+      "LICENSE",
       "**/*.md"
     ],
     "headers": [

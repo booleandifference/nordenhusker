@@ -238,3 +238,7 @@ Preview a change before it goes live:
 ```
 firebase hosting:channel:deploy preview
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
